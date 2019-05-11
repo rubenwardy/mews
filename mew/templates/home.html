@@ -1,10 +1,7 @@
 {% extends "base.html" %}
+{% block head %}
+	<script async src="/static/api.js"></script>
+{% endblock %}
 {% block content %}
-	<div class="columns section is-multiline">
-		<div class="column is-one-fifth is-1by1">
-			<img src="https://i.redd.it/337x5bx7x7j11.jpg" class="is-1by1">
-			<h3 class="title is-5 is-marginless">Simulation Theory</h3>
-			<a class="subtitle is-6">Muse</a>
-		</div>
-	</div>
+	<div class="columns section is-multiline" id="albums"></div>
 {% endblock %}
