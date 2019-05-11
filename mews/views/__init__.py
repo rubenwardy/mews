@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for
-from mew import app
-from mew.utils import scanForMusic
-from mew.models import *
+from mews import app
+from mews.utils import scanForMusic
+from mews.models import *
 
 @app.route("/")
 def hello():

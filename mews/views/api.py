@@ -1,6 +1,6 @@
 from flask import render_template, jsonify
-from mew import app
-from mew.models import *
+from mews import app
+from mews.models import *
 
 @app.route("/api/albums/")
 def api_albums():
