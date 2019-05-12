@@ -4,23 +4,28 @@ class Player {
 		this.playing_id = null
 		this.playing = true
 		this.audio = new Audio()
+		this.audio.onEnd(this.onMusicEnd.bind(this))
 	}
 
 	// Stops and deletes current playing item
 	stop() {
-
+		console.log("[Player] Stop!")
+		this.audio.unloadAll()
+		this.updateUI()
 	}
 
 	// Plays the playlist
 	//
 	// If the playlist is unknown, then it will delay playing
 	// If the cursor is at the end, then it will start from the begining
+	// Otherwise, it will play the cursor'd song from the beginning
 	// Nothing happens on no playlist
 	play() {
-		console.log("[Player] Play pressed!")
+		console.log("[Player] Play!")
 
 		var playlist = this.getPlaylist()
 		if (!playlist) {
+			this.updateUI()
 			return
 		}
 
@@ -36,6 +41,30 @@ class Player {
 		if (playing) {
 			console.log("[Player] Started: " + playing.title)
 			this.audio.play(playing.id, playing.getURL())
+		}
+
+		this.updateUI()
+	}
+
+	next() {
+		console.log("[Player] Next!")
+
+		if (this.playing_id == null) {
+			this.updateUI()
+			return null
+		}
+
+		var playlist = this.getPlaylist()
+		if (!playlist) {
+			this.updateUI()
+			return null
+		}
+
+		this.playing_id = playlist.getNextID(this.playing_id)
+		if (this.playing_id) {
+			this.play()
+		} else {
+			this.stop()
 		}
 	}
 
@@ -73,7 +102,7 @@ class Player {
 		this.stop()
 		this.playlist = playlist
 		this.playing = true
-		this.playlist.change(pl => this.onPlaylistChanged(pl))
+		this.playlist.change(this.onPlaylistChanged.bind(this))
 	}
 
 	onPlaylistChanged(playlist) {
@@ -82,6 +111,23 @@ class Player {
 		// Was waiting for playlist to be filled
 		if (this.playing && this.playing_id == null) {
 			this.play()
+		}
+	}
+
+	onMusicEnd(audio, id) {
+		this.next()
+	}
+
+	updateUI() {
+		var track = this.getTrack()
+		var track_title  = document.getElementById("player-track")
+		var track_artist = document.getElementById("player-artist")
+		if (track) {
+			track_title.text = track.title
+			track_artist.text = track.artist
+		} else {
+			track_title.text = "-"
+			track_artist.text = "-"
 		}
 	}
 

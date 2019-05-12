@@ -21,6 +21,6 @@ async function showAlbums() {
 
 window.onload = function() {
 	showAlbums().then(function() {
-		player.playAlbum(1)
+		player.playAlbum(148)
 	}).catch(console.log)
 }

@@ -22,6 +22,9 @@
 		.navbar-item svg {
 			margin-left: 10px;
 		}
+		audio {
+			 /* display: none; */
+		}
 	</style>
 </head>
 <body>
@@ -71,13 +74,10 @@
 						<img src="/dummy/?title=Simulation+Theory">
 					</a>
 					<div class="navbar-item minitrack">
-						<a href="#">Algorithm</a>
-						<a href="#">Muse</a>
+						<a href="#" id="player-track">Algorithm</a>
+						<a href="#" id="player-artist">Muse</a>
 					</div>
 					<div id="audioplayer" class="navbar-item field">
-						<audio controls="controls" id="audio_player">
-							Your browser does not support the audio element.
-						</audio>
 						<!-- <a class="controls fas fa-play"></a>
 						<a class="controls fas fa-backward"></a>
 						<a class="controls fas fa-forward"></a>

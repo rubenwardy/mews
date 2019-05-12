@@ -66,6 +66,19 @@ class Playlist extends Model {
 		return null
 	}
 
+	getNextID(pt_id) {
+		var isNext = false
+		for (var i = 0; i < this.playlist_tracks.length; i++) {
+			if (isNext) {
+				return this.playlist_tracks[i].id
+			} else if (this.playlist_tracks[i].id == pt_id) {
+				isNext = true
+			}
+		}
+
+		return null
+	}
+
 	getFirstID() {
 		if (this.playlist_tracks.length > 0) {
 			return this.playlist_tracks[0].id

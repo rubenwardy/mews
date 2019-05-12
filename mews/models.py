@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from . import app
+from . import app, lastfm
+import json
 
 db = SQLAlchemy(app)
 
@@ -51,6 +52,11 @@ class Track(db.Model):
 	path = db.Column(db.String(80), unique=True, nullable=False)
 	is_known = db.Column(db.Boolean, nullable=False, default=False)
 
+	artist_id = db.Column(db.Integer, db.ForeignKey("artist.id"),
+		nullable=False)
+	artist = db.relationship("Artist",
+		backref=db.backref("tracks", lazy=True))
+
 	album_id = db.Column(db.Integer, db.ForeignKey("album.id"),
 		nullable=False)
 	album = db.relationship("Album",
@@ -60,6 +66,7 @@ class Track(db.Model):
 		return {
 			"id": self.id,
 			"title": self.title,
+			"artist": self.artist.name,
 			"picture": self.picture,
 			"pt_id": pt_id
 		}
@@ -90,20 +97,3 @@ class Playlist(db.Model):
 
 	def __repr__(self):
 		return "<Playlist %r>" % self.title
-
-
-def getOrCreateAlbum(artist, title):
-	art = Artist.query.filter_by(name=artist).first()
-	album = Album.query.filter_by(title=title, artist=art).first()
-	if album is None:
-		if art is None:
-			art = Artist()
-			art.name = artist
-			db.session.add(art)
-
-		album = Album()
-		album.title = title
-		album.artist = art
-		db.session.add(album)
-
-	return album
