@@ -23,6 +23,10 @@ class Track extends Model {
 		this.change()
 	}
 
+	getURL() {
+		return "/tracks/" + this.id + "/";
+	}
+
 	static get(id) {
 		var track = tracks[id]
 		if (!track) {

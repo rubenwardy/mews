@@ -40,7 +40,11 @@ class Playlist extends Model {
 	}
 
 	get(pt_id) {
-		for (pt of this.playlist_tracks) {
+		if (pt_id == null) {
+			return null
+		}
+
+		for (var pt of this.playlist_tracks) {
 			if (pt.id == pt_id) {
 				return pt.track
 			}
@@ -60,6 +64,12 @@ class Playlist extends Model {
 		}
 
 		return null
+	}
+
+	getFirstID() {
+		if (this.playlist_tracks.length > 0) {
+			return this.playlist_tracks[0].id
+		}
 	}
 
 	async addAlbum(id) {
