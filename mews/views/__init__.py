@@ -1,7 +1,8 @@
 from flask import render_template, redirect, url_for, send_file
-from mews import app
+from mews import app, lastfm
 from mews.utils import scanForMusic
 from mews.models import *
+import pylast, json
 
 @app.route("/")
 def hello():
@@ -17,6 +18,35 @@ def track_file(id):
 
 	print(track.path)
 	return send_file(track.path)
+
+
+@app.route("/sync/albums/")
+def sync_album():
+	data = {}
+	with open('album_cache.json') as json_file:
+		data = json.load(json_file)
+
+	for album in Album.query.all():
+		try:
+			if album.is_known:
+				continue
+
+			key = (album.artist.name + "/" + album.title).lower()
+			if data.get(key):
+				print("Using cached " + album.title + " by " + album.artist.name)
+				album.picture = data.get(key)["picture"]
+				album.is_known = album.picture is not None
+			else:
+				print("Fetching " + album.title + " by " + album.artist.name)
+				lfm_album = lastfm.get_album(album.artist.name, album.title)
+				album.title = lfm_album.get_title()
+				album.picture = lfm_album.get_cover_image()
+				album.is_known = True
+			db.session.commit()
+		except pylast.WSError:
+			print("Error")
+
+	return redirect(url_for("hello"))
 
 
 @app.route("/sync/")

@@ -7,6 +7,7 @@ class Artist(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(80), unique=True, nullable=False)
 	picture = db.Column(db.String(200), unique=True, nullable=True)
+	is_known = db.Column(db.Boolean, nullable=False, default=False)
 
 	def asDict(self):
 		return {
@@ -23,6 +24,7 @@ class Album(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(80), nullable=False)
 	picture = db.Column(db.String(200), unique=True, nullable=True)
+	is_known = db.Column(db.Boolean, nullable=False, default=False)
 
 	artist_id = db.Column(db.Integer, db.ForeignKey("artist.id"),
 		nullable=False)
@@ -47,6 +49,7 @@ class Track(db.Model):
 	number = db.Column(db.Integer, nullable=True)
 	picture = db.Column(db.String(200), unique=True, nullable=True)
 	path = db.Column(db.String(80), unique=True, nullable=False)
+	is_known = db.Column(db.Boolean, nullable=False, default=False)
 
 	album_id = db.Column(db.Integer, db.ForeignKey("album.id"),
 		nullable=False)
