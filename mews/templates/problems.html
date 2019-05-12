@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="section">
+		<h1 class="title is-3">Problems</h1>
+	</div>
+
+	<div class="columns">
+		<div class="column section is-one-half">
+			<h2 class="title is-4">
+				Unknown Albums
+				<span class="tag is-rounded {% if unknown_albums %}is-danger{% endif %}">{{ unknown_albums | length }}</span>
+			</h2>
+
+			<ul>
+			{% for album in unknown_albums %}
+				<li>{{ album.title }} by {{ album.artist.name }}</li>
+			{% endfor %}
+			</ul>
+		</div>
+
+		<div class="column section is-one-half">
+			<h2 class="title is-4">
+				Unknown Artists
+				<span class="tag is-rounded {% if unknown_artists %}is-danger{% endif %}">{{ unknown_artists | length }}</span>
+			</h2>
+
+			<ul>
+			{% for artist in unknown_artists %}
+				<li>{{ artist.name }}</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}

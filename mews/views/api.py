@@ -23,9 +23,20 @@ def api_albums():
 def api_album_cache():
 	ret = {}
 
-	albums = db.session.query(Album).join(Artist.albums).all()
+	albums = db.session.query(Album).join(Artist.albums).filter_by(is_known=True).all()
 	for album in albums:
 		ret[(album.artist.name + "/" + album.title).lower()] = album.asDict()
+
+	return jsonify(ret)
+
+
+@app.route("/api/artist_cache/")
+def api_artist_cache():
+	ret = {}
+
+	artists = Artist.query.filter_by(is_known=True).all()
+	for artist in artists:
+		ret[artist.name.lower()] = artist.asDict()
 
 	return jsonify(ret)
 

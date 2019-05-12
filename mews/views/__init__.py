@@ -9,6 +9,13 @@ def hello():
 	return render_template("home.html")
 
 
+@app.route("/problems/")
+def problems():
+	unknown_albums = Album.query.filter_by(is_known=False).order_by(Album.title).all()
+	unknown_artists = Artist.query.filter_by(is_known=False).order_by(Artist.name).all()
+	return render_template("problems.html", unknown_albums=unknown_albums, unknown_artists=unknown_artists)
+
+
 @app.route("/tracks/<int:id>/")
 def track_file(id):
 	track = Track.query.get(id)
@@ -23,14 +30,14 @@ def track_file(id):
 @app.route("/sync/albums/")
 def sync_album():
 	data = {}
-	with open('album_cache.json') as json_file:
-		data = json.load(json_file)
+	try:
+		with open('album_cache.json') as json_file:
+			data = json.load(json_file)
+	except FileNotFoundError:
+		pass
 
-	for album in Album.query.all():
+	for album in Album.query.filter_by(is_known=False).all():
 		try:
-			if album.is_known:
-				continue
-
 			key = (album.artist.name + "/" + album.title).lower()
 			if data.get(key):
 				print("Using cached " + album.title + " by " + album.artist.name)
@@ -45,6 +52,44 @@ def sync_album():
 			db.session.commit()
 		except pylast.WSError:
 			print("Error")
+
+	return redirect(url_for("hello"))
+
+
+@app.route("/sync/artists/")
+def sync_artist():
+	data = {}
+	try:
+		with open('artist_cache.json') as json_file:
+			data = json.load(json_file)
+	except FileNotFoundError:
+		pass
+
+	for artist in Artist.query.filter_by(is_known=False).all():
+		try:
+			key = artist.name.lower()
+			if data.get(key):
+				print("Using cached " + artist.name)
+				artist.picture = data.get(key)["picture"]
+				artist.is_known = artist.picture is not None
+			else:
+				print("Fetching " + artist.name)
+				lfm_artist = lastfm.get_artist(artist.name)
+				cname = lfm_artist.get_correction()
+				if cname != artist.name:
+					print(" - corrected name to " + cname)
+					artist.name = cname
+					lfm_artist = lastfm.get_artist(artist.name)
+
+				if lfm_artist.get_mbid() is not None:
+					# TODO: Artist picture support
+					artist.is_known = True
+				else:
+					print(" - Artist not found: " + artist.name)
+
+			db.session.commit()
+		except pylast.WSError:
+			print(" - Error: " + artist.name)
 
 	return redirect(url_for("hello"))
 
