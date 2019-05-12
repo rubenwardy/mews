@@ -7,6 +7,19 @@
 	<link rel="stylesheet" href="/static/bulma.min.css">
 	<script defer src="/static/fa.js"></script>
 	{% block head %}{% endblock %}
+	<style>
+		.minitrack {
+			display: block;
+			text-align: center;
+		}
+		.minitrack a {
+			display: block;
+			font-size: 80%;
+		}
+		.controls {
+			margin: 0 0.4em;
+		}
+	</style>
 </head>
 <body>
 	<nav class="navbar" role="navigation" aria-label="main navigation">
@@ -50,6 +63,20 @@
 								Report an issue
 							</a>
 						</div>
+					</div>
+					<div style="margin-left:25%;"></div>
+					<a href="#" class="navbar-item">
+						<img src="/dummy/?title=Simulation+Theory">
+					</a>
+					<div class="navbar-item minitrack">
+						<a href="#">Algorithm</a>
+						<a href="#">Muse</a>
+					</div>
+					<div id="audioplayer" class="navbar-item field">
+						<a class="controls fas fa-play"></a>
+						<a class="controls fas fa-backward"></a>
+						<a class="controls fas fa-forward"></a>
+						<progress class="progress is-primary is-small" value="15" max="100">15%</progress>
 					</div>
 				</div>
 

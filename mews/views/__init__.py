@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, send_file
 from mews import app
 from mews.utils import scanForMusic
 from mews.models import *
@@ -6,6 +6,18 @@ from mews.models import *
 @app.route("/")
 def hello():
 	return render_template("home.html")
+
+
+@app.route("/tracks/<int:id>/")
+def track_file(id):
+	track = Track.query.get(id)
+	if track is None:
+		print("No track!")
+		abort(404)
+
+	print(track.path)
+	return send_file(track.path)
+
 
 @app.route("/sync/")
 def sync():
@@ -17,7 +29,7 @@ def sync():
 
 	for info in ret:
 		meta = info["meta"]
-		album = getOrCreateAlbum(artist=meta.artist or meta.albumartist, title=meta.album)
+		album = getOrCreateAlbum(artist=meta.albumartist or meta.artist, title=meta.album)
 
 		track = Track()
 		track.album = album
