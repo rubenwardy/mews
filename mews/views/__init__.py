@@ -45,4 +45,4 @@ def sync():
 	db.session.commit()
 	return redirect(url_for("hello"))
 
-from . import sass, api
+from . import sass, api, dummyart

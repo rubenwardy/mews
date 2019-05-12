@@ -15,7 +15,8 @@ async function getJSON(url, method) {
 
 function appendAlbum(album) {
 	let element = document.createElement("div")
-	element.innerHTML = `<img src="${album.picture}" class="is-1by1">
+	let picture = album.picture || '/dummy/?title=' + encodeURI(album.title)
+	element.innerHTML = `<img src="${picture}" class="is-1by1">
 		<h3 class="title is-5 is-marginless">${album.title}</h3>
 		<a class="subtitle is-6">${album.artist}</a>`;
 	element.setAttribute("class", "column is-one-fifth is-1by1")
