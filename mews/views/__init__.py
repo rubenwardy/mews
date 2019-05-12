@@ -29,13 +29,16 @@ def sync():
 
 	for info in ret:
 		meta = info["meta"]
-		album = getOrCreateAlbum(artist=meta.albumartist or meta.artist, title=meta.album)
 
-		track = Track()
-		track.album = album
-		track.title = meta.title
-		track.path  = info["path"]
-		db.session.add(track)
+		if meta.title is not None:
+			album = getOrCreateAlbum(artist=meta.albumartist or meta.artist, title=meta.album)
+
+			track = Track()
+			track.album = album
+			track.title = meta.title
+			track.path  = info["path"]
+			db.session.add(track)
+
 		# tag.album         # album as string
 		# tag.albumartist   # album artist as string
 		# tag.artist        # artist name as string

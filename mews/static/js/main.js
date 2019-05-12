@@ -1,18 +1,5 @@
 // @author rubenwardy
 
-async function getJSON(url, method) {
-	let response = await fetch(new Request(url, {
-		method: method || "get",
-		credentials: "same-origin",
-		headers: {
-			"Accept": "application/json",
-		},
-	}))
-
-	let text = await response.text()
-	return JSON.parse(text)
-}
-
 function appendAlbum(album) {
 	let element = document.createElement("div")
 	let picture = album.picture || '/dummy/?title=' + encodeURI(album.title)
@@ -25,18 +12,15 @@ function appendAlbum(album) {
 	document.querySelector("#albums").appendChild(element)
 }
 
-async function getAlbums() {
-	return await getJSON("/api/albums/")
-}
-
 async function showAlbums() {
-	let albums = await getAlbums()
+	let albums = await api.getAlbums()
 	for (let album of albums) {
-		console.log("Adding album")
 		appendAlbum(album)
 	}
 }
 
 window.onload = function() {
-	showAlbums().catch(console.log)
+	showAlbums().then(function() {
+		player.playAlbum(1)
+	}).catch(console.log)
 }

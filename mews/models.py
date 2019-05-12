@@ -7,6 +7,14 @@ class Artist(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(80), unique=True, nullable=False)
 	picture = db.Column(db.String(200), unique=True, nullable=True)
+
+	def asDict(self):
+		return {
+			"id": self.id,
+			"name": self.name,
+			"picture": self.picture
+		}
+
 	def __repr__(self):
 		return "<Author %r>" % self.name
 
@@ -23,6 +31,7 @@ class Album(db.Model):
 
 	def asDict(self):
 		return {
+			"id": self.id,
 			"title": self.title,
 			"artist": self.artist.name,
 			"picture": self.picture
@@ -44,8 +53,40 @@ class Track(db.Model):
 	album = db.relationship("Album",
 		backref=db.backref("tracks", lazy=True))
 
+	def asDict(self, pt_id=None):
+		return {
+			"id": self.id,
+			"title": self.title,
+			"picture": self.picture,
+			"pt_id": pt_id
+		}
+
 	def __repr__(self):
-		return "<Track %r>" % self.name
+		return "<Track %r>" % self.title
+
+
+playlist_tracks = db.Table("playlist_tracks",
+	db.Column("playlist_id", db.Integer, db.ForeignKey("playlist.id"), primary_key=True),
+	db.Column("track_id",    db.Integer, db.ForeignKey("track.id"), primary_key=True)
+)
+
+
+class Playlist(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	title = db.Column(db.String(80), nullable=False)
+
+	tracks = db.relationship("Track", secondary=playlist_tracks, lazy="dynamic",
+		backref=db.backref("playlists", lazy="dynamic"))
+
+	def asDict(self):
+		return {
+			"id": self.id,
+			"title": self.title,
+			"count": self.tracks.count()
+		}
+
+	def __repr__(self):
+		return "<Playlist %r>" % self.title
 
 
 def getOrCreateAlbum(artist, title):
