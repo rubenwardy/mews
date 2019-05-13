@@ -38,7 +38,8 @@ class Model {
 }
 
 class ViewModel {
-	constructor() {
+	constructor(element) {
+		this.element = element
 		this._cb = this.onChange.bind(this)
 		this.setTarget(null)
 	}
@@ -51,8 +52,8 @@ class ViewModel {
 			this.target = target
 			this.target.watch(this._cb)
 		}
-		this.onChange()
+		this.onChange(this.target)
 	}
 
-	onChange() {}
+	onChange(target) {}
 }

@@ -85,7 +85,15 @@ class Playlist extends Model {
 		}
 	}
 
+	getTracks() {
+		return this.playlist_tracks.map(x => x.track)
+	}
+
 	async addAlbum(id) {
-		this.setTracks(await api.addAlbumToPlaylist(this.id, id))
+		this.setTracks(await api.updatePlaylistTracks(this.id, { albums: [id] }))
+	}
+
+	async playAlbum(id) {
+		this.setTracks(await api.updatePlaylistTracks(this.id, { clear: true, albums: [id] }))
 	}
 }

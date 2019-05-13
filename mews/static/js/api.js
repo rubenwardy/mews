@@ -36,8 +36,8 @@ api = (function() {
 		return await getJSON("/api/playlists/new/", "post", JSON.stringify({ title: title }))
 	}
 
-	async function addAlbumToPlaylist(pid, id) {
-		return await getJSON("/api/playlists/" + pid + "/tracks/", "post", JSON.stringify({ albums: [id] }))
+	async function updatePlaylistTracks(id, data) {
+		return await getJSON("/api/playlists/" + id + "/tracks/", "post", JSON.stringify(data))
 	}
 
 	return {
@@ -46,6 +46,6 @@ api = (function() {
 		getPlaylists: getPlaylists,
 		getPlaylistTracks: getPlaylistTracks,
 		createPlaylist: createPlaylist,
-		addAlbumToPlaylist: addAlbumToPlaylist,
+		updatePlaylistTracks: updatePlaylistTracks,
 	}
 })()

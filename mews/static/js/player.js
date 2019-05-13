@@ -3,16 +3,40 @@ class PlayingView extends ViewModel {
 		super()
 	}
 
-	onChange() {
-		var track = this.target
+	onChange(track) {
 		if (!track) {
 			document.getElementById("player").style.display = "none"
 			return
 		}
 
 		document.getElementById("player").style.display = "block"
+		document.getElementById("player-art").setAttribute("src", track.picture)
 		document.getElementById("player-track").text  = track.title
 		document.getElementById("player-artist").text = track.artist
+	}
+}
+
+class PlaylistView extends ViewModel {
+	constructor(element) {
+		super(element)
+	}
+
+	onChange(playlist) {
+		if (!playlist) {
+			this.element.style.display = "none"
+			return
+		}
+
+		this.element.style.display = "block"
+		this.element.querySelectorAll(".panel-scrolling a")
+			.forEach(e => e.parentNode.removeChild(e))
+
+		for (var track of playlist.getTracks()) {
+			var ele_a = document.createElement("a")
+			ele_a.setAttribute("class", "panel-block is-active")
+			ele_a.innerHTML = `<img class="panel-icon" src="${track.picture}">${track.title}`
+			this.element.querySelector(".panel-scrolling").appendChild(ele_a)
+		}
 	}
 }
 
@@ -23,11 +47,14 @@ class Player {
 		this.playing = true
 		this.audio = new Audio()
 		this.view = new PlayingView()
+		this.plview = new PlaylistView(document.getElementById("plpanel"))
 		this.audio.onEnd(this.onMusicEnd.bind(this))
 	}
 
 	// Stops and deletes current playing item
 	stop() {
+		this.playing = false
+		this.playing_id = null
 		console.log("[Player] Stop!")
 		this.audio.unloadAll()
 		this.updateUI()
@@ -122,6 +149,7 @@ class Player {
 		this.playlist = playlist
 		this.playing = true
 		this.playlist.watch(this.onPlaylistChanged.bind(this))
+		this.plview.setTarget(this.playlist)
 	}
 
 	onPlaylistChanged(playlist) {
@@ -141,10 +169,24 @@ class Player {
 		this.view.setTarget(this.getTrack())
 	}
 
-	async playAlbum(id) {
+	async addAlbum(id) {
 		var playlist = this.getPlaylist()
 		if (playlist) {
 			playlist.addAlbum(id)
+		} else {
+			playlist = new Playlist()
+			playlist.create().then(_ => playlist.addAlbum(id))
+			this.setPlaylist(playlist)
+		}
+	}
+
+	async playAlbum(id) {
+		this.stop()
+		this.playing = true
+
+		var playlist = this.getPlaylist()
+		if (playlist) {
+			playlist.playAlbum(id)
 		} else {
 			playlist = new Playlist()
 			playlist.create().then(_ => playlist.addAlbum(id))

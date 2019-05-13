@@ -64,10 +64,16 @@ def api_playlist_tracks(id):
 
 	if request.method == "POST":
 		to_add = request.get_json()
+
+		if "clear" in to_add:
+			playlist.tracks = []
+
 		if "albums" in to_add:
 			for album_id in to_add["albums"]:
 				album = Album.query.get(album_id)
 				if album is not None:
 					playlist.tracks.extend(album.tracks)
+
+	db.session.commit()
 
 	return jsonify([ t.asDict(t.id) for t in playlist.tracks ])

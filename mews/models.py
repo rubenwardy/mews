@@ -67,7 +67,7 @@ class Track(db.Model):
 			"id": self.id,
 			"title": self.title,
 			"artist": self.artist.name,
-			"picture": self.picture,
+			"picture": self.picture or self.album.picture,
 			"pt_id": pt_id
 		}
 
