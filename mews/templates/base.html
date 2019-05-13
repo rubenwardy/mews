@@ -5,12 +5,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{% block title %}Mews{% endblock %}</title>
 	<link rel="stylesheet" href="/static/bulma.min.css">
-	<script defer src="/static/fa.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	{% block head %}{% endblock %}
 	<style>
 		.minitrack {
-			display: block;
+			display: inline-block;
 			text-align: center;
+			margin-left: 15px;
+		}
+		#audioplayer {
+			display: inline-block;
 		}
 		.minitrack a {
 			display: block;
@@ -22,8 +26,39 @@
 		.navbar-item svg {
 			margin-left: 10px;
 		}
-		audio {
-			 /* display: none; */
+		.album {
+			position: relative;
+		}
+		.album .actions {
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			display: none;
+		}
+		.album:hover img {
+			filter: blur(2px);
+			opacity: 0.8;
+		}
+		.album:hover .actions {
+			display: inline-block;
+		}
+		.album .actions a {
+			color: white;
+			margin: 0 5px;
+			text-shadow: 0 0 30px black;
+			font-size: 150%;
+		}
+		#plpanel {
+			position: fixed;
+			right: 10px;
+			bottom: 0;
+			background: black;
+			min-width: 300px;
+		}
+
+		.panel-scrolling {
+			max-height: 200px;
+			overflow-y: scroll;
 		}
 	</style>
 </head>
@@ -70,18 +105,20 @@
 						</div>
 					</div>
 					<div style="margin-left:25%;"></div>
-					<a href="#" class="navbar-item">
-						<img src="/dummy/?title=Simulation+Theory">
-					</a>
-					<div class="navbar-item minitrack">
-						<a href="#" id="player-track">Algorithm</a>
-						<a href="#" id="player-artist">Muse</a>
-					</div>
-					<div id="audioplayer" class="navbar-item field">
-						<!-- <a class="controls fas fa-play"></a>
-						<a class="controls fas fa-backward"></a>
-						<a class="controls fas fa-forward"></a>
-						<progress class="progress is-primary is-small" value="15" max="100">15%</progress> -->
+					<div class="navbar-item" id="player">
+						<a href="#">
+							<img src="/dummy/?title=Simulation+Theory">
+						</a>
+						<div class="minitrack">
+							<a href="#" id="player-track">Algorithm</a>
+							<a href="#" id="player-artist">Muse</a>
+						</div>
+						<div id="audioplayer">
+							<!-- <a class="controls fas fa-play"></a>
+							<a class="controls fas fa-backward"></a>
+							<a class="controls fas fa-forward"></a>
+							<progress class="progress is-primary is-small" value="15" max="100">15%</progress> -->
+						</div>
 					</div>
 				</div>
 

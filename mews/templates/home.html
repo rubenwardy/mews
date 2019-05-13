@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block head %}
-	<script src="/static/js/utils.js"></script>
+	<script src="/static/js/model.js"></script>
 	<script src="/static/js/audio.js"></script>
 	<script async src="/static/js/api.js"></script>
 	<script async src="/static/js/track.js"></script>
@@ -10,4 +10,34 @@
 {% endblock %}
 {% block content %}
 	<div class="columns section is-multiline" id="albums"></div>
+
+	<nav id="plpanel" class="panel">
+		<p class="panel-heading">
+			Playlist
+		</p>
+		<div class="panel-scrolling">
+			<a class="panel-block is-active">
+				<img class="panel-icon" src="/dummy/?title=S+T">
+				bulma
+			</a>
+			<a class="panel-block">
+				<span class="panel-icon">
+					<i class="fas fa-book" aria-hidden="true"></i>
+				</span>
+				marksheet
+			</a>
+			<a class="panel-block">
+				<span class="panel-icon">
+					<i class="fas fa-book" aria-hidden="true"></i>
+				</span>
+				minireset.css
+			</a>
+			<a class="panel-block">
+				<span class="panel-icon">
+					<i class="fas fa-book" aria-hidden="true"></i>
+				</span>
+				jgthms.github.io
+			</a>
+		</div>
+	</nav>
 {% endblock %}

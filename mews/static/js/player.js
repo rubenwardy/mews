@@ -1,9 +1,28 @@
+class PlayingView extends ViewModel {
+	constructor() {
+		super()
+	}
+
+	onChange() {
+		var track = this.target
+		if (!track) {
+			document.getElementById("player").style.display = "none"
+			return
+		}
+
+		document.getElementById("player").style.display = "block"
+		document.getElementById("player-track").text  = track.title
+		document.getElementById("player-artist").text = track.artist
+	}
+}
+
 class Player {
 	constructor() {
 		this.playlist = null
 		this.playing_id = null
 		this.playing = true
 		this.audio = new Audio()
+		this.view = new PlayingView()
 		this.audio.onEnd(this.onMusicEnd.bind(this))
 	}
 
@@ -102,7 +121,7 @@ class Player {
 		this.stop()
 		this.playlist = playlist
 		this.playing = true
-		this.playlist.change(this.onPlaylistChanged.bind(this))
+		this.playlist.watch(this.onPlaylistChanged.bind(this))
 	}
 
 	onPlaylistChanged(playlist) {
@@ -119,16 +138,7 @@ class Player {
 	}
 
 	updateUI() {
-		var track = this.getTrack()
-		var track_title  = document.getElementById("player-track")
-		var track_artist = document.getElementById("player-artist")
-		if (track) {
-			track_title.text = track.title
-			track_artist.text = track.artist
-		} else {
-			track_title.text = "-"
-			track_artist.text = "-"
-		}
+		this.view.setTarget(this.getTrack())
 	}
 
 	async playAlbum(id) {
@@ -142,5 +152,3 @@ class Player {
 		}
 	}
 }
-
-player = new Player()

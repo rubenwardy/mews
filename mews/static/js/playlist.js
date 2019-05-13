@@ -19,7 +19,7 @@ class Playlist extends Model {
 		this.id    = playlist.id
 		this.title = playlist.title
 		this.is_known = true
-		this.change()
+		this.notifyChange()
 		return this
 	}
 
@@ -36,7 +36,7 @@ class Playlist extends Model {
 			}
 			return { "track": ret, "id": track.pt_id }
 		})
-		this.change()
+		this.notifyChange()
 	}
 
 	get(pt_id) {

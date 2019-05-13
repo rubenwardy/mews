@@ -20,7 +20,7 @@ class Track extends Model {
 		this.artist   = dict.artist
 		this.picture  = dict.picture
 		this.is_known = true
-		this.change()
+		this.notifyChange()
 	}
 
 	getURL() {
