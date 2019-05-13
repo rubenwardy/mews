@@ -16,6 +16,9 @@ function appendAlbum(album) {
 	element.querySelector(".action-play").addEventListener("click", function() {
 		player.playAlbum(album.id)
 	})
+	element.querySelector(".action-add").addEventListener("click", function() {
+		player.addAlbum(album.id)
+	})
 }
 
 async function showAlbums() {
