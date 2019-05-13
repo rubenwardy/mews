@@ -26,6 +26,11 @@
 		.navbar-item svg {
 			margin-left: 10px;
 		}
+		.actions a {
+			color: white;
+			margin-left: 10px;
+			font-size: 80%;
+		}
 		.album {
 			position: relative;
 		}
@@ -43,8 +48,6 @@
 			display: inline-block;
 		}
 		.album .actions a {
-			color: white;
-			margin: 0 5px;
 			text-shadow: 0 0 30px black;
 			font-size: 150%;
 		}
@@ -61,6 +64,13 @@
 		.panel-scrolling {
 			max-height: 200px;
 			overflow-y: scroll;
+		}
+		.panel-collapsed .panel-scrolling {
+			display: none;
+		}
+		.panel-heading .tag.is-rounded {
+			margin-left: -5px;
+			margin-right: 8px;
 		}
 	</style>
 </head>
