@@ -27,12 +27,16 @@ class Track extends Model {
 		return "/tracks/" + this.id + "/";
 	}
 
-	static get(id) {
+	static get(id, dict) {
 		var track = tracks[id]
 		if (!track) {
 			track = new Track(id)
 			tracks[id] = track
-			track.getInfo()
+			if (dict) {
+				track.fromDict(dict)
+			} else {
+				track.getInfo()
+			}
 		}
 
 		return track

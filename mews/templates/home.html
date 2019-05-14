@@ -4,12 +4,25 @@
 	<script src="/static/js/audio.js"></script>
 	<script async src="/static/js/api.js"></script>
 	<script async src="/static/js/track.js"></script>
+	<script async src="/static/js/album.js"></script>
 	<script async src="/static/js/playlist.js"></script>
 	<script async src="/static/js/player.js"></script>
 	<script async src="/static/js/main.js"></script>
 {% endblock %}
 {% block content %}
 	<div class="columns section is-multiline" id="albums"></div>
+
+	<div id="albummodal" class="modal">
+		<div class="modal-background"></div>
+		<div class="modal-card">
+			<header class="modal-card-head">
+				<p class="modal-card-title">Simulation Theory</p>
+				<button class="delete" aria-label="close"></button>
+			</header>
+			<section class="modal-card-body columns is-multiline">
+			</section>
+		</div>
+	</div>
 
 	<nav id="plpanel" class="panel">
 		<p class="panel-heading">

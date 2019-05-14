@@ -19,6 +19,15 @@ def api_albums():
 	return jsonify([ a.asDict() for a in albums ])
 
 
+@app.route("/api/albums/<int:id>/tracks/")
+def api_album_tracks(id):
+	album = Album.query.get(id)
+	if album is None:
+		abort(404)
+
+	return jsonify([ t.asDict(t.id) for t in album.tracks ])
+
+
 @app.route("/api/album_cache/")
 def api_album_cache():
 	ret = {}

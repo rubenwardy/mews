@@ -30,11 +30,7 @@ class Playlist extends Model {
 	setTracks(tracks) {
 		console.log("Updated tracks for Playlist " + this.id)
 		this.playlist_tracks = tracks.map(track => {
-			var ret = Track.get(track.id)
-			if (!ret.isKnown()) {
-				ret.fromDict(track)
-			}
-			return { "track": ret, "id": track.pt_id }
+			return { "track": Track.get(track.id, track), "id": track.pt_id }
 		})
 		this.notifyChange()
 	}

@@ -17,11 +17,14 @@ api = (function() {
 
 	async function getTrack(id) {
 		return await getJSON("/api/tracks/" + id + "/")
-
 	}
 
 	async function getAlbums() {
 		return await getJSON("/api/albums/")
+	}
+
+	async function getAlbumTracks(id) {
+		return await getJSON("/api/albums/" + id + "/tracks/")
 	}
 
 	async function getPlaylists() {
@@ -43,6 +46,7 @@ api = (function() {
 	return {
 		getTrack: getTrack,
 		getAlbums: getAlbums,
+		getAlbumTracks: getAlbumTracks,
 		getPlaylists: getPlaylists,
 		getPlaylistTracks: getPlaylistTracks,
 		createPlaylist: createPlaylist,
