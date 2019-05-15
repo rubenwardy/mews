@@ -1,8 +1,19 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_user import UserManager, UserMixin
 from . import app, lastfm
 import json
 
 db = SQLAlchemy(app)
+
+class User(db.Model, UserMixin):
+	id = db.Column(db.Integer, primary_key=True)
+	active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
+	username = db.Column(db.String(100, collation='NOCASE'), nullable=False, unique=True)
+	password = db.Column(db.String(255), nullable=False, server_default='')
+	email_confirmed_at = db.Column(db.DateTime())
+
+user_manager = UserManager(app, db, User)
+
 
 class Artist(db.Model):
 	id = db.Column(db.Integer, primary_key=True)

@@ -1,0 +1,25 @@
+{% extends 'flask_user/_public_base.html' %}
+
+{% block content %}
+{% from "flask_user/_macros.html" import render_field, render_checkbox_field, render_submit_field %}
+<h1 class="title">{%trans%}Sign in{%endtrans%}</h1>
+
+<form action="" method="POST" class="form" role="form">
+    {{ form.hidden_tag() }}
+
+    {# Username or Email field #}
+    {{ render_field(form.username) }}
+
+    {# Password field #}
+    {{ render_field(form.password) }}
+
+    {# Remember me #}
+    {% if user_manager.USER_ENABLE_REMEMBER_ME %}
+        {{ render_checkbox_field(login_form.remember_me, tabindex=130) }}
+    {% endif %}
+
+    {# Submit button #}
+    {{ render_submit_field(form.submit, tabindex=180) }}
+</form>
+
+{% endblock %}

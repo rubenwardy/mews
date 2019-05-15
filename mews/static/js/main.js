@@ -37,7 +37,7 @@ var alview = new AlbumTracksView(document.getElementById("albummodal"))
 
 function appendAlbum(album) {
 	let element = document.createElement("div")
-	let picture = album.picture || '/dummy/?title=' + encodeURI(album.title)
+	let picture = album.picture || "/dummy/?title=" + encodeURI(album.title)
 	element.innerHTML = `<img src="${picture}" class="is-1by1">
 		<div class="actions">
 			<a class="action-play"><span class="fa fa-play"></span></a>
@@ -79,15 +79,28 @@ window.onload = function() {
 	showAlbums().catch(console.log)
 	player = new Player()
 
-	document.querySelectorAll('.modal-close').forEach(modal => modal.addEventListener('click', function() {
+	document.querySelectorAll(".modal-close").forEach(modal => modal.addEventListener("click", function() {
 		document.querySelectorAll(".modal").forEach(ele => ele.classList.remove("is-active"))
 	}))
 
-	document.querySelectorAll('.modal .delete').forEach(modal => modal.addEventListener('click', function() {
+	document.querySelectorAll(".modal .delete").forEach(modal => modal.addEventListener("click", function() {
 		document.querySelectorAll(".modal").forEach(ele => ele.classList.remove("is-active"))
 	}))
 
-	document.querySelectorAll('.modal-background').forEach(modal => modal.addEventListener('click', function() {
+	document.querySelectorAll(".modal-background").forEach(modal => modal.addEventListener("click", function() {
 		document.querySelectorAll(".modal").forEach(ele => ele.classList.remove("is-active"))
 	}))
+
+	setTimeout(() => {
+		document.querySelectorAll(".notifications").forEach(x => x.remove())
+	}, 5000)
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+	(document.querySelectorAll(".notification .delete") || []).forEach((del) => {
+		notif = del.parentNode
+		del.addEventListener("click", () => {
+			notif.parentNode.removeChild(notif)
+		})
+	})
+})

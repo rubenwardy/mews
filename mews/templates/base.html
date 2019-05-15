@@ -72,6 +72,15 @@
 			margin-left: -5px;
 			margin-right: 8px;
 		}
+		.notifications {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+		.notifications .notification {
+			margin-bottom: 0.3em;
+		}
 	</style>
 </head>
 <body>
@@ -92,22 +101,23 @@
 
 			<div id="navbarBasicExample" class="navbar-menu">
 				<div class="navbar-start">
+					{% if current_user.is_authenticated %}
 					<div class="navbar-item has-dropdown is-hoverable">
 						<a class="navbar-link">
 							Library
 						</a>
 
 						<div class="navbar-dropdown">
-							<a class="navbar-item" href="{{ url_for('sync') }}">
+							<a class="navbar-item" href="{{ url_for("sync") }}">
 								Import
 							</a>
-							<a class="navbar-item" href="{{ url_for('sync_album') }}">
+							<a class="navbar-item" href="{{ url_for("sync_album") }}">
 								Get Album Info
 							</a>
-							<a class="navbar-item" href="{{ url_for('sync_artist') }}">
+							<a class="navbar-item" href="{{ url_for("sync_artist") }}">
 								Get Artist Info
 							</a>
-							<a class="navbar-item" href="{{ url_for('problems') }}">
+							<a class="navbar-item" href="{{ url_for("problems") }}">
 								See Problems
 							</a>
 							<hr class="navbar-divider">
@@ -132,6 +142,9 @@
 							<progress class="progress is-primary is-small" value="15" max="100">15%</progress> -->
 						</div>
 					</div>
+					{% else %}
+						<a class="navbar-item" href="{{ url_for('user.login') }}">Sign in</a>
+					{% endif %}
 				</div>
 
 				<div class="navbar-end">
@@ -148,8 +161,26 @@
 		</div>
 	</nav>
 
-	<main class="container">
-		{% block content %}{% endblock %}
-	</div>
+	{% block main %}
+		<main class="container">
+			{% block content %}{% endblock %}
+		</main>
+	{% endblock %}
+
+	{%- with messages = get_flashed_messages(with_categories=true) -%}
+	{% if messages %}
+		<div class="notifications ">
+		{% for category, message in messages %}
+			{% if category == "error" %}
+				{% set category = "danger" %}
+			{% endif %}
+			<div class="notification container is-{{ category }}">
+				<button class="delete"></button>
+				{{ message | safe }}
+			</div>
+		{% endfor %}
+		</div>
+	{% endif %}
+	{%- endwith %}
 </body>
 </html>

@@ -1,4 +1,5 @@
 from flask import render_template, jsonify, request
+from flask_user import login_required
 from mews import app
 from mews.models import *
 
@@ -29,6 +30,7 @@ def api_album_tracks(id):
 
 
 @app.route("/api/album_cache/")
+@login_required
 def api_album_cache():
 	ret = {}
 
@@ -40,6 +42,7 @@ def api_album_cache():
 
 
 @app.route("/api/artist_cache/")
+@login_required
 def api_artist_cache():
 	ret = {}
 
@@ -51,12 +54,14 @@ def api_artist_cache():
 
 
 @app.route("/api/playlists/")
+@login_required
 def api_playlists():
 	playlists = Playlist.query.all()
 	return jsonify([ p.asDict() for p in playlists ])
 
 
 @app.route("/api/playlists/new/", methods=["POST"])
+@login_required
 def api_playlist_create():
 	playlist = Playlist()
 	playlist.title = request.form.get("title") or "Untitled Playlist"
@@ -66,6 +71,7 @@ def api_playlist_create():
 
 
 @app.route("/api/playlists/<int:id>/tracks/", methods=["GET", "POST"])
+@login_required
 def api_playlist_tracks(id):
 	playlist = Playlist.query.get(id)
 	if playlist is None:
