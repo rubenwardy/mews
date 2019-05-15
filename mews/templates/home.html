@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% block head %}
-	<script src="/static/js/model.js"></script>
-	<script src="/static/js/audio.js"></script>
+	<script src="/static/js/rjs.js"></script>
+	<script async src="/static/js/models/album.js"></script>
+	<script async src="/static/js/models/playlist.js"></script>
+	<script async src="/static/js/models/track.js"></script>
+	<script async src="/static/js/controllers/audio.js"></script>
+	<script async src="/static/js/controllers/player.js"></script>
+	<script async src="/static/js/views/album.js"></script>
+	<script async src="/static/js/views/playing.js"></script>
 	<script async src="/static/js/api.js"></script>
-	<script async src="/static/js/track.js"></script>
-	<script async src="/static/js/album.js"></script>
-	<script async src="/static/js/playlist.js"></script>
-	<script async src="/static/js/player.js"></script>
 	<script async src="/static/js/main.js"></script>
 {% endblock %}
 {% block content %}
