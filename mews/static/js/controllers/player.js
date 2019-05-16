@@ -4,7 +4,6 @@ class Player {
 		this.playing_id = null
 		this.playing = true
 		this.audio = new Audio()
-		this.view = new PlayingView()
 		this.plview = new PlaylistView(document.getElementById("plpanel"))
 		this.audio.onEnd(this.onMusicEnd.bind(this))
 	}
@@ -124,7 +123,7 @@ class Player {
 	}
 
 	updateUI() {
-		this.view.setTarget(this.getTrack())
+		rjs.notify("statechanged")
 	}
 
 	async addAlbum(id) {

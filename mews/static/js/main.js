@@ -1,9 +1,11 @@
 // @author rubenwardy
 
 player = null
+playing = null
 window.onload = function() {
 	showAlbums().catch(console.log)
 	player = new Player()
+	playing = new PlayingView()
 
 	document.querySelectorAll(".modal-close").forEach(modal => modal.addEventListener("click", function() {
 		document.querySelectorAll(".modal").forEach(ele => ele.classList.remove("is-active"))

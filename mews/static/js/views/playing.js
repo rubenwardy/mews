@@ -1,6 +1,14 @@
 class PlayingView extends ViewModel {
 	constructor() {
 		super()
+
+		rjs.watch("statechanged", this.onStateChange.bind(this))
+	}
+
+	onStateChange() {
+		console.log("[Playing] State changed!")
+
+		this.onChange(player.getTrack())
 	}
 
 	onChange(track) {

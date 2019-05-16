@@ -57,3 +57,20 @@ class ViewModel {
 
 	onChange(target) {}
 }
+
+rjs = (function() {
+	var listeners = {}
+
+	return {
+		watch: function(evt, func) {
+			listeners[evt] = listeners[evt] || []
+			listeners[evt].push(func)
+		},
+
+		notify: function(evt, data) {
+			for (let func of listeners[evt]) {
+				func(data)
+			}
+		},
+	}
+})()
