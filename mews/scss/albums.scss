@@ -1,0 +1,40 @@
+.actions a {
+	color: white;
+	margin-left: 10px;
+	font-size: 80%;
+}
+
+.album {
+	position: relative;
+	transition: transform 200ms ease;
+	cursor: pointer;
+
+	.actions {
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		display: none;
+
+		a {
+			text-shadow: 0 0 30px black;
+			font-size: 150%;
+		}
+	}
+
+}
+
+#albums:hover {
+	.album:hover {
+		opacity: 1;
+
+		transform: scale(1.1, 1.1);
+		z-index: 2;
+
+		.actions {
+			display: inline-block;
+		}
+	}
+	.album {
+		opacity: 0.8;
+	}
+}

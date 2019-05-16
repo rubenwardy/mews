@@ -1,0 +1,22 @@
+#player {
+	display: none;
+}
+
+.minitrack {
+	display: inline-block;
+	text-align: center;
+	margin-left: 15px;
+
+	a {
+		display: block;
+		font-size: 80%;
+	}
+}
+
+#audioplayer {
+	display: inline-block;
+}
+
+.controls {
+	margin: 0 0.4em;
+}

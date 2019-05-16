@@ -1,0 +1,39 @@
+@import "albums.scss";
+@import "player.scss";
+
+.navbar-item svg {
+	margin-left: 10px;
+}
+
+#plpanel {
+	position: fixed;
+	right: 10px;
+	bottom: 0;
+	background: black;
+	min-width: 300px;
+}
+
+.panel-scrolling {
+	max-height: 200px;
+	overflow-y: scroll;
+}
+
+.panel-collapsed .panel-scrolling {
+	display: none;
+}
+
+.panel-heading .tag.is-rounded {
+	margin-left: -5px;
+	margin-right: 8px;
+}
+
+.notifications {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.notifications .notification {
+	margin-bottom: 0.3em;
+}
