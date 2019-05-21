@@ -9,6 +9,10 @@
 	transition: transform 200ms ease;
 	cursor: pointer;
 
+	.image {
+		margin-bottom: 5px;
+	}
+
 	.actions {
 		position: absolute;
 		right: 20px;

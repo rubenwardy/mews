@@ -41,14 +41,15 @@ rjs.onLoad(() => {
 export function appendAlbum(album) {
 	let element = document.createElement("div")
 	let picture = album.picture || "/dummy/?title=" + encodeURI(album.title)
-	element.innerHTML = `<img src="${picture}" class="is-1by1">
+	element.innerHTML = `
+		<div class="image is-1by1"><img src="${picture}"></div>
 		<div class="actions">
 			<a class="action-play"><span class="fa fa-play"></span></a>
 			<a class="action-add"><span class="fa fa-plus"></span></a>
 		</div>
 		<h3 class="title is-5 is-marginless">${album.title}</h3>
 		<a class="subtitle is-6">${album.artist}</a>`;
-	element.setAttribute("class", "column is-one-fifth is-1by1 album")
+	element.setAttribute("class", "column is-one-fifth album")
 	element.setAttribute("data-id", album.id)
 	document.querySelector("#albums").appendChild(element)
 	element.querySelector(".action-play").addEventListener("click", function(event) {
