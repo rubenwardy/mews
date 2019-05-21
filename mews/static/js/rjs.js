@@ -40,7 +40,7 @@ export class Model {
 export class ViewModel {
 	constructor(element) {
 		this.element = element
-		console.assert(element != null)
+		console.assert(element != null, `Null root element given to ${this.constructor["name"]}`)
 		this._cb = this.onChange.bind(this)
 		this.setTarget(null)
 	}

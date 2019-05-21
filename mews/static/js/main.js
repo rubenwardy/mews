@@ -26,7 +26,7 @@ rjs.onLoad(() => {
 	showAlbums().catch(console.log)
 	if (current_user) {
 		player = new Player()
-		playing = new PlayingView()
+		playing = new PlayingView(document.getElementById("plpanel"))
 	} else {
 		player = new DummyPlayer()
 	}
@@ -50,7 +50,7 @@ rjs.onLoad(() => {
 
 document.addEventListener("DOMContentLoaded", () => {
 	(document.querySelectorAll(".notification .delete") || []).forEach((del) => {
-		notif = del.parentNode
+		let notif = del.parentNode
 		del.addEventListener("click", () => {
 			notif.remove()
 		})
