@@ -40,6 +40,7 @@ export class Model {
 export class ViewModel {
 	constructor(element) {
 		this.element = element
+		console.assert(element != null)
 		this._cb = this.onChange.bind(this)
 		this.setTarget(null)
 	}
@@ -67,6 +68,12 @@ export class ViewModel {
 }
 
 let listeners = {}
+let on_loads = []
+
+
+window.onload = function() {
+	on_loads.map(f => f())
+}
 
 export let rjs = {
 	watch: function(evt, func) {
@@ -75,8 +82,10 @@ export let rjs = {
 	},
 
 	notify: function(evt, data) {
-		for (let func of listeners[evt]) {
-			func(data)
-		}
+		listeners[evt].map(f => f())
 	},
+
+	onLoad: function(func) {
+		on_loads.push(func)
+	}
 }

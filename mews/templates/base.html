@@ -8,6 +8,13 @@
 	<link rel="stylesheet" href="/static/mews.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	{% block head %}{% endblock %}
+	<script>
+		{%- if current_user.is_authenticated %}
+			current_user = { id: {{ current_user.id | tojson }},  username: {{ current_user.username | tojson }} }
+		{%- else %}
+			current_user = null
+		{%- endif %}
+	</script>
 </head>
 <body>
 	<nav class="navbar" role="navigation" aria-label="main navigation">
@@ -108,5 +115,6 @@
 		</div>
 	{% endif %}
 	{%- endwith %}
+	{% block footerjs %}{% endblock %}
 </body>
 </html>

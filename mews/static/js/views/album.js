@@ -1,4 +1,4 @@
-import { ViewModel } from "../rjs.js"
+import { rjs, ViewModel } from "../rjs.js"
 import { TracksView } from "./tracks.js"
 import { api } from "../api.js"
 import { Album } from "../models/album.js"
@@ -32,7 +32,11 @@ export class AlbumTracksView extends ViewModel {
 	}
 }
 
-export let alview = new AlbumTracksView(document.getElementById("albummodal"))
+let alview = null
+
+rjs.onLoad(() => {
+	alview = new AlbumTracksView(document.getElementById("albummodal"))
+})
 
 export function appendAlbum(album) {
 	let element = document.createElement("div")

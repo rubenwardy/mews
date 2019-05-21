@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-{% block head %}
+{% block footerjs %}
 	<script type="module" src="/static/js/rjs.js"></script>
-	<script async type="module" src="/static/js/models/album.js"></script>
-	<script async type="module" src="/static/js/models/playlist.js"></script>
-	<script async type="module" src="/static/js/models/track.js"></script>
-	<script async type="module" src="/static/js/controllers/audio.js"></script>
-	<script async type="module" src="/static/js/controllers/player.js"></script>
-	<script async type="module" src="/static/js/views/album.js"></script>
-	<script async type="module" src="/static/js/views/playing.js"></script>
-	<script async type="module" src="/static/js/views/tracks.js"></script>
-	<script async type="module" src="/static/js/api.js"></script>
-	<script async type="module" src="/static/js/main.js"></script>
+	<script type="module" src="/static/js/models/album.js"></script>
+	<script type="module" src="/static/js/models/playlist.js"></script>
+	<script type="module" src="/static/js/models/track.js"></script>
+	<script type="module" src="/static/js/controllers/audio.js"></script>
+	<script type="module" src="/static/js/controllers/player.js"></script>
+	<script type="module" src="/static/js/views/tracks.js"></script>
+	<script type="module" src="/static/js/views/album.js"></script>
+	<script type="module" src="/static/js/views/playing.js"></script>
+	<script type="module" src="/static/js/api.js"></script>
+	<script type="module" src="/static/js/main.js"></script>
 {% endblock %}
 {% block content %}
 	<div class="columns section is-multiline" id="albums"></div>

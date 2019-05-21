@@ -3,8 +3,8 @@ import { TracksView } from "./tracks.js"
 import { player } from "../main.js"
 
 export class PlayingView extends ViewModel {
-	constructor() {
-		super()
+	constructor(element) {
+		super(element)
 
 		rjs.watch("statechanged", this.onStateChange.bind(this))
 	}
@@ -16,8 +16,11 @@ export class PlayingView extends ViewModel {
 	}
 
 	onChange(track) {
+		if (!this.element) {
+			return
+		}
 		if (!track) {
-			document.getElementById("player").style.display = "none"
+			this.element.style.display = "none"
 			return
 		}
 
