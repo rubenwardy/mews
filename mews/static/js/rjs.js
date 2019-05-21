@@ -44,6 +44,10 @@ export class ViewModel {
 		this.setTarget(null)
 	}
 
+	getTarget() {
+		return this.target
+	}
+
 	setTarget(target) {
 		if (this.target) {
 			this.target.unwatch(this._cb)
@@ -52,6 +56,10 @@ export class ViewModel {
 			this.target = target
 			this.target.watch(this._cb)
 		}
+		this.onChange(this.target)
+	}
+
+	invalidate() {
 		this.onChange(this.target)
 	}
 

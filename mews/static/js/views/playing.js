@@ -32,7 +32,7 @@ export class PlaylistView extends ViewModel {
 	constructor(element) {
 		super(element)
 
-		this.tracks_view = new TracksView(this.element.querySelector(".panel-scrolling"), "panel-block is-active")
+		this.tracks_view = new TracksView(this.element.querySelector(".panel-scrolling"), "panel-block", true)
 
 		this.element.querySelector(".panel-heading").addEventListener("click", () => {
 			if (this.element.classList.contains("panel-collapsed")) {
