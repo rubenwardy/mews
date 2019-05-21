@@ -87,5 +87,17 @@ export let rjs = {
 
 	onLoad: function(func) {
 		on_loads.push(func)
+	},
+
+	getParentElementByClass: function(element, search, boundary) {
+		while (element != document.body && element.id != boundary) {
+			if (element.classList.contains(search)) {
+				return element
+			}
+
+			element = element.parentNode;
+		}
+
+		return null
 	}
 }

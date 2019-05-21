@@ -36,6 +36,37 @@ let alview = null
 
 rjs.onLoad(() => {
 	alview = new AlbumTracksView(document.getElementById("albummodal"))
+
+	document.getElementById("albums").addEventListener("click", e => {
+		if (!e.target) {
+			return;
+		}
+
+		const album_ele = rjs.getParentElementByClass(e.target, "album", "albums")
+		if (!album_ele) {
+			return
+		}
+
+		let album = Album.get(album_ele.getAttribute("data-id"))
+		if (!album) {
+			return
+		}
+
+		const classes = e.target.classList;
+		if (rjs.getParentElementByClass(e.target, "action-play", "albums")) {
+			player.playAlbum(album.id)
+			event.stopPropagation()
+		} else if (rjs.getParentElementByClass(e.target, "action-add", "albums")) {
+			player.addAlbum(album.id)
+			event.stopPropagation()
+		} else if (rjs.getParentElementByClass(e.target, "album", "albums")) {
+			alview.setTarget(album)
+			if (!album.isKnown()) {
+				album.syncTracks()
+			}
+			event.stopPropagation()
+		}
+	});
 })
 
 export function appendAlbum(album) {
@@ -52,27 +83,12 @@ export function appendAlbum(album) {
 	element.setAttribute("class", "column is-one-fifth album")
 	element.setAttribute("data-id", album.id)
 	document.querySelector("#albums").appendChild(element)
-	element.querySelector(".action-play").addEventListener("click", function(event) {
-		player.playAlbum(album.id)
-		event.stopPropagation()
-	})
-	element.querySelector(".action-add").addEventListener("click", function(event) {
-		player.addAlbum(album.id)
-		event.stopPropagation()
-	})
-	element.addEventListener("click", function(event) {
-		alview.setTarget(album)
-		if (!album.isKnown()) {
-			album.syncTracks()
-		}
-		event.stopPropagation()
-	})
 }
 
 export async function showAlbums() {
 	let albums = await api.getAlbums()
 	for (let dict of albums) {
-		var album = Album.get(dict.id)
+		var album = Album.getOrCreate(dict.id)
 		album.fromDict(dict)
 		appendAlbum(album)
 	}

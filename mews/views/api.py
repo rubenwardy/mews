@@ -3,8 +3,6 @@ from flask_user import login_required
 from mews import app
 from mews.models import *
 
-
-
 @app.route("/api/tracks/<int:id>/")
 def api_track(id):
 	track = Track.query.get(id)

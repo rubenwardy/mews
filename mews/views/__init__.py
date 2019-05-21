@@ -1,8 +1,20 @@
-from flask import render_template, redirect, url_for, send_file
+from flask import render_template, redirect, url_for, send_file, abort, request, jsonify
 from flask_user import login_required
 from mews import app, lastfm
 from mews.utils import scanForMusic, getArtistsInfo, getAlbumsInfo, importAllMusic
 from mews.models import *
+
+@user_manager.login_manager.unauthorized_handler
+def unauthorized():
+	#   if request.path.startswith('/api/'):
+	return jsonify(success=False,
+			data={'login_required': True},
+			message='Authorize please to access this page.'), 401
+	#   else:
+	#   abort(500)
+	#   return redirect(url_for('auth.signin'))
+
+assert(user_manager.login_manager.unauthorized_callback == unauthorized)
 
 @app.route("/")
 def hello():
