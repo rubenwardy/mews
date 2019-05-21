@@ -1,8 +1,8 @@
-// @author rubenwardy
-//
-// Class for representing a playlist
+import { Model } from "../rjs.js"
+import { api } from "../api.js"
+import { Track } from "../models/track.js"
 
-class Playlist extends Model {
+export class Playlist extends Model {
 	constructor() {
 		super(null)
 
@@ -83,6 +83,10 @@ class Playlist extends Model {
 
 	getTracks() {
 		return this.playlist_tracks.map(x => x.track)
+	}
+
+	getNumTracks() {
+		return this.playlist_tracks.length
 	}
 
 	async addAlbum(id) {

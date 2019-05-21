@@ -1,7 +1,10 @@
-// @author rubenwardy
+import { showAlbums } from "./views/album.js"
+import { Player } from "./controllers/player.js"
+import { PlayingView } from "./views/playing.js"
 
-player = null
-playing = null
+export let player = null
+export let playing = null
+
 window.onload = function() {
 	showAlbums().catch(console.log)
 	player = new Player()
@@ -28,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	(document.querySelectorAll(".notification .delete") || []).forEach((del) => {
 		notif = del.parentNode
 		del.addEventListener("click", () => {
-			notif.parentNode.removeChild(notif)
+			notif.remove()
 		})
 	})
 })

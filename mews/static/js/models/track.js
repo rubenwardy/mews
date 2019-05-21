@@ -1,6 +1,9 @@
-tracks = {}
+import { Model } from "../rjs.js"
+import { api } from "../api.js"
 
-class Track extends Model {
+let tracks = {}
+
+export class Track extends Model {
 	constructor(id) {
 		super(id)
 		this.title = "";

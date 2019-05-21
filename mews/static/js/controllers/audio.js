@@ -1,4 +1,4 @@
-class Audio {
+export class Audio {
 	constructor() {
 		this.onEnds = []
 	}
@@ -30,15 +30,15 @@ class Audio {
 	}
 
 	unload(id) {
-		document.querySelectorAll("audio[data-id='" + id + "']").forEach(x => x.parentNode.removeChild(x))
+		document.querySelectorAll("audio[data-id='" + id + "']").forEach(x => x.remove())
 	}
 
 	unloadAll() {
-		document.querySelectorAll("audio").forEach(x => x.parentNode.removeChild(x))
+		document.querySelectorAll("audio").forEach(x => x.remove())
 	}
 
 	unloadBut(id) {
-		document.querySelectorAll("audio:not([data-id='" + id + "'])").forEach(x => x.parentNode.removeChild(x))
+		document.querySelectorAll("audio:not([data-id='" + id + "'])").forEach(x => x.remove())
 	}
 
 	isLoaded(id) {

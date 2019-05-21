@@ -1,4 +1,4 @@
-class Model {
+export class Model {
 	constructor(id) {
 		this.id = id
 		this.is_known = false
@@ -37,7 +37,7 @@ class Model {
 	}
 }
 
-class ViewModel {
+export class ViewModel {
 	constructor(element) {
 		this.element = element
 		this._cb = this.onChange.bind(this)
@@ -58,19 +58,17 @@ class ViewModel {
 	onChange(target) {}
 }
 
-rjs = (function() {
-	var listeners = {}
+let listeners = {}
 
-	return {
-		watch: function(evt, func) {
-			listeners[evt] = listeners[evt] || []
-			listeners[evt].push(func)
-		},
+export let rjs = {
+	watch: function(evt, func) {
+		listeners[evt] = listeners[evt] || []
+		listeners[evt].push(func)
+	},
 
-		notify: function(evt, data) {
-			for (let func of listeners[evt]) {
-				func(data)
-			}
-		},
-	}
-})()
+	notify: function(evt, data) {
+		for (let func of listeners[evt]) {
+			func(data)
+		}
+	},
+}

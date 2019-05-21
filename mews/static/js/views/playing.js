@@ -1,4 +1,8 @@
-class PlayingView extends ViewModel {
+import { rjs, ViewModel } from "../rjs.js"
+import { TracksView } from "./tracks.js"
+import { player } from "../main.js"
+
+export class PlayingView extends ViewModel {
 	constructor() {
 		super()
 
@@ -24,9 +28,11 @@ class PlayingView extends ViewModel {
 	}
 }
 
-class PlaylistView extends ViewModel {
+export class PlaylistView extends ViewModel {
 	constructor(element) {
 		super(element)
+
+		this.tracks_view = new TracksView(this.element.querySelector(".panel-scrolling"), "panel-block is-active")
 
 		this.element.querySelector(".panel-heading").addEventListener("click", () => {
 			if (this.element.classList.contains("panel-collapsed")) {
@@ -43,22 +49,17 @@ class PlaylistView extends ViewModel {
 			return
 		}
 
-		var tracks = playlist.getTracks()
-		this.element.querySelector(".count").textContent = tracks.length
+		this.element.querySelector(".count").textContent = playlist.getNumTracks()
 		this.element.querySelector(".title").textContent = playlist.title
 		this.element.style.display = "block"
 		this.element.querySelectorAll(".panel-scrolling a")
-			.forEach(e => e.parentNode.removeChild(e))
-
-		for (var track of tracks) {
-			var ele_a = document.createElement("a")
-			ele_a.setAttribute("class", "panel-block is-active")
-			ele_a.innerHTML = `<img class="panel-icon" src="${track.picture}">${track.title}`
-			this.element.querySelector(".panel-scrolling").appendChild(ele_a)
-		}
+			.forEach(e => e.remove())
 	}
 
-	onEvent(e) {
-
+	setTarget(target) {
+		super.setTarget(target)
+		if (this.tracks_view) {
+			this.tracks_view.setTarget(target)
+		}
 	}
 }

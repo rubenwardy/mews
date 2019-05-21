@@ -1,4 +1,9 @@
-class Player {
+import { rjs } from "../rjs.js"
+import { Audio } from "./audio.js"
+import { PlaylistView } from "../views/playing.js"
+import { Playlist } from "../models/playlist.js"
+
+export class Player {
 	constructor() {
 		this.playlist = null
 		this.playing_id = null

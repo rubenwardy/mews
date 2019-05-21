@@ -1,55 +1,54 @@
 // @author rubenwardy
-api = (function() {
-	async function getJSON(url, method, body) {
-		let response = await fetch(new Request(url, {
-			method: method || "get",
-			credentials: "same-origin",
-			body: body,
-			headers: {
-				"Accept": "application/json",
-				"Content-Type": "application/json",
-			},
-		}))
 
-		let text = await response.text()
-		return JSON.parse(text)
-	}
+async function getJSON(url, method, body) {
+	let response = await fetch(new Request(url, {
+		method: method || "get",
+		credentials: "same-origin",
+		body: body,
+		headers: {
+			"Accept": "application/json",
+			"Content-Type": "application/json",
+		},
+	}))
 
-	async function getTrack(id) {
-		return await getJSON("/api/tracks/" + id + "/")
-	}
+	let text = await response.text()
+	return JSON.parse(text)
+}
 
-	async function getAlbums() {
-		return await getJSON("/api/albums/")
-	}
+async function getTrack(id) {
+	return await getJSON("/api/tracks/" + id + "/")
+}
 
-	async function getAlbumTracks(id) {
-		return await getJSON("/api/albums/" + id + "/tracks/")
-	}
+async function getAlbums() {
+	return await getJSON("/api/albums/")
+}
 
-	async function getPlaylists() {
-		return await getJSON("/api/playlists/")
-	}
+async function getAlbumTracks(id) {
+	return await getJSON("/api/albums/" + id + "/tracks/")
+}
 
-	async function getPlaylistTracks(id) {
-		return await getJSON("/api/playlists/" + id + "/tracks/")
-	}
+async function getPlaylists() {
+	return await getJSON("/api/playlists/")
+}
 
-	async function createPlaylist(title) {
-		return await getJSON("/api/playlists/new/", "post", JSON.stringify({ title: title }))
-	}
+async function getPlaylistTracks(id) {
+	return await getJSON("/api/playlists/" + id + "/tracks/")
+}
 
-	async function updatePlaylistTracks(id, data) {
-		return await getJSON("/api/playlists/" + id + "/tracks/", "post", JSON.stringify(data))
-	}
+async function createPlaylist(title) {
+	return await getJSON("/api/playlists/new/", "post", JSON.stringify({ title: title }))
+}
 
-	return {
-		getTrack: getTrack,
-		getAlbums: getAlbums,
-		getAlbumTracks: getAlbumTracks,
-		getPlaylists: getPlaylists,
-		getPlaylistTracks: getPlaylistTracks,
-		createPlaylist: createPlaylist,
-		updatePlaylistTracks: updatePlaylistTracks,
-	}
-})()
+async function updatePlaylistTracks(id, data) {
+	return await getJSON("/api/playlists/" + id + "/tracks/", "post", JSON.stringify(data))
+}
+
+export const api = {
+	getTrack: getTrack,
+	getAlbums: getAlbums,
+	getAlbumTracks: getAlbumTracks,
+	getPlaylists: getPlaylists,
+	getPlaylistTracks: getPlaylistTracks,
+	createPlaylist: createPlaylist,
+	updatePlaylistTracks: updatePlaylistTracks,
+}

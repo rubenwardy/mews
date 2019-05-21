@@ -1,6 +1,10 @@
-albums = {}
+import { Model } from "../rjs.js"
+import { api } from "../api.js"
+import { Track } from "../models/track.js"
 
-class Album extends Model {
+let albums = {}
+
+export class Album extends Model {
 	constructor(id) {
 		super(id)
 		this.title  = ""
@@ -21,6 +25,10 @@ class Album extends Model {
 
 	async syncTracks() {
 		this.setTracks(await api.getAlbumTracks(this.id))
+	}
+
+	getTracks() {
+		return this.tracks
 	}
 
 	setTracks(tracks) {

@@ -1,6 +1,14 @@
-class AlbumTracksView extends ViewModel {
+import { ViewModel } from "../rjs.js"
+import { TracksView } from "./tracks.js"
+import { api } from "../api.js"
+import { Album } from "../models/album.js"
+import { player } from "../main.js"
+
+export class AlbumTracksView extends ViewModel {
 	constructor(element) {
 		super(element)
+
+		this.tracks_view = new TracksView(this.element.querySelector("section"), "column is-half")
 	}
 
 	onChange(album) {
@@ -12,28 +20,21 @@ class AlbumTracksView extends ViewModel {
 		this.element.classList.add("is-active")
 		this.element.querySelector(".modal-card-title").textContent = album.title + " by " + album.artist
 		this.element.querySelector("section").innerHTML = ""
+	}
 
-		var section = this.element.querySelector("section")
-		if (album.isKnown()) {
-			for (var track of album.tracks) {
-				var row = document.createElement("a")
-				row.setAttribute("class", "column is-half")
-				row.text = track.title
-				section.appendChild(row)
-			}
-		} else {
-			var loading = document.createElement("span")
-			loading.setAttribute("class", "button is-dark is-loading")
-			loading.textContent = "Loading"
-			loading.setAttribute("style", "margin:auto;")
-			section.appendChild(loading)
+	setTarget(target) {
+		super.setTarget(target)
+
+		if (this.tracks_view) {
+			this.tracks_view.setTarget(target)
 		}
+
 	}
 }
 
-var alview = new AlbumTracksView(document.getElementById("albummodal"))
+export let alview = new AlbumTracksView(document.getElementById("albummodal"))
 
-function appendAlbum(album) {
+export function appendAlbum(album) {
 	let element = document.createElement("div")
 	let picture = album.picture || "/dummy/?title=" + encodeURI(album.title)
 	element.innerHTML = `<img src="${picture}" class="is-1by1">
@@ -63,7 +64,7 @@ function appendAlbum(album) {
 	})
 }
 
-async function showAlbums() {
+export async function showAlbums() {
 	let albums = await api.getAlbums()
 	for (let dict of albums) {
 		var album = Album.get(dict.id)
