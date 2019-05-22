@@ -78,21 +78,38 @@ def api_playlist_tracks(id):
 	if request.method == "POST":
 		to_add = request.get_json()
 
+		insert_at = len(playlist.tracks)
+
+		if "after" in to_add:
+			pt = PlaylistTrack.query.get(int(to_add["after"]))
+			if pt is None:
+				abort(400)
+
+			insert_at = pt.position + 1
+
 		if "clear" in to_add:
 			playlist.tracks = []
 
 		if "albums" in to_add:
 			for album_id in to_add["albums"]:
 				album = Album.query.get(album_id)
-				if album is not None:
-					playlist.tracks.extend(album.tracks)
+				if album is None:
+					continue
+
+				playlist.tracks.extend(album.tracks)
 
 		if "tracks" in to_add:
-			for track_id in to_add["tracks"]:
+			tracks = to_add["tracks"]
+
+			for track_id in tracks:
 				track = Track.query.get(track_id)
-				if track is not None:
-					playlist.tracks.append(track)
+				if track is None:
+					continue
+
+				playlist.tracks.insert(insert_at, track)
+				insert_at += 1
+
 
 	db.session.commit()
 
-	return jsonify([ t.asDict(t.id) for t in playlist.tracks ])
+	return jsonify([ t.track.asDict(t.id) for t in playlist._tracks ])

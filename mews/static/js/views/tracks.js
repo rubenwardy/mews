@@ -43,11 +43,20 @@ export class TracksView extends ViewModel {
 		this.element.innerHTML = ""
 
 		if (container && container.isKnown()) {
-			const playingTrack = player && player.getTrack()
-			for (let track of container.getTracks()) {
-				const isPlaying = playingTrack && playingTrack.id == track.id
-				this.element.appendChild(this.buildRow(track, isPlaying))
+			if (container.playlist_tracks) {
+				const playingID = player && player.getPlayingID()
+				for (let pt of container.playlist_tracks) {
+					const isPlaying = playingID && playingID == pt.id
+					this.element.appendChild(this.buildRow(pt.track, isPlaying))
+				}
+			} else {
+				const playingTrack = player && player.getTrack()
+				for (let track of container.getTracks()) {
+					const isPlaying = playingTrack && playingTrack.id == track.id
+					this.element.appendChild(this.buildRow(track, isPlaying))
+				}
 			}
+
 		} else if (container) {
 			let loading = document.createElement("span")
 			loading.setAttribute("class", "button is-dark is-loading")

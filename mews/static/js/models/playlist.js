@@ -114,4 +114,8 @@ export class Playlist extends Model {
 	async addTrack(id) {
 		this.setTracks(await api.updatePlaylistTracks(this.id, { tracks: [id] }))
 	}
+
+	async addTrackAfter(id, pt_id) {
+		this.setTracks(await api.updatePlaylistTracks(this.id, { after: pt_id, tracks: [id] }))
+	}
 }

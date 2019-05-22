@@ -76,6 +76,10 @@ export class Player {
 		}
 	}
 
+	getPlayingID() {
+		return this.playing_id
+	}
+
 	getTrack() {
 		if (this.playing_id == null) {
 			return null
@@ -166,6 +170,11 @@ export class Player {
 	async addTrack(id) {
 		let playlist = await this.getOrCreatePlaylist()
 		await playlist.addTrack(id)
+	}
+
+	async addTrackNext(id) {
+		let playlist = await this.getOrCreatePlaylist()
+		await playlist.addTrackAfter(id, this.getPlayingID())
 	}
 
 	async playTrack(id) {

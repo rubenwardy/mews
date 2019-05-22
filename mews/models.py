@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_user import UserManager, UserMixin
+from sqlalchemy.ext.orderinglist import ordering_list
+from sqlalchemy.ext.associationproxy import association_proxy
 from . import app, lastfm
 import json
 
@@ -55,6 +57,17 @@ class Album(db.Model):
 		return "<Album %r>" % self.name
 
 
+class PlaylistTrack(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	playlist_id = db.Column(db.Integer, db.ForeignKey('playlist.id'))
+	track_id = db.Column(db.Integer, db.ForeignKey('track.id'))
+	position = db.Column(db.Integer)
+	track = db.relationship("Track")
+
+	def __init__(self, track=None):
+		self.track = track
+
+
 class Track(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(80), nullable=False)
@@ -86,24 +99,21 @@ class Track(db.Model):
 		return "<Track %r>" % self.title
 
 
-playlist_tracks = db.Table("playlist_tracks",
-	db.Column("playlist_id", db.Integer, db.ForeignKey("playlist.id"), primary_key=True),
-	db.Column("track_id",    db.Integer, db.ForeignKey("track.id"), primary_key=True)
-)
-
-
 class Playlist(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(80), nullable=False)
 
-	tracks = db.relationship("Track", secondary=playlist_tracks, lazy="dynamic",
-		backref=db.backref("playlists", lazy="dynamic"))
+	_tracks = db.relationship(PlaylistTrack,
+		order_by=[PlaylistTrack.position],
+		collection_class=ordering_list('position'))
+
+	tracks = association_proxy('_tracks', 'track')
 
 	def asDict(self):
 		return {
 			"id": self.id,
 			"title": self.title,
-			"count": self.tracks.count()
+			"count": len(self.tracks)
 		}
 
 	def __repr__(self):
