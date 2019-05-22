@@ -137,23 +137,46 @@ def getAlbumsInfo():
 
 
 def importAllMusic():
+	track_by_path = {}
+	for track in Track.query.all():
+		track_by_path[track.path] = track
+
 	ret = scanForMusic(app.config["MUSIC_DIR"])
-
-	Track.query.delete()
-	Album.query.delete()
-	Artist.query.delete()
-
 	for info in ret:
 		meta = info["meta"]
 
-		if meta.title is not None:
-			album = getOrCreateAlbum(artist=meta.albumartist or meta.artist, title=meta.album)
-			artist = getOrCreateArtist(meta.artist)
+		if meta.title is None:
+			print("Track doesn't have meta data! " + info["path"])
+			continue
+
+		album = getOrCreateAlbum(artist=meta.albumartist or meta.artist, title=meta.album)
+		artist = getOrCreateArtist(meta.artist)
+		path = info["path"]
+
+		track = track_by_path.get(path)
+		if track is None:
+			print("Adding track at " + track.path)
 			track = Track()
-			track.album = album
-			track.artist = artist
-			track.title = meta.title
-			track.path  = info["path"]
 			db.session.add(track)
+
+		track.album = album
+		track.artist = artist
+		track.title = meta.title
+		track.path  = info["path"]
+		del track_by_path[track.path]
+
+	for track in track_by_path.items():
+		print("Removing missing track: " + track.path)
+		track.delete()
+
+	alb_q = Album.query.filter(~ db.exists().where(Track.album_id==Album.id))
+	alb_c = alb_q.count()
+	alb_q.delete(synchronize_session='fetch')
+
+	art_q = Artist.query.filter(~ db.exists().where(or_(Track.artist_id==Artist.id, Album.artist_id==Artist.id)))
+	art_c = art_q.count()
+	art_q.delete(synchronize_session='fetch')
+
+	print("Deleted {} obsolete artists and {} obsolete albums".format(art_c, alb_c))
 
 	db.session.commit()

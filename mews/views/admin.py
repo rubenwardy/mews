@@ -14,10 +14,11 @@ def admin():
 	unknown_albums = Album.query.filter_by(is_known=False).order_by(Album.title).all()
 	unknown_artists = Artist.query.filter_by(is_known=False).order_by(Artist.name).all()
 	unknown_tracks = Track.query.filter_by(is_known=False).order_by(Track.title).all()
+	missing_album_art = Album.query.filter_by(picture=None).order_by(Album.title).all()
 	return render_template("admin/index.html",
 			unknown_albums=unknown_albums, unknown_artists=unknown_artists, unknown_tracks=unknown_tracks,
 			num_artists=Artist.query.count(), num_albums=Album.query.count(), num_tracks=Track.query.count(),
-			replacements=Replacement.query.all())
+			replacements=Replacement.query.all(), missing_album_art=missing_album_art)
 
 
 class ReplacementForm(FlaskForm):

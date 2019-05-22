@@ -64,8 +64,8 @@
 
 	<h1 class="title is-3">Problems</h1>
 
-	<div class="columns">
-		<div class="column">
+	<div class="columns is-multiline">
+		<div class="column is-one-third">
 			<div class="panel">
 				<p class="panel-heading">
 					<span class="count tag is-rounded {% if unknown_albums %}is-danger{% else %}is-black{% endif %}">{{ unknown_albums | length }}</span>
@@ -80,7 +80,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="column">
+		<div class="column is-one-third">
 			<div class="panel">
 				<p class="panel-heading">
 					<span class="count tag is-rounded {% if unknown_artists %}is-danger{% else %}is-black{% endif %}">{{ unknown_artists | length }}</span>
@@ -95,7 +95,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="column">
+		<div class="column is-one-third">
 			<div class="panel">
 				<p class="panel-heading">
 					<span class="count tag is-rounded {% if unknown_tracks %}is-danger{% else %}is-black{% endif %}">{{ unknown_tracks | length }}</span>
@@ -104,6 +104,21 @@
 				<div class="panel-scrolling">
 				{% for track in unknown_tracks %}
 					<div class="panel-block">{{ track.title }}</div>
+				{% else %}
+					<i class="panel-block">All ok!</i>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="column is-one-third">
+			<div class="panel">
+				<p class="panel-heading">
+					<span class="count tag is-rounded {% if missing_album_art %}is-danger{% else %}is-black{% endif %}">{{ missing_album_art | length }}</span>
+					<span class="title is-5">Missing Album Art</span>
+				</p>
+				<div class="panel-scrolling">
+				{% for album in missing_album_art %}
+					<div class="panel-block">{{ album.title }} by {{ album.artist.name }}</div>
 				{% else %}
 					<i class="panel-block">All ok!</i>
 				{% endfor %}
