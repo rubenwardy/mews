@@ -45,7 +45,7 @@ export class Audio {
 		return document.querySelectorAll("audio[data-id='" + id + "']").length > 0
 	}
 
-	stopAll() {
+	pauseAll() {
 		console.log("[Audio] Stopping all")
 		document.querySelectorAll("audio").forEach(x => x.pause())
 	}
@@ -56,7 +56,7 @@ export class Audio {
 			this.load(id, url)
 		}
 
-		this.stopAll()
+		this.pauseAll()
 		this.unloadBut(id)
 		document.querySelectorAll("audio[data-id='" + id + "']").forEach(x => x.play())
 	}

@@ -49,6 +49,20 @@ export class Playlist extends Model {
 		return null
 	}
 
+	getID(id) {
+		if (id == null) {
+			return null
+		}
+
+		for (let pt of this.playlist_tracks) {
+			if (pt.track.id == id) {
+				return pt.id
+			}
+		}
+
+		return null
+	}
+
 	getNext(pt_id) {
 		let isNext = false
 		for (let i = 0; i < this.playlist_tracks.length; i++) {

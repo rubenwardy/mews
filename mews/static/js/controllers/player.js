@@ -131,15 +131,20 @@ export class Player {
 		rjs.notify("statechanged")
 	}
 
-	async addAlbum(id) {
+	async getOrCreatePlaylist() {
 		let playlist = this.getPlaylist()
-		if (playlist) {
-			await playlist.addAlbum(id)
-		} else {
+		if (!playlist) {
 			playlist = new Playlist()
-			playlist.create().then(_ => playlist.addAlbum(id))
 			this.setPlaylist(playlist)
+			await playlist.create()
 		}
+
+		return playlist
+	}
+
+	async addAlbum(id) {
+		let playlist = await this.getOrCreatePlaylist()
+		await playlist.addAlbum(id)
 	}
 
 	async playAlbum(id) {
@@ -151,19 +156,30 @@ export class Player {
 			await playlist.playAlbum(id)
 		} else {
 			playlist = new Playlist()
-			playlist.create().then(_ => playlist.addAlbum(id))
 			this.setPlaylist(playlist)
+
+			await playlist.create()
+			await playlist.addAlbum(id)
 		}
 	}
 
 	async addTrack(id) {
-		let playlist = this.getPlaylist()
-		if (playlist) {
+		let playlist = await this.getOrCreatePlaylist()
+		await playlist.addTrack(id)
+	}
+
+	async playTrack(id) {
+		this.audio.pauseAll()
+		let playlist = await this.getOrCreatePlaylist()
+
+		let pt = playlist.getID(id)
+		if (!pt) {
 			await playlist.addTrack(id)
-		} else {
-			playlist = new Playlist()
-			playlist.create().then(_ => playlist.addTrack(id))
-			this.setPlaylist(playlist)
+			pt = playlist.getID(id)
+			console.assert(pt, "Track never added")
 		}
+
+		this.playing_id = pt
+		this.play()
 	}
 }

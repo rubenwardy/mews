@@ -16,21 +16,15 @@ export class TracksView extends ViewModel {
 				return;
 			}
 
-			console.log("A")
-
 			const track_ele = rjs.getParentElementByClass(e.target, "track", this.element)
 			if (!track_ele) {
 				return
 			}
 
-			console.log("B")
-
 			let track = Track.get(track_ele.getAttribute("data-id"))
 			if (!track) {
 				return
 			}
-
-			console.log("C")
 
 			if (rjs.getParentElementByClass(e.target, "action-add", this.element)) {
 				player.addTrack(track.id)
