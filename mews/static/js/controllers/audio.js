@@ -9,7 +9,7 @@ export class Audio {
 
 	load(id, url) {
 		console.log("[Audio] Loading " + url)
-		var element = document.createElement("audio")
+		let element = document.createElement("audio")
 		element.setAttribute("src", url)
 		element.setAttribute("controls", "controls")
 		element.setAttribute("data-id", id)
@@ -20,7 +20,7 @@ export class Audio {
 	}
 
 	runCB(cb, element) {
-		for (var func of cb) {
+		for (let func of cb) {
 			func(this, element.getAttribute("data-id"))
 		}
 	}

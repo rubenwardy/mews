@@ -15,7 +15,7 @@ export class Playlist extends Model {
 	}
 
 	async create() {
-		var playlist = await api.createPlaylist(this.title)
+		let playlist = await api.createPlaylist(this.title)
 		this.id    = playlist.id
 		this.title = playlist.title
 		this.is_known = true
@@ -40,7 +40,7 @@ export class Playlist extends Model {
 			return null
 		}
 
-		for (var pt of this.playlist_tracks) {
+		for (let pt of this.playlist_tracks) {
 			if (pt.id == pt_id) {
 				return pt.track
 			}
@@ -50,8 +50,8 @@ export class Playlist extends Model {
 	}
 
 	getNext(pt_id) {
-		var isNext = false
-		for (var i = 0; i < this.playlist_tracks.length; i++) {
+		let isNext = false
+		for (let i = 0; i < this.playlist_tracks.length; i++) {
 			if (isNext) {
 				return this.playlist_tracks[i].track
 			} else if (this.playlist_tracks[i].id == pt_id) {
@@ -63,8 +63,8 @@ export class Playlist extends Model {
 	}
 
 	getNextID(pt_id) {
-		var isNext = false
-		for (var i = 0; i < this.playlist_tracks.length; i++) {
+		let isNext = false
+		for (let i = 0; i < this.playlist_tracks.length; i++) {
 			if (isNext) {
 				return this.playlist_tracks[i].id
 			} else if (this.playlist_tracks[i].id == pt_id) {

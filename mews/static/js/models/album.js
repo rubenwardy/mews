@@ -43,7 +43,7 @@ export class Album extends Model {
 	}
 
 	static getOrCreate(id) {
-		var album = this.get(id)
+		let album = this.get(id)
 		if (!album) {
 			album = new Album(id)
 			albums[id] = album

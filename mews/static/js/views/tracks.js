@@ -50,12 +50,12 @@ export class TracksView extends ViewModel {
 
 		if (container && container.isKnown()) {
 			const playingTrack = player && player.getTrack()
-			for (var track of container.getTracks()) {
+			for (let track of container.getTracks()) {
 				const isPlaying = playingTrack && playingTrack.id == track.id
 				this.element.appendChild(this.buildRow(track, isPlaying))
 			}
 		} else if (container) {
-			var loading = document.createElement("span")
+			let loading = document.createElement("span")
 			loading.setAttribute("class", "button is-dark is-loading")
 			loading.textContent = "Loading"
 			loading.setAttribute("style", "margin:auto;")
@@ -64,7 +64,7 @@ export class TracksView extends ViewModel {
 	}
 
 	buildRow(track, isPlaying) {
-		var row = document.createElement("a")
+		let row = document.createElement("a")
 		row.setAttribute("class", this.classes + (isPlaying ? " track is-active" : " track"))
 		row.setAttribute("data-id", track.id)
 

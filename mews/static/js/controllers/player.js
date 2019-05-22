@@ -31,7 +31,7 @@ export class Player {
 	play() {
 		console.log("[Player] Play!")
 
-		var playlist = this.getPlaylist()
+		let playlist = this.getPlaylist()
 		if (!playlist) {
 			this.updateUI()
 			return
@@ -45,7 +45,7 @@ export class Player {
 		}
 
 		// TODO: add audio and actually play it
-		var playing = this.getTrack()
+		let playing = this.getTrack()
 		if (playing) {
 			console.log("[Player] Started: " + playing.title)
 			this.audio.play(playing.id, playing.getURL())
@@ -62,7 +62,7 @@ export class Player {
 			return null
 		}
 
-		var playlist = this.getPlaylist()
+		let playlist = this.getPlaylist()
 		if (!playlist) {
 			this.updateUI()
 			return null
@@ -81,7 +81,7 @@ export class Player {
 			return null
 		}
 
-		var playlist = this.getPlaylist()
+		let playlist = this.getPlaylist()
 		if (!playlist) {
 			return null
 		}
@@ -94,7 +94,7 @@ export class Player {
 			return null
 		}
 
-		var playlist = this.getPlaylist()
+		let playlist = this.getPlaylist()
 		if (!playlist) {
 			return null
 		}
@@ -132,7 +132,7 @@ export class Player {
 	}
 
 	async addAlbum(id) {
-		var playlist = this.getPlaylist()
+		let playlist = this.getPlaylist()
 		if (playlist) {
 			await playlist.addAlbum(id)
 		} else {
@@ -146,7 +146,7 @@ export class Player {
 		this.stop()
 		this.playing = true
 
-		var playlist = this.getPlaylist()
+		let playlist = this.getPlaylist()
 		if (playlist) {
 			await playlist.playAlbum(id)
 		} else {
@@ -157,7 +157,7 @@ export class Player {
 	}
 
 	async addTrack(id) {
-		var playlist = this.getPlaylist()
+		let playlist = this.getPlaylist()
 		if (playlist) {
 			await playlist.addTrack(id)
 		} else {

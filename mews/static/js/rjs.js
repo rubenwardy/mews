@@ -16,7 +16,7 @@ export class Model {
 
 	notifyChange() {
 		console.log("Changed " + this.constructor["name"] + "[" + this.id + "]: " + this)
-		for (var func of this.watchers) {
+		for (let func of this.watchers) {
 			func(this)
 		}
 	}
@@ -27,7 +27,7 @@ export class Model {
 	}
 
 	unwatch(func) {
-		var index = this.watchers.indexOf(func)
+		let index = this.watchers.indexOf(func)
 		if (index > -1) {
 			this.watchers.splice(index, 1)
 			return true

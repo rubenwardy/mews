@@ -35,7 +35,7 @@ export class Track extends Model {
 	}
 
 	static getOrCreate(id, dict) {
-		var track = this.get(id)
+		let track = this.get(id)
 		if (!track) {
 			track = new Track(id)
 			tracks[id] = track

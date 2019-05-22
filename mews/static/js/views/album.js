@@ -87,7 +87,7 @@ export function appendAlbum(album) {
 export async function showAlbums() {
 	let albums = await api.getAlbums()
 	for (let dict of albums) {
-		var album = Album.getOrCreate(dict.id)
+		let album = Album.getOrCreate(dict.id)
 		album.fromDict(dict)
 		appendAlbum(album)
 	}
