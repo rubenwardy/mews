@@ -34,7 +34,7 @@ def api_album_cache():
 
 	albums = db.session.query(Album).join(Artist.albums).filter_by(is_known=True).all()
 	for album in albums:
-		ret[(album.artist.name + "/" + album.title).lower()] = album.asDict()
+		ret[(album.artist.name + "/" + album.title).lower()] = album.asDict(add_id=False)
 
 	return jsonify(ret)
 
@@ -46,7 +46,7 @@ def api_artist_cache():
 
 	artists = Artist.query.filter_by(is_known=True).all()
 	for artist in artists:
-		ret[artist.name.lower()] = artist.asDict()
+		ret[artist.name.lower()] = artist.asDict(add_id=False)
 
 	return jsonify(ret)
 

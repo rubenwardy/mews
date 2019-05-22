@@ -1,986 +1,872 @@
 {
   "ac/dc/back in black": {
     "artist": "AC/DC", 
-    "id": 19, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/3d359b955132742bc2fc3eacdff90b8c.png", 
     "title": "Back In Black"
   }, 
   "amber run/5am": {
     "artist": "Amber Run", 
-    "id": 102, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/de1601a3ff03853520f9862793f4e8ee.png", 
     "title": "5AM"
   }, 
   "amy winehouse/back to black": {
     "artist": "Amy Winehouse", 
-    "id": 8, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/bc4e31504f5f47adb31f36aa0889be45.png", 
     "title": "Back To Black"
   }, 
   "arctic monkeys/am": {
     "artist": "Arctic Monkeys", 
-    "id": 174, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/f579e414e20f40969185e41182d72472.png", 
     "title": "AM"
   }, 
   "arctic monkeys/favourite worst nightmare": {
     "artist": "Arctic Monkeys", 
-    "id": 175, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/705f6109de0143da8050188598fd4781.png", 
     "title": "Favourite Worst Nightmare"
   }, 
   "arctic monkeys/radio 1's live lounge": {
     "artist": "Arctic Monkeys", 
-    "id": 177, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/929a34524d0f45ac86c9c069e260c688.png", 
     "title": "Radio 1's Live Lounge"
   }, 
   "arctic monkeys/whatever people say i am, that's what i'm not": {
     "artist": "Arctic Monkeys", 
-    "id": 176, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/3ef184531e0445eb828c81ee969d6e13.png", 
     "title": "Whatever People Say I Am, That's What I'm Not"
   }, 
   "bastille/bad blood (the extended cut)": {
     "artist": "Bastille", 
-    "id": 90, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/a02d915757924b2799d68a13f724619e.png", 
     "title": "Bad Blood (The Extended Cut)"
   }, 
   "blossoms/blossoms": {
     "artist": "Blossoms", 
-    "id": 94, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/9acaf8631ad5c2ef0373b6eec8879c13.png", 
     "title": "Blossoms"
   }, 
   "bon jovi/crossroad": {
     "artist": "Bon Jovi", 
-    "id": 85, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/7d4bcc55ed79449dbc2f2750fbef53d7.png", 
     "title": "Crossroad"
   }, 
   "bon jovi/crossroad - the best of bon jovi": {
     "artist": "Bon Jovi", 
-    "id": 86, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/4fec646fe0134385a39335dd3e51fed9.png", 
     "title": "Crossroad - The Best of Bon Jovi"
   }, 
   "bronski beat/the age of consent": {
     "artist": "Bronski Beat", 
-    "id": 169, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/d5afb2c117332007ab9b2352d31173fd.png", 
     "title": "The Age of Consent"
   }, 
   "canterbury/dark days": {
     "artist": "Canterbury", 
-    "id": 124, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/ab81a7cd250346aec6b3e09cb3634bb2.png", 
     "title": "Dark Days"
   }, 
   "canterbury/heavy in the day": {
     "artist": "Canterbury", 
-    "id": 125, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/dfdc3d632a9d461db4dff095c1fe59d9.png", 
     "title": "Heavy In The Day"
   }, 
   "catfish and the bottlemen/the balance": {
-    "artist": "Catfish and The Bottlemen", 
-    "id": 35, 
+    "artist": "Catfish and the Bottlemen", 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/720db60692e4f1be75108bea1846f368.png", 
     "title": "The Balance"
   }, 
   "catfish and the bottlemen/the balcony": {
-    "artist": "Catfish and The Bottlemen", 
-    "id": 164, 
+    "artist": "Catfish and the Bottlemen", 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/7e4879bb1fa34d50cd8c8625a767c217.png", 
     "title": "The Balcony"
   }, 
   "catfish and the bottlemen/the ride": {
-    "artist": "Catfish and The Bottlemen", 
-    "id": 97, 
+    "artist": "Catfish And The Bottlemen", 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/97d49b222b566bcaadf1ecb82d199795.png", 
     "title": "The Ride"
   }, 
   "christina perri/lovestrong": {
     "artist": "Christina Perri", 
-    "id": 149, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/3211019f45f442df9caed1f50190a315.png", 
     "title": "Lovestrong"
   }, 
   "coldplay/a head full of dreams": {
     "artist": "Coldplay", 
-    "id": 34, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/174d490504bf25ced4880e8fd54ddb1c.png", 
     "title": "A Head Full Of Dreams"
   }, 
   "coldplay/mylo xyloto": {
     "artist": "Coldplay", 
-    "id": 33, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/1687ef91a96e3a864f3da26b8fec5b9a.png", 
     "title": "Mylo Xyloto"
   }, 
   "daniel powter/daniel powter": {
     "artist": "Daniel Powter", 
-    "id": 68, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/f9e88cce32e6478b9950f126f7278ec4.png", 
     "title": "Daniel Powter"
   }, 
   "david bowie/changesbowie": {
     "artist": "David Bowie", 
-    "id": 53, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/e169a418496049f8a34905d1663e8fe9.png", 
     "title": "Changesbowie"
   }, 
   "dinosaur jr./bug": {
     "artist": "Dinosaur Jr.", 
-    "id": 87, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/3f41e08c2401ad61722bdfe1163dfe65.png", 
     "title": "Bug"
   }, 
   "ed sheeran/\u00f7 (deluxe)": {
     "artist": "Ed Sheeran", 
-    "id": 1, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/10dd6b568651a6d11cc4d631fcb143bd.png", 
     "title": "\u00f7 (Deluxe)"
   }, 
   "evanescence/fallen": {
     "artist": "Evanescence", 
-    "id": 123, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/709c71461153419d86742071e16426c8.png", 
     "title": "Fallen"
   }, 
   "fall out boy/american beauty/american psycho": {
     "artist": "Fall Out Boy", 
-    "id": 153, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/ca513e49724548f4c89aa97548a95d65.png", 
     "title": "American Beauty/American Psycho"
   }, 
-  "fat white family/champagne holocaust": {
-    "artist": "Fat White Family", 
-    "id": 101, 
-    "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/d77a6192f2da4f3e97eba8803d1d73ec.png", 
-    "title": "Champagne Holocaust"
-  }, 
   "flight of the conchords/flight of the conchords": {
     "artist": "Flight of the Conchords", 
-    "id": 147, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/4523af3f70974e508f0e4be61af79f03.png", 
     "title": "Flight of the Conchords"
   }, 
   "foals/holy fire": {
     "artist": "Foals", 
-    "id": 116, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/ae79926a71ce4290a7de1161758eadd6.png", 
     "title": "Holy Fire"
   }, 
   "foals/total life forever": {
     "artist": "Foals", 
-    "id": 117, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/26b3fcff26604c9aa5c9c9ea3a0359a4.png", 
     "title": "Total Life Forever"
   }, 
   "foo fighters/foo fighters: greatest hits": {
     "artist": "Foo Fighters", 
-    "id": 24, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/b91a6b0d5e1649ab93576ea25f7bfb91.png", 
     "title": "Foo Fighters: Greatest Hits"
   }, 
   "foo fighters/radio 1's live lounge": {
     "artist": "Foo Fighters", 
-    "id": 28, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/780d8b3e1d5d4e308a7c42939f87b002.png", 
     "title": "Radio 1's Live Lounge"
   }, 
   "foo fighters/saint cecilia ep": {
     "artist": "Foo Fighters", 
-    "id": 27, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/c57bab8f39e9e19f6f1e0c0cd2da3116.png", 
     "title": "Saint Cecilia EP"
   }, 
   "foo fighters/songs from the laundry room (rsd) [vinyl]": {
     "artist": "Foo Fighters", 
-    "id": 25, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/a7aff990d8ff7732513d57c4be8b65e7.png", 
     "title": "Songs From The Laundry Room (RSD) [Vinyl]"
   }, 
   "foo fighters/sonic highways": {
     "artist": "Foo Fighters", 
-    "id": 29, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/f7ee50fc9d0f404ec08d2cd50a8a414a.png", 
     "title": "Sonic Highways"
   }, 
   "foo fighters/wasting light": {
     "artist": "Foo Fighters", 
-    "id": 26, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/d59afb19a4cb41c785d613518a3eb641.png", 
     "title": "Wasting Light"
   }, 
   "franz ferdinand/franz ferdinand": {
     "artist": "Franz Ferdinand", 
-    "id": 65, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/0e960314809a4b3dae3c896c9af8d4a9.png", 
     "title": "Franz Ferdinand"
   }, 
   "franz ferdinand/you could have it so much better": {
     "artist": "Franz Ferdinand", 
-    "id": 66, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/996a3f46b6494165b4cec60776509d15.png", 
     "title": "You Could Have It So Much Better"
   }, 
   "glass animals/how to be a human being": {
     "artist": "Glass Animals", 
-    "id": 146, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/05646a91f163b15d9f08642bbe170abf.png", 
     "title": "How To Be A Human Being"
   }, 
   "green day/21st century breakdown": {
     "artist": "Green Day", 
-    "id": 188, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/c5f9c64c345ea23b986e8e39d75d0656.png", 
     "title": "21st Century Breakdown"
   }, 
   "green day/american idiot": {
     "artist": "Green Day", 
-    "id": 185, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/d5b5e314af7c4124943582fe3a595543.png", 
     "title": "American Idiot"
   }, 
   "green day/nimrod": {
     "artist": "Green Day", 
-    "id": 187, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/5b81f18e42c946678ee22f78faffbf37.png", 
     "title": "Nimrod"
   }, 
   "green day/\u00a1tr\u00e9!": {
     "artist": "Green Day", 
-    "id": 186, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/680408a348ff44aab19a76aa42cd168c.png", 
     "title": "\u00a1Tr\u00e9!"
   }, 
   "guns n' roses/appetite for destruction": {
     "artist": "Guns N' Roses", 
-    "id": 73, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/eed51418bdbc41bc9aa959de2d65dd5d.png", 
     "title": "Appetite for Destruction"
   }, 
   "hozier/hozier": {
     "artist": "Hozier", 
-    "id": 100, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/527818f973644bcecb30600364a07da9.png", 
     "title": "Hozier"
   }, 
   "hunx and his punx/too young to be in love": {
     "artist": "Hunx and His Punx", 
-    "id": 155, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/a1b59d39965745afa787e9064b1954ba.png", 
     "title": "Too Young To Be In Love"
   }, 
   "imagine dragons/evolve": {
     "artist": "Imagine Dragons", 
-    "id": 59, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/8c77e9f509c4dd3bca8d3ac6b5344ce5.png", 
     "title": "Evolve"
   }, 
   "imagine dragons/night visions (deluxe)": {
     "artist": "Imagine Dragons", 
-    "id": 61, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/85b23e2cf9ea5af249034cb45595c155.png", 
     "title": "Night Visions (Deluxe)"
   }, 
   "imagine dragons/smoke + mirrors (deluxe)": {
     "artist": "Imagine Dragons", 
-    "id": 60, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/74b0399872646052464309d621075339.png", 
     "title": "Smoke + Mirrors (Deluxe)"
   }, 
   "jamie t/carry on the grudge": {
     "artist": "Jamie T", 
-    "id": 58, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/233e1af561064158c145321285454de2.png", 
     "title": "Carry On the Grudge"
   }, 
   "john lennon/imagine": {
     "artist": "John Lennon", 
-    "id": 15, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/f6158cdf848e49ceb9bbbae2e2394ecd.png", 
     "title": "Imagine"
   }, 
   "johnny cash/american iv: the man comes around": {
     "artist": "Johnny Cash", 
-    "id": 69, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/d350c2b6b3cc4732bbd94050b6382583.png", 
     "title": "American IV: The Man Comes Around"
   }, 
   "joy division/the best of joy division": {
     "artist": "Joy Division", 
-    "id": 171, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/1c5d77850a254973a778f645a0f9707f.png", 
     "title": "The Best of Joy Division"
   }, 
   "kaiser chiefs/employment": {
     "artist": "Kaiser Chiefs", 
-    "id": 163, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/245b232cde684c23b6531acf5086a0db.png", 
     "title": "Employment"
   }, 
   "keane/hopes and fears": {
     "artist": "Keane", 
-    "id": 75, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/0b1f6d33cb8a43dc961eb56fbb04ce65.png", 
     "title": "Hopes and Fears"
   }, 
   "keane/strangeland": {
     "artist": "Keane", 
-    "id": 76, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/0530081738e14457b20ed602827daad5.png", 
     "title": "Strangeland"
   }, 
+  "led zeppelin/atlantic": {
+    "artist": "Led Zeppelin", 
+    "picture": null, 
+    "title": "Atlantic"
+  }, 
   "led zeppelin/led zeppelin iv": {
     "artist": "Led Zeppelin", 
-    "id": 83, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/1e6f99756d0342f891d3233ac1283d21.png", 
     "title": "Led Zeppelin IV"
   }, 
   "led zeppelin/mothership": {
     "artist": "Led Zeppelin", 
-    "id": 84, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/fa57a9e73938407b94ad296983dd7ff3.png", 
     "title": "Mothership"
   }, 
   "led zeppelin/remasters": {
     "artist": "Led Zeppelin", 
-    "id": 81, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/e6052704a0d641a1979adca1d8eb5ddd.png", 
     "title": "Remasters"
   }, 
   "linkin park/greatest hits cd1": {
     "artist": "Linkin Park", 
-    "id": 13, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/246bfcff609b4fdeb76762fd62e52bb3.png", 
     "title": "Greatest Hits Cd1"
   }, 
   "linkin park/greatest hits cd2": {
     "artist": "Linkin Park", 
-    "id": 14, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/aec42ca6404949dbbbecd559ffee0b98.png", 
     "title": "Greatest Hits Cd2"
   }, 
-  "lit/teenage dirtbags": {
-    "artist": "Lit", 
-    "id": 126, 
-    "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/53390d070e1f4bc5b90fa50c18661cc7.png", 
-    "title": "Teenage Dirtbags"
-  }, 
   "metallica/metallica": {
     "artist": "Metallica", 
-    "id": 7, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/cb0f59d62f256fd58b2163d90f334add.png", 
     "title": "Metallica"
   }, 
+  "metro station/mixtape": {
+    "artist": "Metro Station", 
+    "picture": null, 
+    "title": "Mixtape"
+  }, 
   "mgmt/oracular spectacular": {
     "artist": "MGMT", 
-    "id": 80, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/89de16a37825420f9b87e801fcddb970.png", 
     "title": "Oracular Spectacular"
   }, 
   "mika/life in cartoon motion": {
     "artist": "Mika", 
-    "id": 17, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/3de79d8d9c184987b9951283870bfb62.png", 
     "title": "Life in Cartoon Motion"
   }, 
   "muse/absolution": {
     "artist": "Muse", 
-    "id": 138, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/5eb13635280149bdbf907eaa318b5360.png", 
     "title": "Absolution"
   }, 
   "muse/dig down - single": {
     "artist": "Muse", 
-    "id": 139, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/8b92417489b2d903ab14994ffe20f886.png", 
     "title": "Dig Down - Single"
   }, 
   "muse/drones": {
     "artist": "Muse", 
-    "id": 141, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/89847c25f5a3a6ac5d4b76f8253291e9.png", 
     "title": "Drones"
   }, 
   "muse/origin of symmetry": {
     "artist": "Muse", 
-    "id": 137, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/5a2c98f98f05f457d770bfaf45f7cc8a.png", 
     "title": "Origin Of Symmetry"
   }, 
   "muse/simulation theory": {
     "artist": "Muse", 
-    "id": 154, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/a89cfefadb87e256193521faddbb68a7.png", 
     "title": "Simulation Theory"
   }, 
   "muse/the resistance": {
     "artist": "Muse", 
-    "id": 140, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/dd4c95317aaa3537dbf0a8dc4d9c7d79.png", 
     "title": "The Resistance"
   }, 
   "nirvana/bleach": {
     "artist": "Nirvana", 
-    "id": 159, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/6cb91d2c3e554b028133947dfae73b43.png", 
     "title": "Bleach"
   }, 
   "nirvana/in utero": {
     "artist": "Nirvana", 
-    "id": 158, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/f87609e9ecee469f940f4dd208f229b9.png", 
     "title": "In Utero"
   }, 
   "nirvana/nevermind": {
     "artist": "Nirvana", 
-    "id": 156, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/71cc320aa75906f6e4760aaaeb96b845.png", 
     "title": "Nevermind"
   }, 
   "nirvana/unplugged in new york": {
     "artist": "Nirvana", 
-    "id": 157, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/8e4304de63b44d6ca8f9d3df2576ac8f.png", 
     "title": "Unplugged In New York"
   }, 
   "noah and the whale/last night on earth": {
     "artist": "Noah and the Whale", 
-    "id": 57, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/2032c8783cfa4b29897cd6b6718e61be.png", 
     "title": "Last Night on Earth"
   }, 
   "oasis/(what's the story) morning glory?": {
     "artist": "Oasis", 
-    "id": 91, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/73af99a124e846f69d9b6bf72231c4f6.png", 
     "title": "(What's the Story) Morning Glory?"
   }, 
   "oasis/radio 1's live lounge": {
     "artist": "Oasis", 
-    "id": 92, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/7c95d64bc88c428bb214229a21d35367.png", 
     "title": "Radio 1's Live Lounge"
   }, 
   "paramore/brand new eyes": {
     "artist": "Paramore", 
-    "id": 120, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/72b18c1fcf94465aac7d385eb412bdcb.png", 
     "title": "Brand New Eyes"
   }, 
+  "paramore/mixtape": {
+    "artist": "Paramore", 
+    "picture": null, 
+    "title": "Mixtape"
+  }, 
   "pet shop boys/25 years of hits": {
     "artist": "Pet Shop Boys", 
-    "id": 95, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/36acb86b45de4691b0ebe921cd33cf4b.png", 
     "title": "25 Years of Hits"
   }, 
   "pink floyd/dark side of the moon": {
     "artist": "Pink Floyd", 
-    "id": 144, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/c879014345e345a19a5481dddc7ad982.png", 
     "title": "Dark Side Of The Moon"
   }, 
   "pink floyd/pulse": {
     "artist": "Pink Floyd", 
-    "id": 145, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/2f3613decc674ad2b9fa9bea4f405a3f.png", 
     "title": "Pulse"
   }, 
   "pink floyd/the division bell": {
     "artist": "Pink Floyd", 
-    "id": 143, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/322025b870b64e8cced4e68728238022.png", 
     "title": "The Division Bell"
   }, 
   "queen/greatest hits i": {
     "artist": "Queen", 
-    "id": 56, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/1c96bfd593ff1600aa0d0d2ae1361ebb.png", 
     "title": "Greatest Hits I"
   }, 
   "queen/greatest hits ii": {
     "artist": "Queen", 
-    "id": 55, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/5acf44b6b52e40d5a345f5f39c4cb715.png", 
     "title": "Greatest Hits II"
   }, 
   "queens of the stone age/radio 1's live lounge": {
-    "artist": "Queens of the Stone Age", 
-    "id": 128, 
+    "artist": "Queens Of The Stone Age", 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/a33a169c8d784c1380cf7ef9bf3c00b2.png", 
     "title": "Radio 1's Live Lounge"
   }, 
   "queens of the stone age/songs for the deaf": {
-    "artist": "Queens of the Stone Age", 
-    "id": 127, 
+    "artist": "Queens Of The Stone Age", 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/1319ef46e1da47f5c7dd7afdfb11aa53.png", 
     "title": "Songs for the Deaf"
   }, 
   "r.e.m./automatic for the people": {
     "artist": "R.E.M.", 
-    "id": 98, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/ceb7b050dee4411380a41135e7a68b16.png", 
     "title": "Automatic For The People"
   }, 
   "radiohead/a moon shaped pool": {
     "artist": "Radiohead", 
-    "id": 113, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/267decde8626b1263f0e3fcb3f43bc4a.png", 
     "title": "A Moon Shaped Pool"
   }, 
   "radiohead/pablo honey": {
     "artist": "Radiohead", 
-    "id": 115, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/f78e87f3ecef4a4b81ec7285ae9882c0.png", 
     "title": "Pablo Honey"
   }, 
   "radiohead/the bends": {
     "artist": "Radiohead", 
-    "id": 114, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/9421beaa754748d1b09236f57e3532c6.png", 
     "title": "The Bends"
   }, 
   "razorlight/razorlight": {
     "artist": "Razorlight", 
-    "id": 30, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/e1488e759ec3454f85da9d57bc25e1ab.png", 
     "title": "Razorlight"
   }, 
   "razorlight/up all night": {
     "artist": "Razorlight", 
-    "id": 31, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/f3b0ba170cfc42a2b8c7162552caec6a.png", 
     "title": "Up All Night"
   }, 
   "red hot chili peppers/blood sugar sex magik": {
     "artist": "Red Hot Chili Peppers", 
-    "id": 6, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/866a975e024d45e2ad50e3e0399dd45d.png", 
     "title": "Blood Sugar Sex Magik"
   }, 
   "red hot chili peppers/greatest hits": {
     "artist": "Red Hot Chili Peppers", 
-    "id": 5, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/5b4319b469be47489714d1549c6614e4.png", 
     "title": "Greatest Hits"
   }, 
+  "regina spektor/regina spektor": {
+    "artist": "Regina Spektor", 
+    "picture": null, 
+    "title": "Regina Spektor"
+  }, 
+  "richard buckner/dream boy": {
+    "artist": "Richard Buckner", 
+    "picture": null, 
+    "title": "Dream Boy"
+  }, 
   "simple plan/no pads, no helmets... just balls": {
     "artist": "Simple Plan", 
-    "id": 70, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/26a25561e8ecb5ed37ea3e5260156d22.png", 
     "title": "No Pads, No Helmets... Just Balls"
   }, 
   "simple plan/welcome to my life": {
     "artist": "Simple Plan", 
-    "id": 71, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/dd0fe5b90ee04ae58615a74546b9817e.png", 
     "title": "Welcome to My Life"
   }, 
   "slaves/are you satisfied?": {
     "artist": "Slaves", 
-    "id": 110, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/c133937e2138436dc3c3fca6b37b59c6.png", 
     "title": "Are You Satisfied?"
   }, 
   "snow patrol/eyes open": {
     "artist": "Snow Patrol", 
-    "id": 181, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/ba66327ac6694b94bc62bb3bb0aa8a4e.png", 
     "title": "Eyes Open"
   }, 
   "snow patrol/final straw": {
     "artist": "Snow Patrol", 
-    "id": 183, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/938077d5e18c48e7c88d07bbcb0fbdc1.png", 
     "title": "Final Straw"
   }, 
   "snow patrol/radio 1's live lounge": {
     "artist": "Snow Patrol", 
-    "id": 184, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/ac82829cae1b44d39c39d8802bc48cc6.png", 
     "title": "Radio 1's Live Lounge"
   }, 
   "snow patrol/up to now": {
     "artist": "Snow Patrol", 
-    "id": 182, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/8e61d4bc73ef4aa1bab17883e5491553.png", 
     "title": "Up to Now"
   }, 
   "soak/before we forgot how to dream": {
-    "artist": "Soak", 
-    "id": 52, 
+    "artist": "SOAK", 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/7edbe8ce1bf18fc47eb90391f31279c6.png", 
     "title": "Before We Forgot How to Dream"
   }, 
   "stereophonics/you gotta go there to come back": {
     "artist": "Stereophonics", 
-    "id": 150, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/e7ad7d6d7bad4005bbe02b1a30cf43de.png", 
     "title": "You Gotta Go There To Come Back"
   }, 
   "sting/fields of gold - the best of 1984-1994": {
     "artist": "Sting", 
-    "id": 165, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/dab3ede9697a618996f8e3cd755b6780.png", 
     "title": "Fields Of Gold - The Best Of 1984-1994"
   }, 
   "swim deep/where the heaven are we": {
     "artist": "Swim Deep", 
-    "id": 162, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/c82dfb1f2ad44abbca492ae27833de58.png", 
     "title": "Where The Heaven Are We"
   }, 
   "t. rex/the very best of t.rex": {
     "artist": "T. Rex", 
-    "id": 22, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/c3dd3445c7ed47049f5c7495817bada6.png", 
     "title": "The Very Best Of T.Rex"
   }, 
   "take that/beautiful world": {
     "artist": "Take That", 
-    "id": 129, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/6b0cc4a1e98a48bcc8b086c1249504a2.png", 
     "title": "Beautiful World"
   }, 
+  "take that/pop party 5": {
+    "artist": "Take That", 
+    "picture": null, 
+    "title": "Pop Party 5"
+  }, 
   "the amazons/the amazons": {
     "artist": "The Amazons", 
-    "id": 168, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/821dea6ff0c4a664aad944c568341e7c.png", 
     "title": "The Amazons"
   }, 
   "the beatles/a hard day's night (remastered)": {
     "artist": "The Beatles", 
-    "id": 45, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/cfb26cafbea34ce1b1e3ac46d140ff09.png", 
     "title": "A Hard Day's Night (Remastered)"
   }, 
   "the beatles/abbey road (remastered)": {
     "artist": "The Beatles", 
-    "id": 41, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/307370ac9c7cb089bcd6f60f1222f7c2.png", 
     "title": "Abbey Road (Remastered)"
   }, 
   "the beatles/beatles for sale (remastered)": {
     "artist": "The Beatles", 
-    "id": 49, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/c21c1ece72914d4c90bf36d63c7df861.png", 
     "title": "Beatles For Sale (Remastered)"
   }, 
   "the beatles/help! (remastered)": {
     "artist": "The Beatles", 
-    "id": 40, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/3f7b3b557625fe597f5f4540703cf624.png", 
     "title": "Help! (Remastered)"
   }, 
   "the beatles/let it be (remastered)": {
     "artist": "The Beatles", 
-    "id": 43, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/17d6c086431048976636af874363d00f.png", 
     "title": "Let It Be (Remastered)"
   }, 
   "the beatles/magical mystery tour (remastered)": {
     "artist": "The Beatles", 
-    "id": 42, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/7a37895659617851adae070f2550e59c.png", 
     "title": "Magical Mystery Tour (Remastered)"
   }, 
   "the beatles/past masters (remastered)": {
     "artist": "The Beatles", 
-    "id": 38, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/1f36f048c4c1472dba419dc7f4d492bd.png", 
     "title": "Past Masters (Remastered)"
   }, 
   "the beatles/please please me (remastered)": {
     "artist": "The Beatles", 
-    "id": 48, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/b17505d03330895d8a3f4e14cd9d4bca.png", 
     "title": "Please Please Me (Remastered)"
   }, 
   "the beatles/revolver (remastered)": {
     "artist": "The Beatles", 
-    "id": 44, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/1d909bf3a71494f5689e3d73001f8895.png", 
     "title": "Revolver (Remastered)"
   }, 
   "the beatles/rubber soul (remastered)": {
     "artist": "The Beatles", 
-    "id": 51, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/96dd6217b88a48f6b411379fe1cb03f4.png", 
     "title": "Rubber Soul (Remastered)"
   }, 
   "the beatles/sgt. peppers lonely hearts club band (remastered)": {
     "artist": "The Beatles", 
-    "id": 39, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/34cffa25b8934d1284c1dce3f3fe12d4.png", 
     "title": "Sgt. Peppers Lonely Hearts Club Band (Remastered)"
   }, 
   "the beatles/the beatles": {
     "artist": "The Beatles", 
-    "id": 142, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/8fd20bcb605b4778a76f4b0c91a32bcf.png", 
     "title": "The Beatles"
   }, 
   "the beatles/the beatles (the white album) (remastered)": {
     "artist": "The Beatles", 
-    "id": 46, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/bbc82e6205b1463e9f194e06d7a5fe1e.png", 
     "title": "The Beatles (The White Album) (Remastered)"
   }, 
   "the beatles/with the beatles (remastered)": {
     "artist": "The Beatles", 
-    "id": 47, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/85e143144eec4ce8bb4ad597fa49cea0.png", 
     "title": "With The Beatles (Remastered)"
   }, 
   "the beatles/yellow submarine (remastered)": {
     "artist": "The Beatles", 
-    "id": 50, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/b2979386446a286a96ce9028c440750d.png", 
     "title": "Yellow Submarine (Remastered)"
   }, 
   "the black keys/attack & release": {
     "artist": "The Black Keys", 
-    "id": 135, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/cacd732b188542269d8e08d7153e8e28.png", 
     "title": "Attack & Release"
   }, 
   "the black keys/el camino": {
     "artist": "The Black Keys", 
-    "id": 134, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/99052cb9c4304f33a104995426c52db8.png", 
     "title": "El Camino"
   }, 
   "the jam/extras: a collection of rarities": {
     "artist": "The Jam", 
-    "id": 122, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/477f2b1e46d841b4b63f82873c402cc7.png", 
     "title": "Extras: A Collection of Rarities"
   }, 
   "the killers/battle born": {
     "artist": "The Killers", 
-    "id": 131, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/d8d2682fd0834c4690b1dc5a5c1b4822.png", 
     "title": "Battle Born"
   }, 
   "the killers/direct hits": {
     "artist": "The Killers", 
-    "id": 133, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/da65f3f9f9c047939c40a788968e3699.png", 
     "title": "Direct Hits"
   }, 
   "the killers/sam's town": {
     "artist": "The Killers", 
-    "id": 132, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/462a88748d374862acdd38a0aab7ab2d.png", 
     "title": "Sam's Town"
   }, 
   "the kills/blood pressures": {
     "artist": "The Kills", 
-    "id": 107, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/b1b9d85206fe4c4f87bcfeff43c01fa6.png", 
     "title": "Blood Pressures"
   }, 
   "the kills/keep on your mean side": {
     "artist": "The Kills", 
-    "id": 109, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/5858a64c96254d719786838167410989.png", 
     "title": "Keep On Your Mean Side"
   }, 
   "the kills/midnight boom": {
     "artist": "The Kills", 
-    "id": 108, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/c8d0861adc1d4909a8281fee0c750863.png", 
     "title": "Midnight Boom"
   }, 
   "the kills/no wow": {
     "artist": "The Kills", 
-    "id": 106, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/58ae7abd5c9e4f5ecf213f6e0a5e0934.png", 
     "title": "No Wow"
   }, 
   "the kooks/inside in/inside out": {
     "artist": "The Kooks", 
-    "id": 160, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/8494a3e012274c1a89aa843fab917320.png", 
     "title": "Inside In/Inside Out"
   }, 
   "the libertines/the libertines": {
     "artist": "The Libertines", 
-    "id": 11, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/c4f94624000c4467a92f2bbcd667ad30.png", 
     "title": "The Libertines"
   }, 
   "the libertines/up the bracket": {
     "artist": "The Libertines", 
-    "id": 12, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/d17f3783e4dc4d93cd159c72bc86c8e8.png", 
     "title": "Up The Bracket"
   }, 
   "the neighbourhood/i love you": {
     "artist": "The Neighbourhood", 
-    "id": 179, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/b64ef6445733299205fb2746e7dd9839.png", 
     "title": "I Love You"
   }, 
   "the neighbourhood/the neighbourhood": {
     "artist": "The Neighbourhood", 
-    "id": 180, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/688bee9e65a34e3d5a500eaf3c20b0d5.png", 
     "title": "The Neighbourhood"
   }, 
   "the police/greatest hits": {
     "artist": "The Police", 
-    "id": 166, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/e8f1a9b8449748b1a10577a0e5fe9de5.png", 
     "title": "Greatest Hits"
   }, 
   "the shins/port of morrow": {
     "artist": "The Shins", 
-    "id": 20, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/be4a963567fb41d98655bee5efa325fa.png", 
     "title": "Port Of Morrow"
   }, 
   "the smiths/meat is murder": {
     "artist": "The Smiths", 
-    "id": 88, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/292fffcf275c4ed9ce965742e758affb.png", 
     "title": "Meat Is Murder"
   }, 
   "the smiths/the sound of the smiths": {
     "artist": "The Smiths", 
-    "id": 89, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/80661887366b4e36bc70ae5ba9cc92c9.png", 
     "title": "The Sound of The Smiths"
   }, 
   "the stone roses/second coming": {
     "artist": "The Stone Roses", 
-    "id": 93, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/fa7050527ca344a5b592ac8b8c56989b.png", 
     "title": "Second Coming"
   }, 
   "the strokes/room on fire": {
     "artist": "The Strokes", 
-    "id": 37, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/a9c961c8da0d4427b7d7a4018738f5df.png", 
     "title": "Room On Fire"
   }, 
   "the temper trap/thick as thieves (deluxe edition)": {
     "artist": "The Temper Trap", 
-    "id": 119, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/a4eacf5759ff5f9f229e6ce106615f5e.png", 
     "title": "Thick As Thieves (Deluxe Edition)"
   }, 
   "the vaccines/come of age": {
     "artist": "The Vaccines", 
-    "id": 105, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/ee727d57d6be409a959049af7e4697bd.png", 
     "title": "Come Of Age"
   }, 
   "the vaccines/english graffiti": {
     "artist": "The Vaccines", 
-    "id": 103, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/f50df99fd57b4237c245cc3b54234eaf.png", 
     "title": "English Graffiti"
   }, 
   "the vaccines/the vaccines": {
     "artist": "The Vaccines", 
-    "id": 104, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/8298080accaa4800985f06e262a8b1c9.png", 
     "title": "The Vaccines"
   }, 
   "the verve/urban hymns": {
     "artist": "The Verve", 
-    "id": 54, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/000cca92b737499c92deaaf471107354.png", 
     "title": "Urban Hymns"
   }, 
   "the white stripes/elephant": {
     "artist": "The White Stripes", 
-    "id": 148, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/4834c1de5bae49f594bd2f2df1f16286.png", 
     "title": "Elephant"
   }, 
   "the who/the who hits 50! (deluxe edition!)": {
     "artist": "The Who", 
-    "id": 79, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/9849acef4746e5db7ffbdb1d2c029efb.png", 
     "title": "The Who Hits 50! (Deluxe Edition!)"
   }, 
+  "they might be giants/tmbg mix": {
+    "artist": "They Might Be Giants", 
+    "picture": null, 
+    "title": "TMBG Mix"
+  }, 
   "troye sivan/blue neighbourhood (deluxe)": {
     "artist": "Troye Sivan", 
-    "id": 3, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/f018307055339656a43de6f27b992268.png", 
     "title": "Blue Neighbourhood (Deluxe)"
   }, 
   "troye sivan/trxye - ep": {
     "artist": "Troye Sivan", 
-    "id": 4, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/60556ba8c4114f1ecf5ed5dcb8073b08.png", 
     "title": "Trxye - EP"
   }, 
   "two door cinema club/beacon (deluxe version)": {
     "artist": "Two Door Cinema Club", 
-    "id": 32, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/19682774562c443893c180eddba468c3.png", 
     "title": "Beacon (Deluxe Version)"
   }, 
   "u2/the best of 1980-1990": {
     "artist": "U2", 
-    "id": 77, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/4fd71a5c654ac3ae91019c80213d9a6a.png", 
     "title": "The Best Of 1980-1990"
   }, 
   "u2/the joshua tree": {
     "artist": "U2", 
-    "id": 78, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/b746f016aef9f8a8274c3f377e0d6316.png", 
     "title": "The Joshua Tree"
   }, 
   "vampire weekend/contra": {
     "artist": "Vampire Weekend", 
-    "id": 64, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/f60b0691b7294dbd8c300b36276576e7.png", 
     "title": "Contra"
   }, 
   "vampire weekend/modern vampires of the city (deluxe edition)": {
     "artist": "Vampire Weekend", 
-    "id": 63, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/8dfe5ce512c943ac86e204e76d63d626.png", 
     "title": "Modern Vampires Of The City (Deluxe Edition)"
   }, 
   "vampire weekend/vampire weekend": {
     "artist": "Vampire Weekend", 
-    "id": 62, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/91dc59cf8818486095f97c075315755c.png", 
     "title": "Vampire Weekend"
   }, 
+  "various artists/ashes to ashes (original soundtrack)": {
+    "artist": "Various Artists", 
+    "picture": null, 
+    "title": "Ashes to Ashes (Original Soundtrack)"
+  }, 
   "various artists/now that's what i call classic rock": {
     "artist": "Various Artists", 
-    "id": 118, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/b9cf2b497e454a16bccab468159baf07.png", 
     "title": "Now That's What I Call Classic Rock"
   }, 
+  "various artists/teenage dirtbags": {
+    "artist": "Various Artists", 
+    "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/581e4d942d2a4470a465477cfb990998.png", 
+    "title": "Teenage Dirtbags"
+  }, 
+  "we say sunrise/captain, my captain": {
+    "artist": "We Say Sunrise", 
+    "picture": null, 
+    "title": "Captain, My Captain"
+  }, 
   "weezer/raditude": {
     "artist": "Weezer", 
-    "id": 112, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/62be907abdc97eb92d50ad923e956be5.png", 
     "title": "Raditude"
   }, 
   "wheatus/wheatus": {
     "artist": "Wheatus", 
-    "id": 74, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/87d772620e840e805ccbd1f34d800095.png", 
     "title": "Wheatus"
   }, 
+  "wolf alice/mixtape": {
+    "artist": "Wolf Alice", 
+    "picture": null, 
+    "title": "Mixtape"
+  }, 
   "wolf alice/my love is cool": {
     "artist": "Wolf Alice", 
-    "id": 9, 
     "picture": "https://lastfm-img2.akamaized.net/i/u/300x300/045ea4dff9234bb4cb511d89f2c93655.png", 
     "title": "My Love Is Cool"
+  }, 
+  "\u05e2\u05d1\u05e8\u05d9 \u05dc\u05d9\u05d3\u05e8/jesse": {
+    "artist": "\u05e2\u05d1\u05e8\u05d9 \u05dc\u05d9\u05d3\u05e8", 
+    "picture": null, 
+    "title": "Jesse"
   }
 }

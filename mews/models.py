@@ -23,12 +23,16 @@ class Artist(db.Model):
 	picture = db.Column(db.String(200), unique=True, nullable=True)
 	is_known = db.Column(db.Boolean, nullable=False, default=False)
 
-	def asDict(self):
-		return {
-			"id": self.id,
+	def asDict(self, add_id=True):
+		dict = {
 			"name": self.name,
 			"picture": self.picture
 		}
+
+		if add_id:
+			dict["id"] = self.id
+
+		return dict
 
 	def __repr__(self):
 		return "<Author %r>" % self.name
@@ -45,13 +49,17 @@ class Album(db.Model):
 	artist = db.relationship("Artist",
 		backref=db.backref("albums", lazy=True))
 
-	def asDict(self):
-		return {
-			"id": self.id,
+	def asDict(self, add_id=True):
+		dict = {
 			"title": self.title,
 			"artist": self.artist.name,
 			"picture": self.picture
 		}
+
+		if add_id:
+			dict["id"] = self.id
+
+		return dict
 
 	def __repr__(self):
 		return "<Album %r>" % self.name
@@ -86,14 +94,18 @@ class Track(db.Model):
 	album = db.relationship("Album",
 		backref=db.backref("tracks", lazy=True))
 
-	def asDict(self, pt_id=None):
-		return {
-			"id": self.id,
+	def asDict(self, pt_id=None, add_id=True):
+		dict = {
 			"title": self.title,
 			"artist": self.artist.name,
 			"picture": self.picture or self.album.picture,
 			"pt_id": pt_id
 		}
+
+		if add_id:
+			dict["id"] = self.id
+
+		return dict
 
 	def __repr__(self):
 		return "<Track %r>" % self.title
