@@ -1,0 +1,33 @@
+{% macro render_field(field, _class=None, label=None, label_visible=true, right_url=None, right_label=None, fieldclass=None) -%}
+	{% if not label and label != "" %}{% set label=field.label.text %}{% endif %}
+	<div class="field {{ _class }}">
+		{% if field.type != 'HiddenField' and label_visible %}
+			{% if label %}<label for="{{ field.id }}" class="label">{{ label|safe }}</label>{% endif %}
+		{% endif %}
+		<div class="control is-expanded">
+			{% if label_visible %}
+				{{ field(class_=fieldclass, **kwargs) }}
+			{% else %}
+				{{ field(class_=fieldclass, placeholder=label, **kwargs) }}
+			{% endif %}
+		</div>
+		{% if field.errors %}
+			{% for e in field.errors %}
+				<p class="help-block">{{ e }}</p>
+			{% endfor %}
+		{% endif %}
+	</div>
+{%- endmacro %}
+
+{% macro render_fields(fields, label) %}
+<div class="field is-horizontal">
+	<div class="field-label is-normal">
+		<label class="label">{{ label }}</label>
+	</div>
+	<div class="field-body">
+	{% for field in fields %}
+		{{ render_field(field, label_visible=False, **kwargs) }}
+	{% endfor %}
+	</div>
+</div>
+{% endmacro %}

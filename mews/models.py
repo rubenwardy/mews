@@ -118,3 +118,50 @@ class Playlist(db.Model):
 
 	def __repr__(self):
 		return "<Playlist %r>" % self.title
+
+
+class Replacement(db.Model, UserMixin):
+	id = db.Column(db.Integer, primary_key=True)
+	album_title = db.Column(db.String(80), nullable=True)
+	artist_name = db.Column(db.String(80), nullable=True)
+	set_album   = db.Column(db.String(80), nullable=True)
+	set_artist  = db.Column(db.String(80), nullable=True)
+
+	def __str__(self):
+		ret = ""
+
+		if self.album_title:
+			ret += "Album " + self.album_title
+			if self.artist_name:
+				ret += " by " + self.artist_name
+
+		elif self.artist_name:
+			ret += "Artist " + self.artist_name
+
+		if self.set_album:
+			ret += " is actually in album " + self.set_album
+			if self.set_artist:
+				ret += " by " + self.set_artist
+		elif self.set_artist == "Various Artists":
+			ret += " is actually a single mixed album"
+		elif self.set_artist:
+			ret += " is actually by " + self.set_artist
+
+
+		return ret
+
+	def fixEmptyFields(self):
+		if self.album_title.strip() == "":
+			self.album_title = None
+
+		if self.artist_name.strip() == "":
+			self.artist_name = None
+
+		if self.set_album.strip() == "":
+			self.set_album = None
+
+		if self.set_artist.strip() == "":
+			self.set_artist = None
+
+	def isValid(self):
+		return (self.album_title or self.artist_name) and (self.set_album or self.set_artist)

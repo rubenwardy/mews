@@ -37,19 +37,25 @@
 	<section class="panel">
 		<p class="panel-heading">
 			<span class="actions is-pulled-right">
-				<a href="#"><span class="fa fa-plus"></span></a>
+				<a href="{{ url_for('replacement_new') }}"><span class="fa fa-plus"></span></a>
 				<!-- <a><span class="fa fa-times close"></span></a> -->
 			</span>
-			<span class="count tag is-rounded is-black">0</span>
+			<span class="count tag is-rounded is-black">{{ replacements | count }}</span>
 			<span class="title is-5">Replacements</span>
 		</p>
-		<div class="panel-scrolling"></div>
+		<div class="panel-scrolling">
+		{% for rep in replacements %}
+			<div class="panel-block">{{ rep }}</div>
+		{% else %}
+			<i class="panel-block">No replacements</i>
+		{% endfor %}
+		</div>
 	</section>
 
 	<h1 class="title is-3">Problems</h1>
 
 	<div class="columns">
-		<div class="column section is-one-half">
+		<div class="column">
 			<div class="panel">
 				<p class="panel-heading">
 					<span class="count tag is-rounded {% if unknown_albums %}is-danger{% else %}is-black{% endif %}">{{ unknown_albums | length }}</span>
@@ -58,19 +64,38 @@
 				<div class="panel-scrolling">
 				{% for album in unknown_albums %}
 					<div class="panel-block">{{ album.title }} by {{ album.artist.name }}</div>
+				{% else %}
+					<i class="panel-block">All ok!</i>
 				{% endfor %}
 				</div>
 			</div>
 		</div>
-		<div class="column section is-one-half">
+		<div class="column">
 			<div class="panel">
 				<p class="panel-heading">
-					<span class="count tag is-rounded {% if unknown_albums %}is-danger{% else %}is-black{% endif %}">{{ unknown_artists | length }}</span>
+					<span class="count tag is-rounded {% if unknown_artists %}is-danger{% else %}is-black{% endif %}">{{ unknown_artists | length }}</span>
 					<span class="title is-5">Unknown Artists</span>
 				</p>
 				<div class="panel-scrolling">
 				{% for artist in unknown_artists %}
 					<div class="panel-block">{{ artist.name }}</div>
+				{% else %}
+					<i class="panel-block">All ok!</i>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="column">
+			<div class="panel">
+				<p class="panel-heading">
+					<span class="count tag is-rounded {% if unknown_tracks %}is-danger{% else %}is-black{% endif %}">{{ unknown_tracks | length }}</span>
+					<span class="title is-5">Unknown Tracks</span>
+				</p>
+				<div class="panel-scrolling">
+				{% for track in unknown_tracks %}
+					<div class="panel-block">{{ track.title }}</div>
+				{% else %}
+					<i class="panel-block">All ok!</i>
 				{% endfor %}
 				</div>
 			</div>
