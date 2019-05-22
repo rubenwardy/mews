@@ -77,7 +77,7 @@ def getArtistsInfo():
 			if data.get(key):
 				print("Using cached " + artist.name)
 				artist.picture = data.get(key)["picture"]
-				artist.is_known = artist.picture is not None
+				artist.is_known = True
 			else:
 				print("Fetching " + artist.name)
 				lfm_artist = lastfm.get_artist(artist.name)

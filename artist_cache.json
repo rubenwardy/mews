@@ -3,6 +3,10 @@
     "name": "30 Seconds to Mars", 
     "picture": null
   }, 
+  "ac/dc": {
+    "name": "AC/DC", 
+    "picture": null
+  }, 
   "alice cooper": {
     "name": "Alice Cooper", 
     "picture": null
@@ -15,6 +19,18 @@
     "name": "Altered Images", 
     "picture": null
   }, 
+  "amber run": {
+    "name": "Amber Run", 
+    "picture": null
+  }, 
+  "amy winehouse": {
+    "name": "Amy Winehouse", 
+    "picture": null
+  }, 
+  "arctic monkeys": {
+    "name": "Arctic Monkeys", 
+    "picture": null
+  }, 
   "argent": {
     "name": "Argent", 
     "picture": null
@@ -25,6 +41,10 @@
   }, 
   "bad company": {
     "name": "Bad Company", 
+    "picture": null
+  }, 
+  "bastille": {
+    "name": "Bastille", 
     "picture": null
   }, 
   "beastie boys": {
@@ -47,16 +67,32 @@
     "name": "Bloodhound Gang", 
     "picture": null
   }, 
+  "blossoms": {
+    "name": "Blossoms", 
+    "picture": null
+  }, 
   "blue \u00f6yster cult": {
     "name": "Blue \u00d6yster Cult", 
+    "picture": null
+  }, 
+  "bon jovi": {
+    "name": "Bon Jovi", 
     "picture": null
   }, 
   "boston": {
     "name": "Boston", 
     "picture": null
   }, 
+  "box car racer": {
+    "name": "Box Car Racer", 
+    "picture": null
+  }, 
   "bring me the horizon": {
-    "name": "Bring Me the Horizon", 
+    "name": "Bring Me The Horizon", 
+    "picture": null
+  }, 
+  "bronski beat": {
+    "name": "Bronski Beat", 
     "picture": null
   }, 
   "bryan adams": {
@@ -67,8 +103,32 @@
     "name": "Bryan Ferry", 
     "picture": null
   }, 
+  "canterbury": {
+    "name": "Canterbury", 
+    "picture": null
+  }, 
+  "catfish and the bottlemen": {
+    "name": "Catfish and The Bottlemen", 
+    "picture": null
+  }, 
+  "christina perri": {
+    "name": "Christina Perri", 
+    "picture": null
+  }, 
+  "coldplay": {
+    "name": "Coldplay", 
+    "picture": null
+  }, 
   "cream": {
     "name": "Cream", 
+    "picture": null
+  }, 
+  "daniel powter": {
+    "name": "Daniel Powter", 
+    "picture": null
+  }, 
+  "david bowie": {
+    "name": "David Bowie", 
     "picture": null
   }, 
   "deep purple": {
@@ -83,8 +143,16 @@
     "name": "Dexys Midnight Runners", 
     "picture": null
   }, 
+  "dinosaur jr.": {
+    "name": "Dinosaur Jr.", 
+    "picture": null
+  }, 
   "duran duran": {
     "name": "Duran Duran", 
+    "picture": null
+  }, 
+  "ed sheeran": {
+    "name": "Ed Sheeran", 
     "picture": null
   }, 
   "edmund butt": {
@@ -95,12 +163,32 @@
     "name": "Evanescence", 
     "picture": null
   }, 
+  "fall out boy": {
+    "name": "Fall Out Boy", 
+    "picture": null
+  }, 
   "feeder": {
     "name": "Feeder", 
     "picture": null
   }, 
+  "flight of the conchords": {
+    "name": "Flight of the Conchords", 
+    "picture": null
+  }, 
+  "foals": {
+    "name": "Foals", 
+    "picture": null
+  }, 
   "focus": {
     "name": "Focus", 
+    "picture": null
+  }, 
+  "foo fighters": {
+    "name": "Foo Fighters", 
+    "picture": null
+  }, 
+  "franz ferdinand": {
+    "name": "Franz Ferdinand", 
     "picture": null
   }, 
   "free": {
@@ -111,28 +199,92 @@
     "name": "Genesis", 
     "picture": null
   }, 
+  "glass animals": {
+    "name": "Glass Animals", 
+    "picture": null
+  }, 
+  "green day": {
+    "name": "Green Day", 
+    "picture": null
+  }, 
+  "guns n' roses": {
+    "name": "Guns N' Roses", 
+    "picture": null
+  }, 
   "heaven 17": {
     "name": "Heaven 17", 
+    "picture": null
+  }, 
+  "hoobastank": {
+    "name": "Hoobastank", 
+    "picture": null
+  }, 
+  "hozier": {
+    "name": "Hozier", 
+    "picture": null
+  }, 
+  "hunx and his punx": {
+    "name": "Hunx and His Punx", 
     "picture": null
   }, 
   "iggy pop": {
     "name": "Iggy Pop", 
     "picture": null
   }, 
+  "imagine dragons": {
+    "name": "Imagine Dragons", 
+    "picture": null
+  }, 
+  "jamie t": {
+    "name": "Jamie T", 
+    "picture": null
+  }, 
   "joe jackson": {
     "name": "Joe Jackson", 
+    "picture": null
+  }, 
+  "john lennon": {
+    "name": "John Lennon", 
+    "picture": null
+  }, 
+  "johnny cash": {
+    "name": "Johnny Cash", 
+    "picture": null
+  }, 
+  "joy division": {
+    "name": "Joy Division", 
     "picture": null
   }, 
   "judas priest": {
     "name": "Judas Priest", 
     "picture": null
   }, 
+  "kaiser chiefs": {
+    "name": "Kaiser Chiefs", 
+    "picture": null
+  }, 
+  "keane": {
+    "name": "Keane", 
+    "picture": null
+  }, 
   "kiss": {
     "name": "Kiss", 
     "picture": null
   }, 
+  "led zeppelin": {
+    "name": "Led Zeppelin", 
+    "picture": null
+  }, 
   "lenny kravitz": {
     "name": "Lenny Kravitz", 
+    "picture": null
+  }, 
+  "linkin park": {
+    "name": "Linkin Park", 
+    "picture": null
+  }, 
+  "lit": {
+    "name": "Lit", 
     "picture": null
   }, 
   "lynyrd skynyrd": {
@@ -143,32 +295,104 @@
     "name": "Meat Loaf", 
     "picture": null
   }, 
+  "metallica": {
+    "name": "Metallica", 
+    "picture": null
+  }, 
+  "metro station": {
+    "name": "Metro Station", 
+    "picture": null
+  }, 
+  "mgmt": {
+    "name": "MGMT", 
+    "picture": null
+  }, 
+  "mika": {
+    "name": "Mika", 
+    "picture": null
+  }, 
   "mott the hoople": {
-    "name": "Mott the Hoople", 
+    "name": "Mott The Hoople", 
     "picture": null
   }, 
   "mot\u00f6rhead": {
     "name": "Mot\u00f6rhead", 
     "picture": null
   }, 
+  "muse": {
+    "name": "Muse", 
+    "picture": null
+  }, 
+  "new found glory": {
+    "name": "New Found Glory", 
+    "picture": null
+  }, 
   "nickelback": {
     "name": "Nickelback", 
     "picture": null
   }, 
+  "nirvana": {
+    "name": "Nirvana", 
+    "picture": null
+  }, 
+  "noah and the whale": {
+    "name": "Noah and the Whale", 
+    "picture": null
+  }, 
+  "oasis": {
+    "name": "Oasis", 
+    "picture": null
+  }, 
+  "ok go": {
+    "name": "OK Go", 
+    "picture": null
+  }, 
   "orchestral manoeuvres in the dark": {
-    "name": "Orchestral Manoeuvres in the Dark", 
+    "name": "Orchestral Manoeuvres In the Dark", 
+    "picture": null
+  }, 
+  "paramore": {
+    "name": "Paramore", 
     "picture": null
   }, 
   "paul mccartney & wings": {
     "name": "Paul McCartney & Wings", 
     "picture": null
   }, 
+  "pet shop boys": {
+    "name": "Pet Shop Boys", 
+    "picture": null
+  }, 
+  "pink floyd": {
+    "name": "Pink Floyd", 
+    "picture": null
+  }, 
   "primal scream": {
     "name": "Primal Scream", 
     "picture": null
   }, 
+  "puddle of mudd": {
+    "name": "Puddle of Mudd", 
+    "picture": null
+  }, 
   "python lee jackson feat. rod stewart": {
     "name": "Python Lee Jackson feat. Rod Stewart", 
+    "picture": null
+  }, 
+  "queen": {
+    "name": "Queen", 
+    "picture": null
+  }, 
+  "queens of the stone age": {
+    "name": "Queens of the Stone Age", 
+    "picture": null
+  }, 
+  "r.e.m.": {
+    "name": "R.E.M.", 
+    "picture": null
+  }, 
+  "radiohead": {
+    "name": "Radiohead", 
     "picture": null
   }, 
   "rainbow": {
@@ -179,6 +403,22 @@
     "name": "Ram Jam", 
     "picture": null
   }, 
+  "razorlight": {
+    "name": "Razorlight", 
+    "picture": null
+  }, 
+  "red hot chili peppers": {
+    "name": "Red Hot Chili Peppers", 
+    "picture": null
+  }, 
+  "regina spektor": {
+    "name": "Regina Spektor", 
+    "picture": null
+  }, 
+  "richard buckner": {
+    "name": "Richard Buckner", 
+    "picture": null
+  }, 
   "robert palmer": {
     "name": "Robert Palmer", 
     "picture": null
@@ -187,12 +427,28 @@
     "name": "Rod Stewart", 
     "picture": null
   }, 
+  "simple plan": {
+    "name": "Simple Plan", 
+    "picture": null
+  }, 
   "slade": {
     "name": "Slade", 
     "picture": null
   }, 
+  "slaves": {
+    "name": "Slaves", 
+    "picture": null
+  }, 
+  "smash mouth": {
+    "name": "Smash Mouth", 
+    "picture": null
+  }, 
   "snow patrol": {
     "name": "Snow Patrol", 
+    "picture": null
+  }, 
+  "soak": {
+    "name": "Soak", 
     "picture": null
   }, 
   "soundgarden": {
@@ -207,8 +463,16 @@
     "name": "Steppenwolf", 
     "picture": null
   }, 
+  "stereophonics": {
+    "name": "Stereophonics", 
+    "picture": null
+  }, 
   "steve miller band": {
     "name": "Steve Miller Band", 
+    "picture": null
+  }, 
+  "sting": {
+    "name": "Sting", 
     "picture": null
   }, 
   "sum 41": {
@@ -219,8 +483,32 @@
     "name": "Survivor", 
     "picture": null
   }, 
+  "swim deep": {
+    "name": "Swim Deep", 
+    "picture": null
+  }, 
+  "t. rex": {
+    "name": "T. Rex", 
+    "picture": null
+  }, 
+  "take that": {
+    "name": "Take That", 
+    "picture": null
+  }, 
+  "the ataris": {
+    "name": "The Ataris", 
+    "picture": null
+  }, 
   "the beat": {
     "name": "The Beat", 
+    "picture": null
+  }, 
+  "the beatles": {
+    "name": "The Beatles", 
+    "picture": null
+  }, 
+  "the black keys": {
+    "name": "The Black Keys", 
     "picture": null
   }, 
   "the clash": {
@@ -243,6 +531,18 @@
     "name": "The Human League", 
     "picture": null
   }, 
+  "the jam": {
+    "name": "The Jam", 
+    "picture": null
+  }, 
+  "the killers": {
+    "name": "The Killers", 
+    "picture": null
+  }, 
+  "the kills": {
+    "name": "The Kills", 
+    "picture": null
+  }, 
   "the kinks": {
     "name": "The Kinks", 
     "picture": null
@@ -251,8 +551,24 @@
     "name": "The Knack", 
     "picture": null
   }, 
+  "the kooks": {
+    "name": "The Kooks", 
+    "picture": null
+  }, 
+  "the libertines": {
+    "name": "The Libertines", 
+    "picture": null
+  }, 
+  "the neighbourhood": {
+    "name": "The Neighbourhood", 
+    "picture": null
+  }, 
   "the passions": {
     "name": "The Passions", 
+    "picture": null
+  }, 
+  "the police": {
+    "name": "The Police", 
     "picture": null
   }, 
   "the reindeer section": {
@@ -267,6 +583,18 @@
     "name": "The Ruts", 
     "picture": null
   }, 
+  "the shins": {
+    "name": "The Shins", 
+    "picture": null
+  }, 
+  "the smiths": {
+    "name": "The Smiths", 
+    "picture": null
+  }, 
+  "the stone roses": {
+    "name": "The Stone Roses", 
+    "picture": null
+  }, 
   "the stooges": {
     "name": "The Stooges", 
     "picture": null
@@ -275,20 +603,64 @@
     "name": "The Stranglers", 
     "picture": null
   }, 
+  "the strokes": {
+    "name": "The Strokes", 
+    "picture": null
+  }, 
   "the teardrop explodes": {
     "name": "The Teardrop Explodes", 
+    "picture": null
+  }, 
+  "the temper trap": {
+    "name": "The Temper Trap", 
+    "picture": null
+  }, 
+  "the vaccines": {
+    "name": "The Vaccines", 
     "picture": null
   }, 
   "the velvet underground": {
     "name": "The Velvet Underground", 
     "picture": null
   }, 
+  "the verve": {
+    "name": "The Verve", 
+    "picture": null
+  }, 
+  "the white stripes": {
+    "name": "The White Stripes", 
+    "picture": null
+  }, 
+  "the who": {
+    "name": "The Who", 
+    "picture": null
+  }, 
+  "they might be giants": {
+    "name": "They Might Be Giants", 
+    "picture": null
+  }, 
   "thin lizzy": {
     "name": "Thin Lizzy", 
     "picture": null
   }, 
+  "troye sivan": {
+    "name": "Troye Sivan", 
+    "picture": null
+  }, 
+  "two door cinema club": {
+    "name": "Two Door Cinema Club", 
+    "picture": null
+  }, 
+  "u2": {
+    "name": "U2", 
+    "picture": null
+  }, 
   "ultravox": {
     "name": "Ultravox", 
+    "picture": null
+  }, 
+  "vampire weekend": {
+    "name": "Vampire Weekend", 
     "picture": null
   }, 
   "various artists": {
@@ -299,12 +671,32 @@
     "name": "Visage", 
     "picture": null
   }, 
+  "we say sunrise": {
+    "name": "We Say Sunrise", 
+    "picture": null
+  }, 
+  "weezer": {
+    "name": "Weezer", 
+    "picture": null
+  }, 
+  "wheatus": {
+    "name": "Wheatus", 
+    "picture": null
+  }, 
   "whitesnake": {
     "name": "Whitesnake", 
     "picture": null
   }, 
+  "wolf alice": {
+    "name": "Wolf Alice", 
+    "picture": null
+  }, 
   "wolfmother": {
     "name": "Wolfmother", 
+    "picture": null
+  }, 
+  "yellowcard": {
+    "name": "Yellowcard", 
     "picture": null
   }, 
   "zz top": {
