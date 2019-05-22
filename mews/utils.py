@@ -3,6 +3,7 @@ from tinytag import TinyTag
 import json
 from . import lastfm
 from .models import *
+from sqlalchemy import or_
 import pylast, json
 
 
@@ -38,6 +39,14 @@ def getOrCreateArtist(artist):
 
 
 def getOrCreateAlbum(artist, title):
+	rep = Replacement.query.filter(or_(Replacement.artist_name==artist, Replacement.artist_name==None)) \
+		.filter(or_(Replacement.album_title==title, Replacement.album_title==None)).first()
+
+	if rep:
+		artist = rep.set_artist or artist
+		title = rep.set_album or title
+		print("Replacement! " + str(rep))
+
 	art = getOrCreateArtist(artist)
 	album = Album.query.filter_by(title=title, artist=art).first()
 	if album is None:

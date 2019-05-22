@@ -79,18 +79,18 @@ def replacement_delete(id):
 @login_required
 def sync_album():
 	getAlbumsInfo()
-	return redirect(url_for("hello"))
+	return redirect(url_for("admin"))
 
 
 @app.route("/admin/sync/artists/", methods=["POST"])
 @login_required
 def sync_artist():
 	getArtistsInfo()
-	return redirect(url_for("hello"))
+	return redirect(url_for("admin"))
 
 
 @app.route("/admin/sync/music/", methods=["POST"])
 @login_required
 def sync_music():
 	importAllMusic()
-	return redirect(url_for("hello"))
+	return redirect(url_for("admin"))

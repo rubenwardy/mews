@@ -142,10 +142,15 @@ class Replacement(db.Model, UserMixin):
 			ret += " is actually album " + self.set_album
 			if self.set_artist:
 				ret += " by " + self.set_artist
-		elif self.set_artist == "Various Artists":
-			ret += " is actually a single mixed album"
+		elif self.album_title and self.set_artist == "Various Artists":
+			ret += " is actually a compilation by Various Artists"
 		elif self.set_artist:
-			ret += " is actually by " + self.set_artist
+			if self.album_title:
+				ret += " is actually by " + self.set_artist
+			elif self.artist_name:
+				ret += " is actually called " + self.set_artist
+			else:
+				assert(False)
 
 
 		return ret
