@@ -8,10 +8,15 @@ export class AlbumTracksView extends ViewModel {
 	constructor(element) {
 		super(element)
 
-		this.tracks_view = new TracksView(this.element.querySelector("section"), "column is-half")
+		this.tracks_view = new TracksView(this.element.querySelector("section"), "column is-half",
+				{ type: "album", album: null })
 	}
 
 	onChange(album) {
+		if (this.tracks_view) {
+			this.tracks_view.setSource({ type: "album", album: album })
+		}
+
 		if (!album) {
 			this.element.classList.remove("is-active")
 			return

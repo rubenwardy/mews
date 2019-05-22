@@ -177,13 +177,18 @@ export class Player {
 		await playlist.addTrackAfter(id, this.getPlayingID())
 	}
 
-	async playTrack(id) {
+	async playTrack(id, source) {
 		this.audio.pauseAll()
-		let playlist = await this.getOrCreatePlaylist()
 
+		let playlist = await this.getOrCreatePlaylist()
 		let pt = playlist.getID(id)
 		if (!pt) {
-			await playlist.addTrack(id)
+			if (source && source.type == "album") {
+				await this.playAlbum(source.album.id)
+			} else {
+				await playlist.addTrackAfter(id, this.getPlayingID())
+			}
+
 			pt = playlist.getID(id)
 			console.assert(pt, "Track never added")
 		}

@@ -3,11 +3,12 @@ import { player } from "../main.js"
 import { Track } from "../models/track.js"
 
 export class TracksView extends ViewModel {
-	constructor(element, classes, show_art) {
+	constructor(element, classes, show_art, source) {
 		super(element)
 
 		this.classes = classes || ""
 		this.show_art = show_art
+		this.source = source
 
 		rjs.watch("statechanged", this.onStateChange.bind(this))
 
@@ -33,10 +34,14 @@ export class TracksView extends ViewModel {
 				player.addTrackNext(track.id)
 				event.stopPropagation()
 			} else if (rjs.getParentElementByClass(e.target, "track", this.element)) {
-				player.playTrack(track.id)
+				player.playTrack(track.id, this.source)
 				event.stopPropagation()
 			}
 		})
+	}
+
+	setSource(source) {
+		this.source = source
 	}
 
 	onChange(container) {

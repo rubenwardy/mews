@@ -35,7 +35,8 @@ export class PlaylistView extends ViewModel {
 	constructor(element) {
 		super(element)
 
-		this.tracks_view = new TracksView(this.element.querySelector(".panel-scrolling"), "panel-block", true)
+		this.tracks_view = new TracksView(this.element.querySelector(".panel-scrolling"), "panel-block",
+				true, { type: "playlist", album: null })
 
 		this.element.querySelector(".panel-heading").addEventListener("click", () => {
 			if (this.element.classList.contains("panel-collapsed")) {
@@ -47,6 +48,10 @@ export class PlaylistView extends ViewModel {
 	}
 
 	onChange(playlist) {
+		if (this.tracks_view) {
+			this.tracks_view.setSource({ type: "playlist", album: playlist })
+		}
+
 		if (!playlist) {
 			this.element.style.display = "none"
 			return
