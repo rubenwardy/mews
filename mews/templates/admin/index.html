@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+	<section class="level section">
+		<div class="level-left">
+			<div class="level-item has-text-centered">
+				<div>
+					<p class="heading">Artists</p>
+					<p class="title">{{ num_artists }}</p>
+				</div>
+			</div>
+			<div class="level-item has-text-centered">
+				<div>
+					<p class="heading">Tracks</p>
+					<p class="title">{{ num_tracks }}</p>
+				</div>
+			</div>
+			<div class="level-item has-text-centered">
+				<div>
+					<p class="heading">Albums</p>
+					<p class="title">{{ num_albums }}</p>
+				</div>
+			</div>
+		</div>
+		<div class="level-right">
+			<form class="level-item has-text-centered" method="POST" action="{{ url_for('sync_music') }}">
+				<input type="submit" value="Sync Music" class="button is-primary">
+			</form>
+			<form class="level-item has-text-centered" method="POST" action="{{ url_for('sync_artist') }}">
+				<input type="submit" value="Get Artist Info" class="button is-link">
+			</form>
+			<form class="level-item has-text-centered" method="POST" action="{{ url_for('sync_album') }}">
+				<input type="submit" value="Get Album Info" class="button is-link">
+			</form>
+		</div>
+	</section>
+
+	<section class="panel">
+		<p class="panel-heading">
+			<span class="actions is-pulled-right">
+				<a href="#"><span class="fa fa-plus"></span></a>
+				<!-- <a><span class="fa fa-times close"></span></a> -->
+			</span>
+			<span class="count tag is-rounded is-black">0</span>
+			<span class="title is-5">Replacements</span>
+		</p>
+		<div class="panel-scrolling"></div>
+	</section>
+
+	<h1 class="title is-3">Problems</h1>
+
+	<div class="columns">
+		<div class="column section is-one-half">
+			<div class="panel">
+				<p class="panel-heading">
+					<span class="count tag is-rounded {% if unknown_albums %}is-danger{% else %}is-black{% endif %}">{{ unknown_albums | length }}</span>
+					<span class="title is-5">Unknown Albums</span>
+				</p>
+				<div class="panel-scrolling">
+				{% for album in unknown_albums %}
+					<div class="panel-block">{{ album.title }} by {{ album.artist.name }}</div>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="column section is-one-half">
+			<div class="panel">
+				<p class="panel-heading">
+					<span class="count tag is-rounded {% if unknown_albums %}is-danger{% else %}is-black{% endif %}">{{ unknown_artists | length }}</span>
+					<span class="title is-5">Unknown Artists</span>
+				</p>
+				<div class="panel-scrolling">
+				{% for artist in unknown_artists %}
+					<div class="panel-block">{{ artist.name }}</div>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

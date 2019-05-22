@@ -1,7 +1,6 @@
 from flask import render_template, redirect, url_for, send_file, abort, request, jsonify
 from flask_user import login_required
-from mews import app, lastfm
-from mews.utils import scanForMusic, getArtistsInfo, getAlbumsInfo, importAllMusic
+from mews import app
 from mews.models import *
 
 @user_manager.login_manager.unauthorized_handler
@@ -21,14 +20,6 @@ def hello():
 	return render_template("home.html")
 
 
-@app.route("/problems/")
-@login_required
-def problems():
-	unknown_albums = Album.query.filter_by(is_known=False).order_by(Album.title).all()
-	unknown_artists = Artist.query.filter_by(is_known=False).order_by(Artist.name).all()
-	return render_template("problems.html", unknown_albums=unknown_albums, unknown_artists=unknown_artists)
-
-
 @app.route("/tracks/<int:id>/")
 @login_required
 def track_file(id):
@@ -40,25 +31,4 @@ def track_file(id):
 	print(track.path)
 	return send_file(track.path)
 
-
-@app.route("/sync/albums/")
-@login_required
-def sync_album():
-	getAlbumsInfo()
-	return redirect(url_for("hello"))
-
-
-@app.route("/sync/artists/")
-@login_required
-def sync_artist():
-	getArtistsInfo()
-	return redirect(url_for("hello"))
-
-
-@app.route("/sync/")
-@login_required
-def sync():
-	importAllMusic()
-	return redirect(url_for("hello"))
-
-from . import sass, api, dummyart
+from . import sass, api, admin, dummyart

@@ -35,46 +35,25 @@
 			<div id="navbarBasicExample" class="navbar-menu">
 				<div class="navbar-start">
 					{% if current_user.is_authenticated %}
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link">
-							Library
+						<a class="navbar-item" href="{{ url_for("admin") }}">
+							Admin
 						</a>
-
-						<div class="navbar-dropdown">
-							<a class="navbar-item" href="{{ url_for("sync") }}">
-								Import
+						<div style="margin-left:25%;"></div>
+						<div class="navbar-item" id="player">
+							<a href="#">
+								<img src="/dummy/?title=Simulation+Theory" id="player-art">
 							</a>
-							<a class="navbar-item" href="{{ url_for("sync_album") }}">
-								Get Album Info
-							</a>
-							<a class="navbar-item" href="{{ url_for("sync_artist") }}">
-								Get Artist Info
-							</a>
-							<a class="navbar-item" href="{{ url_for("problems") }}">
-								See Problems
-							</a>
-							<hr class="navbar-divider">
-							<div class="navbar-item" style="font-size:80%;">
-								Warning: links will stop music
+							<div class="minitrack">
+								<a href="#" id="player-track">Algorithm</a>
+								<a href="#" id="player-artist">Muse</a>
+							</div>
+							<div id="audioplayer">
+								<!-- <a class="controls fas fa-play"></a>
+								<a class="controls fas fa-backward"></a>
+								<a class="controls fas fa-forward"></a>
+								<progress class="progress is-primary is-small" value="15" max="100">15%</progress> -->
 							</div>
 						</div>
-					</div>
-					<div style="margin-left:25%;"></div>
-					<div class="navbar-item" id="player">
-						<a href="#">
-							<img src="/dummy/?title=Simulation+Theory" id="player-art">
-						</a>
-						<div class="minitrack">
-							<a href="#" id="player-track">Algorithm</a>
-							<a href="#" id="player-artist">Muse</a>
-						</div>
-						<div id="audioplayer">
-							<!-- <a class="controls fas fa-play"></a>
-							<a class="controls fas fa-backward"></a>
-							<a class="controls fas fa-forward"></a>
-							<progress class="progress is-primary is-small" value="15" max="100">15%</progress> -->
-						</div>
-					</div>
 					{% else %}
 						<a class="navbar-item" href="{{ url_for('user.login') }}">Sign in</a>
 					{% endif %}
