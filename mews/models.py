@@ -139,7 +139,7 @@ class Replacement(db.Model, UserMixin):
 			ret += "Artist " + self.artist_name
 
 		if self.set_album:
-			ret += " is actually in album " + self.set_album
+			ret += " is actually album " + self.set_album
 			if self.set_artist:
 				ret += " by " + self.set_artist
 		elif self.set_artist == "Various Artists":

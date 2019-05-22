@@ -45,7 +45,12 @@
 		</p>
 		<div class="panel-scrolling">
 		{% for rep in replacements %}
-			<div class="panel-block">{{ rep }}</div>
+			<div class="panel-block">
+				<div class="actions">
+					<a href="{{ url_for('replacement_edit', id=rep.id) }}"><span class="fa fa-edit"></span></a>
+				</div>
+				{{ rep }}
+			</div>
 		{% else %}
 			<i class="panel-block">No replacements</i>
 		{% endfor %}

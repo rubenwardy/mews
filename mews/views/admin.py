@@ -46,6 +46,28 @@ def replacement_new():
 	return render_template("admin/replacement_new.html", form=form)
 
 
+
+@app.route("/admin/replacements/<int:id>/edit/", methods=["GET", "POST"])
+@login_required
+def replacement_edit(id):
+	rep = Replacement.query.get(id)
+	if rep is None:
+		abort(404)
+
+	form = ReplacementForm(request.form, obj=rep)
+	if form.validate_on_submit():
+		form.populate_obj(rep)
+		rep.fixEmptyFields()
+		if rep.isValid():
+			db.session.commit()
+
+			flash("Added placement: " + str(rep))
+
+			return redirect(url_for('admin'))
+
+	return render_template("admin/replacement_edit.html", form=form, rep=rep)
+
+
 @app.route("/admin/sync/albums/", methods=["POST"])
 @login_required
 def sync_album():

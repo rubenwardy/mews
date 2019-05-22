@@ -1,6 +1,5 @@
 @import "albums.scss";
 @import "player.scss";
-@import "tracks.scss";
 
 .navbar-item svg {
 	margin-left: 10px;
@@ -42,4 +41,25 @@ h1 {
 
 .notifications .notification {
 	margin-bottom: 0.3em;
+}
+
+.panel-block, #albummodal .column {
+	position: relative;
+
+	.actions {
+		position: absolute;
+		right: 20px;
+		top: 0px;
+		bottom: 0px;
+		display: none;
+
+		a span {
+			padding-top: 18px;
+			font-size: 120%;
+		}
+	}
+
+	&:hover .actions {
+		display: block;
+	}
 }

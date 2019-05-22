@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+	{% from "macros/forms.html" import render_fields %}
+
+	<h1 class="title">Edit Replacement</h1>
+
+	<p>
+		After importing music, Mews will search for albums, tracks, and artists matching these conditions,
+		and will set properties. This can be used to correctly set the album artist for mixed albums, for example.
+	</p>
+
+	<form method="POST" action="{{ url_for('replacement_edit', id=rep.id) }}" style="margin-top: 1em;">
+		{{ form.csrf_token }}
+		{{ render_fields([form.album_title, form.artist_name], label="Query") }}
+		{{ render_fields([form.set_album, form.set_artist], label="Set") }}
+		<input type="submit" value="Create">
+	</form>
+{% endblock %}
