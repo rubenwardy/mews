@@ -7,11 +7,16 @@ from sqlalchemy import or_
 import pylast, json
 
 
+def randomString(n):
+	return ''.join(random.choice(string.ascii_lowercase + \
+		string.ascii_uppercase + string.digits) for _ in range(n))
+
+
 ALLOWED_EXT = [".mp3", ".m4a", ".wav", ".ogg"]
 def getMusicInfo(path):
 	_, ext = os.path.splitext(path.lower())
 	if ext in ALLOWED_EXT:
-		return { "path": path, "meta": TinyTag.get(path) }
+		return { "path": path, "meta": TinyTag.get(path, image=True) }
 	else:
 		return None
 
@@ -110,6 +115,7 @@ def getArtistsInfo():
 
 	db.session.commit()
 
+
 def getAlbumsInfo():
 	data = {}
 	try:
@@ -149,21 +155,32 @@ def importAllMusic():
 			print("Track doesn't have meta data! " + info["path"])
 			continue
 
-		album = getOrCreateAlbum(artist=meta.albumartist or meta.artist, title=meta.album)
+		album  = getOrCreateAlbum(artist=meta.albumartist or meta.artist, title=meta.album)
 		artist = getOrCreateArtist(meta.artist)
-		path = info["path"]
+		path   = info["path"]
 
 		track = track_by_path.get(path)
 		if track is None:
-			print("Adding track at " + track.path)
+			print("Adding track at " + path)
 			track = Track()
 			db.session.add(track)
 
-		track.album = album
+		track.album  = album
 		track.artist = artist
-		track.title = meta.title
-		track.path  = info["path"]
-		del track_by_path[track.path]
+		track.title  = meta.title
+		track.path   = path
+
+		image = meta.get_image()
+		if image is not None:
+			filename = randomString(10) + ".jpg"
+			path = os.path.join(__dir__, "static/uploads/" + filename)
+			with open(path, "wb") as f:
+				f.write(image)
+
+			track.picture = "/static/uploads" + filename
+
+		if path in track_by_path:
+			del track_by_path[track.path]
 
 	for track in track_by_path.items():
 		print("Removing missing track: " + track.path)
