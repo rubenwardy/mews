@@ -52,7 +52,6 @@ rjs.onLoad(() => {
 			return
 		}
 
-		const classes = e.target.classList;
 		if (rjs.getParentElementByClass(e.target, "action-play", "albums")) {
 			player.playAlbum(album.id)
 			event.stopPropagation()
@@ -66,7 +65,7 @@ rjs.onLoad(() => {
 			}
 			event.stopPropagation()
 		}
-	});
+	})
 })
 
 export function appendAlbum(album) {

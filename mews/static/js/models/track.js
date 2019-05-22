@@ -30,8 +30,12 @@ export class Track extends Model {
 		return "/tracks/" + this.id + "/";
 	}
 
-	static get(id, dict) {
-		var track = tracks[id]
+	static get(id) {
+		return tracks[id]
+	}
+
+	static getOrCreate(id, dict) {
+		var track = this.get(id)
 		if (!track) {
 			track = new Track(id)
 			tracks[id] = track

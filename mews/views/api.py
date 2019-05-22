@@ -1,4 +1,4 @@
-from flask import render_template, jsonify, request
+from flask import render_template, jsonify, request, abort
 from flask_user import login_required
 from mews import app
 from mews.models import *
@@ -86,6 +86,12 @@ def api_playlist_tracks(id):
 				album = Album.query.get(album_id)
 				if album is not None:
 					playlist.tracks.extend(album.tracks)
+
+		if "tracks" in to_add:
+			for track_id in to_add["tracks"]:
+				track = Track.query.get(track_id)
+				if track is not None:
+					playlist.tracks.append(track)
 
 	db.session.commit()
 

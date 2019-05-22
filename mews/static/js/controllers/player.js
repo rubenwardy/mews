@@ -134,7 +134,7 @@ export class Player {
 	async addAlbum(id) {
 		var playlist = this.getPlaylist()
 		if (playlist) {
-			playlist.addAlbum(id)
+			await playlist.addAlbum(id)
 		} else {
 			playlist = new Playlist()
 			playlist.create().then(_ => playlist.addAlbum(id))
@@ -148,10 +148,21 @@ export class Player {
 
 		var playlist = this.getPlaylist()
 		if (playlist) {
-			playlist.playAlbum(id)
+			await playlist.playAlbum(id)
 		} else {
 			playlist = new Playlist()
 			playlist.create().then(_ => playlist.addAlbum(id))
+			this.setPlaylist(playlist)
+		}
+	}
+
+	async addTrack(id) {
+		var playlist = this.getPlaylist()
+		if (playlist) {
+			await playlist.addTrack(id)
+		} else {
+			playlist = new Playlist()
+			playlist.create().then(_ => playlist.addTrack(id))
 			this.setPlaylist(playlist)
 		}
 	}

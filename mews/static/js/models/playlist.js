@@ -30,7 +30,7 @@ export class Playlist extends Model {
 	setTracks(tracks) {
 		console.log("Updated tracks for Playlist " + this.id)
 		this.playlist_tracks = tracks.map(track => {
-			return { "track": Track.get(track.id, track), "id": track.pt_id }
+			return { "track": Track.getOrCreate(track.id, track), "id": track.pt_id }
 		})
 		this.notifyChange()
 	}
@@ -95,5 +95,9 @@ export class Playlist extends Model {
 
 	async playAlbum(id) {
 		this.setTracks(await api.updatePlaylistTracks(this.id, { clear: true, albums: [id] }))
+	}
+
+	async addTrack(id) {
+		this.setTracks(await api.updatePlaylistTracks(this.id, { tracks: [id] }))
 	}
 }

@@ -1,5 +1,6 @@
 import { rjs, ViewModel } from "../rjs.js"
 import { player } from "../main.js"
+import { Track } from "../models/track.js"
 
 export class TracksView extends ViewModel {
 	constructor(element, classes, show_art) {
@@ -9,6 +10,39 @@ export class TracksView extends ViewModel {
 		this.show_art = show_art
 
 		rjs.watch("statechanged", this.onStateChange.bind(this))
+
+		this.element.addEventListener("click", e => {
+			if (!e.target) {
+				return;
+			}
+
+			console.log("A")
+
+			const track_ele = rjs.getParentElementByClass(e.target, "track", this.element)
+			if (!track_ele) {
+				return
+			}
+
+			console.log("B")
+
+			let track = Track.get(track_ele.getAttribute("data-id"))
+			if (!track) {
+				return
+			}
+
+			console.log("C")
+
+			if (rjs.getParentElementByClass(e.target, "action-add", this.element)) {
+				player.addTrack(track.id)
+				event.stopPropagation()
+			} else if (rjs.getParentElementByClass(e.target, "action-next", this.element)) {
+				player.addTrackNext(track.id)
+				event.stopPropagation()
+			} else if (rjs.getParentElementByClass(e.target, "track", this.element)) {
+				player.playTrack(track.id)
+				event.stopPropagation()
+			}
+		})
 	}
 
 	onChange(container) {
@@ -31,13 +65,16 @@ export class TracksView extends ViewModel {
 
 	buildRow(track, isPlaying) {
 		var row = document.createElement("a")
-		row.setAttribute("class", this.classes + (isPlaying ? " is-active" : ""))
-		if (this.show_art) {
-			row.innerHTML = `<img class="panel-icon album-icon" src="${track.picture}">${track.title}`
-		} else {
-			row.text = track.title
-		}
+		row.setAttribute("class", this.classes + (isPlaying ? " track is-active" : " track"))
+		row.setAttribute("data-id", track.id)
 
+		let icon = this.show_art ? `<img class="panel-icon album-icon" src="${track.picture}"></img>` : ""
+		row.innerHTML = `
+			<div class="actions">
+				<a class="action-add"><span class="fa fa-plus"></span></a>
+				<a class="action-next"><span class="fa fa-plus-square"></span></a>
+			</div>
+			${icon}${track.title}`
 		return row
 	}
 

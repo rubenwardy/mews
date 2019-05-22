@@ -33,7 +33,7 @@ export class Album extends Model {
 
 	setTracks(tracks) {
 		console.log("Updated tracks for album " + this.id)
-		this.tracks = tracks.map(track => Track.get(track.id, track))
+		this.tracks = tracks.map(track => Track.getOrCreate(track.id, track))
 		this.is_known = true
 		this.notifyChange()
 	}

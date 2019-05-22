@@ -90,7 +90,10 @@ export let rjs = {
 	},
 
 	getParentElementByClass: function(element, search, boundary) {
-		while (element != document.body && element.id != boundary) {
+		const boundaryIsID = typeof(boundary) == "string"
+		while (element != document.body &&
+				((boundaryIsID && element.id != boundary) ||
+					(!boundaryIsID && element != boundary))) {
 			if (element.classList.contains(search)) {
 				return element
 			}
