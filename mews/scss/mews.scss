@@ -54,8 +54,16 @@ h1 {
 		display: none;
 
 		a span {
-			padding-top: 18px;
+			padding-top: 11px;
 			font-size: 120%;
+		}
+
+		form {
+			display: inline;
+		}
+
+		.button {
+			text-decoration: none;
 		}
 	}
 

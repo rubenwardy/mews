@@ -46,7 +46,6 @@ def replacement_new():
 	return render_template("admin/replacement_new.html", form=form)
 
 
-
 @app.route("/admin/replacements/<int:id>/edit/", methods=["GET", "POST"])
 @login_required
 def replacement_edit(id):
@@ -67,6 +66,14 @@ def replacement_edit(id):
 
 	return render_template("admin/replacement_edit.html", form=form, rep=rep)
 
+
+@app.route("/admin/replacements/<int:id>/delete/", methods=["POST"])
+@login_required
+def replacement_delete(id):
+	Replacement.query.filter_by(id=id).delete()
+	db.session.commit()
+
+	return redirect(url_for('admin'))
 
 @app.route("/admin/sync/albums/", methods=["POST"])
 @login_required

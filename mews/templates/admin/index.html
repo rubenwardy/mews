@@ -48,6 +48,11 @@
 			<div class="panel-block">
 				<div class="actions">
 					<a href="{{ url_for('replacement_edit', id=rep.id) }}"><span class="fa fa-edit"></span></a>
+					<form action="{{ url_for('replacement_delete', id=rep.id) }}" method="POST">
+						<button type="submit" class="button is-text">
+							<span class='fa fa-trash'></span>
+						</button>
+					</form>
 				</div>
 				{{ rep }}
 			</div>
