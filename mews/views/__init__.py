@@ -1,5 +1,5 @@
-from flask import render_template, redirect, url_for, send_file, abort, request, jsonify
-from flask_user import login_required
+from flask import render_template, redirect, url_for, send_file, abort, request, jsonify, flash
+from flask_user import login_required, current_user
 from mews import app
 from mews.models import *
 from mews.utils import loginUser
@@ -38,6 +38,11 @@ def login_invite(invite):
 	user = User.query.filter_by(invite=invite).first()
 	if user is None:
 		abort(404)
+
+	if current_user.is_authenticated:
+		flash("You are already logged in!", "warning")
+		return redirect(url_for("hello"))
+
 
 	if user.is_admin:
 		abort(403)

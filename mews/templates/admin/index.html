@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% block footerjs %}
+	<script src="/static/js/clipboard.min.js"></script>
+	<script>
+		new ClipboardJS('.clip');
+	</script>
+{% endblock %}
 {% block content %}
 	<section class="level section">
 		<div class="level-left">
@@ -77,12 +83,28 @@
 				</p>
 				<div class="panel-scrolling">
 				{% for u in users %}
-					<a class="panel-block" href="">
+					<div class="panel-block">
+						<div class="actions">
+							{% if u.invite %}
+								<a class="clip" data-clipboard-text="{{ url_for('login_invite', invite=u.invite, _external=True) }}">
+									<span class="fa fa-copy"></span>
+								</a>
+							{% endif %}
+							<a><span class="fa fa-edit"></span></a>
+							<form action="" method="POST">
+								<button type="submit" class="button is-text" {% if u.id == current_user.id %}disabled{% endif %}>
+									<span class='fa fa-trash'></span>
+								</button>
+							</form>
+						</div>
 						{{ u.username }}
-						{% if u.is_admin %}
+						{% if u.invite %}
+							<span data-clipboard-text="{{ url_for('login_invite', invite=u.invite, _external=True) }}"
+									class="tag is-warning clip" style="margin-left: 10px;">Pending Invite</span>
+						{% elif u.is_admin %}
 							<span class="tag is-primary" style="margin-left: 10px;">Admin</span>
 						{% endif %}
-					</a>
+					</div>
 				{% else %}
 					<i class="panel-block">No users</i>
 				{% endfor %}
