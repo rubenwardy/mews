@@ -1,11 +1,10 @@
-import os, random, string
+import os, random, string, imghdr
 from tinytag import TinyTag
 import json
 from . import lastfm
 from .models import *
 from sqlalchemy import or_
 import pylast, json
-from imghdr import tests as image_tests
 
 
 def randomString(n):
@@ -13,20 +12,13 @@ def randomString(n):
 		string.ascii_uppercase + string.digits) for _ in range(n))
 
 
+ALLOWED_IMAGES = { "jpeg": True, "png": True, "gif": True, "bmp": True }
 def getImageType(data):
-	for tf in image_tests:
-		res = tf(data, None)
-		if res:
-			return res
-
-	# print(data[0:7])
-	# if data[:4] == b"\xff\xd8\xff\xe0" and data[6:11] == b"JFIF\0":
-	# 	return "jpg"
-	# elif data[0:8] == b"\x89\x50\x4e\x47\x0d\x0a\x1a\x0a" or data[0:7] == b"\x00\rIHDR\x00": #
-	# 	#\x00\rIHDR\x00\x00\x01,\x00\x00\x01,\x08\x02\x00\x00\x00\xf6
-	# 	return "png"
-	# else:
-	# 	return None
+	ext = imghdr.what(None, data)
+	if ext in ALLOWED_IMAGES:
+		return ext
+	else:
+		return None
 
 
 ALLOWED_EXT = [".mp3", ".m4a", ".wav", ".ogg"]
