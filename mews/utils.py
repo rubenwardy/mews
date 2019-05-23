@@ -1,15 +1,32 @@
-import os
+import os, random, string
 from tinytag import TinyTag
 import json
 from . import lastfm
 from .models import *
 from sqlalchemy import or_
 import pylast, json
+from imghdr import tests as image_tests
 
 
 def randomString(n):
 	return ''.join(random.choice(string.ascii_lowercase + \
 		string.ascii_uppercase + string.digits) for _ in range(n))
+
+
+def getImageType(data):
+	for tf in image_tests:
+		res = tf(data, None)
+		if res:
+			return res
+
+	# print(data[0:7])
+	# if data[:4] == b"\xff\xd8\xff\xe0" and data[6:11] == b"JFIF\0":
+	# 	return "jpg"
+	# elif data[0:8] == b"\x89\x50\x4e\x47\x0d\x0a\x1a\x0a" or data[0:7] == b"\x00\rIHDR\x00": #
+	# 	#\x00\rIHDR\x00\x00\x01,\x00\x00\x01,\x08\x02\x00\x00\x00\xf6
+	# 	return "png"
+	# else:
+	# 	return None
 
 
 ALLOWED_EXT = [".mp3", ".m4a", ".wav", ".ogg"]
@@ -124,28 +141,35 @@ def getAlbumsInfo():
 	except FileNotFoundError:
 		pass
 
-	for album in Album.query.filter_by(is_known=False).all():
+	for album in Album.query.all():
 		try:
+			# TODO: this doesn't make sense if albums are checked
+			if album.picture:
+				continue
+
 			key = (album.artist.name + "/" + album.title).lower()
 			if data.get(key):
 				print("Using cached " + album.title + " by " + album.artist.name)
-				album.picture = data.get(key)["picture"]
+				album.picture = album.picture or data.get(key)["picture"]
 				album.is_known = album.picture is not None
 			else:
 				print("Fetching " + album.title + " by " + album.artist.name)
 				lfm_album = lastfm.get_album(album.artist.name, album.title)
 				album.title = lfm_album.get_title()
-				album.picture = lfm_album.get_cover_image()
+				album.picture = album.picture or lfm_album.get_cover_image()
 				album.is_known = True
-			db.session.commit()
 		except pylast.WSError:
 			print("Error")
+
+	db.session.commit()
 
 
 def importAllMusic():
 	track_by_path = {}
 	for track in Track.query.all():
 		track_by_path[track.path] = track
+
+	dir_path = os.path.dirname(os.path.realpath(__file__))
 
 	ret = scanForMusic(app.config["MUSIC_DIR"])
 	for info in ret:
@@ -170,21 +194,26 @@ def importAllMusic():
 		track.title  = meta.title
 		track.path   = path
 
-		image = meta.get_image()
-		if image is not None:
-			filename = randomString(10) + ".jpg"
-			path = os.path.join(__dir__, "static/uploads/" + filename)
-			with open(path, "wb") as f:
-				f.write(image)
-
-			track.picture = "/static/uploads" + filename
-
 		if path in track_by_path:
 			del track_by_path[track.path]
 
-	for track in track_by_path.items():
+		image = meta.get_image()
+		if image is not None:
+			ext = getImageType(image)
+			# print("Image is", ext, image[0:20])
+			if ext is not None:
+				filename = randomString(10) + "." + ext
+				path = os.path.join(dir_path, "static/uploads/" + filename)
+				with open(path, "wb") as f:
+					f.write(image)
+
+				track.picture = "/static/uploads/" + filename
+				if album.picture is None:
+					album.picture = track.picture
+
+	for track in track_by_path.values():
 		print("Removing missing track: " + track.path)
-		track.delete()
+		db.session.delete(track)
 
 	alb_q = Album.query.filter(~ db.exists().where(Track.album_id==Album.id))
 	alb_c = alb_q.count()

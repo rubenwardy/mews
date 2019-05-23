@@ -36,4 +36,11 @@ rep.set_artist = "Various Artists"
 assert(rep.isValid())
 db.session.add(rep)
 
+rep = Replacement()
+rep.album_title = "Crossroad - The Best of Bon Jovi"
+rep.set_album = "Crossroad"
+assert(rep.isValid())
+db.session.add(rep)
+
+
 db.session.commit()
