@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 from mews import app
 from io import BytesIO
 from flask import send_file, request
-import random
+import random, os
 
 def get_initials(fullname):
 	initials = ""
@@ -29,7 +29,8 @@ def dummy_art():
 	# if title is None
 	initials = get_initials(title)
 
-	fnt = ImageFont.truetype("../fonts/Cantarell-Regular.otf", 70)
+	dir_path = os.path.dirname(os.path.realpath(__file__))
+	fnt = ImageFont.truetype(os.path.join(dir_path, "../fonts/Cantarell-Regular.otf"), 70)
 
 	color = random.choice(COLORS).lstrip("#")
 	color = tuple(int(color[i:i+2], 16) for i in (0, 2, 4))
