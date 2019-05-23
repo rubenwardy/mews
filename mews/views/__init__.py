@@ -2,6 +2,7 @@ from flask import render_template, redirect, url_for, send_file, abort, request,
 from flask_user import login_required
 from mews import app
 from mews.models import *
+from mews.utils import loginUser
 
 @user_manager.login_manager.unauthorized_handler
 def unauthorized():
@@ -30,5 +31,23 @@ def track_file(id):
 
 	print(track.path)
 	return send_file(track.path)
+
+
+@app.route("/invites/<invite>/")
+def login_invite(invite):
+	user = User.query.filter_by(invite=invite).first()
+	if user is None:
+		abort(404)
+
+	if user.is_admin:
+		abort(403)
+
+	loginUser(user)
+
+	user.invite = None
+	db.session.commit()
+
+	return redirect(url_for("hello"))
+
 
 from . import sass, api, admin, dummyart

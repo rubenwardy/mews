@@ -34,31 +34,60 @@
 		</div>
 	</section>
 
-	<section class="panel">
-		<p class="panel-heading">
-			<span class="actions is-pulled-right">
-				<a href="{{ url_for('replacement_new') }}"><span class="fa fa-plus"></span></a>
-				<!-- <a><span class="fa fa-times close"></span></a> -->
-			</span>
-			<span class="count tag is-rounded is-black">{{ replacements | count }}</span>
-			<span class="title is-5">Replacements</span>
-		</p>
-		<div class="panel-scrolling">
-		{% for rep in replacements %}
-			<div class="panel-block">
-				<div class="actions">
-					<a href="{{ url_for('replacement_edit', id=rep.id) }}"><span class="fa fa-edit"></span></a>
-					<form action="{{ url_for('replacement_delete', id=rep.id) }}" method="POST">
-						<button type="submit" class="button is-text">
-							<span class='fa fa-trash'></span>
-						</button>
-					</form>
+
+	<section class="columns">
+		<div class="column is-half">
+			<div class="panel">
+				<p class="panel-heading">
+					<span class="actions is-pulled-right">
+						<a href="{{ url_for('replacement_new') }}"><span class="fa fa-plus"></span></a>
+						<!-- <a><span class="fa fa-times close"></span></a> -->
+					</span>
+					<span class="count tag is-rounded is-black">{{ replacements | count }}</span>
+					<span class="title is-5">Replacements</span>
+				</p>
+				<div class="panel-scrolling">
+				{% for rep in replacements %}
+					<div class="panel-block">
+						<div class="actions">
+							<a href="{{ url_for('replacement_edit', id=rep.id) }}"><span class="fa fa-edit"></span></a>
+							<form action="{{ url_for('replacement_delete', id=rep.id) }}" method="POST">
+								<button type="submit" class="button is-text">
+									<span class='fa fa-trash'></span>
+								</button>
+							</form>
+						</div>
+						{{ rep }}
+					</div>
+				{% else %}
+					<i class="panel-block">No replacements</i>
+				{% endfor %}
 				</div>
-				{{ rep }}
 			</div>
-		{% else %}
-			<i class="panel-block">No replacements</i>
-		{% endfor %}
+		</div>
+		<div class="column is-half">
+			<div class="panel">
+				<p class="panel-heading">
+					<span class="actions is-pulled-right">
+						<a href="{{ url_for('invite') }}"><span class="fa fa-plus"></span></a>
+						<!-- <a><span class="fa fa-times close"></span></a> -->
+					</span>
+					<span class="count tag is-rounded is-black">{{ users | count }}</span>
+					<span class="title is-5">Users</span>
+				</p>
+				<div class="panel-scrolling">
+				{% for u in users %}
+					<a class="panel-block" href="">
+						{{ u.username }}
+						{% if u.is_admin %}
+							<span class="tag is-primary" style="margin-left: 10px;">Admin</span>
+						{% endif %}
+					</a>
+				{% else %}
+					<i class="panel-block">No users</i>
+				{% endfor %}
+				</div>
+			</div>
 		</div>
 	</section>
 

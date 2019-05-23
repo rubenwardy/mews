@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+	{% from "macros/forms.html" import render_field %}
+
+	<h1 class="title">Invite</h1>
+
+	<form method="POST" action="{{ url_for('invite') }}" style="margin-top: 1em;">
+		{{ form.csrf_token }}
+		{{ render_field(form.username) }}
+
+		<div class="field">
+			<label class="label">Invite Link</label>
+			<div class="control is-expanded">
+				<input type="hidden" name="invite" value="{{ form.invite.data }}">
+				<input type="text" readonly style="width: 100%;" value="{{ url_for('login_invite', invite=form.invite.data, _external=True) }}">
+			</div>
+		</div>
+
+		<input type="submit" value="Create">
+	</form>
+{% endblock %}

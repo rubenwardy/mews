@@ -20,9 +20,11 @@ def add_mixed_album(title):
 	assert(rep.isValid())
 	db.session.add(rep)
 
+
 ruben = User()
 ruben.username = "rubenwardy"
 ruben.password = make_flask_user_password("password")
+ruben.is_admin = True
 db.session.add(ruben)
 
 add_mixed_album("Ashes to Ashes (Original Soundtrack)")
