@@ -4,6 +4,7 @@ from mews import app
 from mews.models import *
 from mews.utils import loginUser
 
+
 @user_manager.login_manager.unauthorized_handler
 def unauthorized():
 	#   if request.path.startswith('/api/'):
@@ -15,6 +16,7 @@ def unauthorized():
 	#   return redirect(url_for('auth.signin'))
 
 assert(user_manager.login_manager.unauthorized_callback == unauthorized)
+
 
 @app.route("/")
 def hello():
@@ -33,26 +35,4 @@ def track_file(id):
 	return send_file(track.path)
 
 
-@app.route("/invites/<invite>/")
-def login_invite(invite):
-	user = User.query.filter_by(invite=invite).first()
-	if user is None:
-		abort(404)
-
-	if current_user.is_authenticated:
-		flash("You are already logged in!", "warning")
-		return redirect(url_for("hello"))
-
-
-	if user.is_admin:
-		abort(403)
-
-	loginUser(user)
-
-	user.invite = None
-	db.session.commit()
-
-	return redirect(url_for("hello"))
-
-
-from . import sass, api, admin, dummyart
+from . import sass, api, admin, dummyart, users

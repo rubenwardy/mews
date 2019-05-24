@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{{ user.username }}
+{% endblock %}
+
+{% block content %}
+<section class="level section profile">
+	<div class="level-left">
+		<div class="level-item level-min-200 has-text-centered">
+			<div>
+				<p class="heading">Username</p>
+				<p class="title">{{ user.username }}</p>
+			</div>
+		</div>
+		<div class="level-item level-min-200 has-text-centered">
+			<div>
+				<p class="heading">Role</p>
+				{% if user.is_admin %}
+					<p class="title is-danger">Admin</p>
+				{% else %}
+					<p class="title">User</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	{% if current_user.is_authenticated and (current_user == user or current_user.is_admin) %}
+	<div class="level-right">
+		{% if user.password %}
+			<a href="{{ url_for('user.change_password') }}" class="button is-info">Change Password</a>
+		{% else %}
+			<a href="{{ url_for('set_password_page') }}" class="button is-info">Set Password</a>
+		{% endif %}
+
+		{% if user.invite %}
+			<div class="level-item has-text-centered">
+				<div>
+					{% set invite_link=url_for('login_invite', invite=user.invite, _external=True) %}
+					<p class="heading">Invite</p>
+					<div class="field has-addons">
+						<div class="control">
+							<input class="input" type="text" value="{{ invite_link }}" readonly>
+						</div>
+						<div class="control">
+							<a class="clip button is-info" data-clipboard-text="{{ invite_link }}">
+									<span class="fa fa-copy"></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+	{% endif %}
+</section>
+{% endblock %}

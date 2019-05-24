@@ -57,19 +57,32 @@
 							</div>
 						</div>
 					{% else %}
-						<a class="navbar-item" href="{{ url_for('user.login') }}">Sign in</a>
+						<!-- <a class="navbar-item" href="{{ url_for('user.login') }}">Sign in</a> -->
 					{% endif %}
 				</div>
 
 				<div class="navbar-end">
-					<div class="navbar-item field">
-						<p class="control has-icons-right">
-							<input class="input" type="search" placeholder="Search...">
-							<span class="icon is-small is-right">
-								<icon />
-							</span>
-						</p>
+				{% if current_user.is_authenticated %}
+					<div class="navbar-item has-dropdown is-hoverable">
+						<a class="navbar-link">
+							{{ current_user.username }}
+						</a>
+
+						<div class="navbar-dropdown is-right">
+							<a class="navbar-item" href="{{ url_for('user_profile_page', username=current_user.username) }}">
+								Profile
+							</a>
+							<hr class="navbar-divider">
+							<a class="navbar-item" href="{{ url_for('user.logout') }}">
+								Sign out
+							</a>
+						</div>
 					</div>
+				{% else %}
+					<a class="navbar-item" href="{{ url_for('user.login') }}">
+						Login
+					</a>
+				{% endif %}
 				</div>
 			</div>
 		</div>
@@ -96,6 +109,8 @@
 		</div>
 	{% endif %}
 	{%- endwith %}
+
+	<script async src="/static/js/bulma.js"></script>
 	{% block footerjs %}{% endblock %}
 </body>
 </html>

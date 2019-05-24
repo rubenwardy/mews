@@ -19,6 +19,14 @@
 	</div>
 {%- endmacro %}
 
+{% macro render_submit_field(field, label=None, tabindex=None) -%}
+	{% if not label %}{% set label=field.label.text %}{% endif %}
+	<div class="control">
+		<input type="submit" value="{{label}}" class="button is-link"
+			{% if tabindex %}tabindex="{{ tabindex }}"{% endif %}>
+	</div>
+{%- endmacro %}
+
 {% macro render_fields(fields, label) %}
 <div class="field is-horizontal">
 	<div class="field-label is-normal">

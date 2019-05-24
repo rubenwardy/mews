@@ -16,6 +16,9 @@ class User(db.Model, UserMixin):
 	is_admin = db.Column(db.Boolean, nullable=False, default=False)
 	invite = db.Column(db.String(32), nullable=True, default=None)
 
+	def __eq__(self, other):
+		return self.id == other.id
+
 
 user_manager = UserManager(app, db, User)
 

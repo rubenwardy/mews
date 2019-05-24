@@ -90,14 +90,16 @@
 									<span class="fa fa-copy"></span>
 								</a>
 							{% endif %}
-							<a><span class="fa fa-edit"></span></a>
+							<a href="{{ url_for('user_profile_page', username=u.username) }}"><span class="fa fa-edit"></span></a>
 							<form action="" method="POST">
 								<button type="submit" class="button is-text" {% if u.id == current_user.id %}disabled{% endif %}>
 									<span class='fa fa-trash'></span>
 								</button>
 							</form>
 						</div>
-						{{ u.username }}
+						<a href="{{ url_for('user_profile_page', username=u.username) }}">
+							{{ u.username }}
+						</a>
 						{% if u.invite %}
 							<span data-clipboard-text="{{ url_for('login_invite', invite=u.invite, _external=True) }}"
 									class="tag is-warning clip" style="margin-left: 10px;">Pending Invite</span>
