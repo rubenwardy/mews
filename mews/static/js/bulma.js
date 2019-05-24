@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	setTimeout(() => {
 		document.querySelectorAll(".notifications").forEach(x => x.remove())
-	}, 5000)
+	}, 5000);
 
 	(document.querySelectorAll(".notification .delete") || []).forEach((del) => {
 		let notif = del.parentNode

@@ -39,8 +39,33 @@ export class AlbumTracksView extends ViewModel {
 
 let alview = null
 
+function queryMatches(query, album) {
+	return album.title.toLowerCase().includes(query) ||
+			album.artist.toLowerCase().includes(query)
+}
+
+function updateSearch(query) {
+	console.log("Updating search: " + query)
+
+	let tiles = document.querySelectorAll("#albums .album")
+	if (query.trim() == "") {
+		tiles.forEach(x => x.style.display = "block")
+	} else {
+		query = query.toLowerCase()
+		tiles.forEach(x => {
+			let album = Album.get(x.getAttribute("data-id"))
+			console.assert(album, "Unabled to find album!")
+
+			x.style.display = (queryMatches(query, album)) ? "block" : "none"
+		})
+	}
+}
+
 rjs.onLoad(() => {
 	alview = new AlbumTracksView(document.getElementById("albummodal"))
+
+	let searchbox = document.getElementById("search")
+	searchbox.addEventListener("input", e => updateSearch(searchbox.value))
 
 	document.getElementById("albums").addEventListener("click", e => {
 		if (!e.target) {

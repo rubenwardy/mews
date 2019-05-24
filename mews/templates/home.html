@@ -13,6 +13,29 @@
 	<script type="module" src="/static/js/main.js"></script>
 {% endblock %}
 {% block content %}
+	<section class="level" style="margin-top: 1.5rem;">
+		<div class="level-left">
+			<div class="level-item">
+				<div class="buttons has-addons">
+					<span class="button is-info is-selected"><i class="fas fa-compact-disc"></i></span>
+					<span class="button"><i class="fas fa-user"></i></span>
+					<span class="button"><i class="fas fa-music"></i></span>
+				</div>
+			</div>
+			<div class="level-item">
+				<div class="buttons has-addons">
+					<span class="button is-info is-selected"><i class="fas fa-th-large"></i></span>
+					<span class="button"><i class="fas fa-list"></i></span>
+				</div>
+			</div>
+		</div>
+		<div class="level-right">
+			<div class="level-item">
+				<input id="search" type="text" placeholder="Search" class="input">
+			</div>
+		</div>
+	</section>
+
 	<div class="columns section is-multiline" id="albums"></div>
 
 	<div id="albummodal" class="modal">
