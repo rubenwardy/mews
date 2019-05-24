@@ -30,13 +30,10 @@ def randomString(n):
 		string.ascii_uppercase + string.digits) for _ in range(n))
 
 
-ALLOWED_IMAGES = { "jpeg": True, "png": True, "gif": True, "bmp": True }
+ALLOWED_IMAGES = { "jpeg": "jpg", "png": "png", "gif": "gif", "bmp": "bmp" }
 def getImageType(data):
 	ext = imghdr.what(None, data)
-	if ext in ALLOWED_IMAGES:
-		return ext
-	else:
-		return None
+	return ALLOWED_IMAGES.get(ext)
 
 
 ALLOWED_EXT = [".mp3", ".m4a", ".wav", ".ogg"]
