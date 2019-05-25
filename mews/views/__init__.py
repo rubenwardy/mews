@@ -2,7 +2,6 @@ from flask import render_template, redirect, url_for, send_file, abort, request,
 from flask_user import login_required, current_user
 from mews import app
 from mews.models import *
-from mews.utils import loginUser
 
 
 @user_manager.login_manager.unauthorized_handler

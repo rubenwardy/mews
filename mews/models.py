@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask_user import UserManager, UserMixin
+from flask_user import UserManager, UserMixin, current_app
 from sqlalchemy.ext.orderinglist import ordering_list
 from sqlalchemy.ext.associationproxy import association_proxy
 from . import app, lastfm
@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
 	active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
 	username = db.Column(db.String(20, collation='NOCASE'), nullable=False, unique=True)
-	password = db.Column(db.String(255), nullable=False, server_default='')
+	password = db.Column(db.String(255), nullable=False, default="")
 	email_confirmed_at = db.Column(db.DateTime())
 	is_admin = db.Column(db.Boolean, nullable=False, default=False)
 	invite = db.Column(db.String(32), nullable=True, default=None)

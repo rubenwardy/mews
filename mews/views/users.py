@@ -6,6 +6,7 @@ from wtforms.validators import InputRequired, DataRequired, Length, Optional, Em
 from mews import app, lastfm
 from mews.utils import scanForMusic, getArtistsInfo, getAlbumsInfo, importAllMusic, admin_required, randomString
 from mews.models import *
+from mews.utils import loginUser
 
 
 class UserProfileForm(FlaskForm):
@@ -39,7 +40,7 @@ class SetPasswordForm(FlaskForm):
 @app.route("/user/set-password/", methods=["GET", "POST"])
 @login_required
 def set_password_page():
-	if current_user.password is not None:
+	if current_user.password != "":
 		return redirect(url_for("user.change_password"))
 
 	form = SetPasswordForm(request.form)
@@ -49,6 +50,7 @@ def set_password_page():
 		two = form.password2.data
 		if one == two:
 			current_user.password = user_manager.hash_password(form.password.data)
+			current_user.invite = None
 			db.session.commit()
 
 			signals.user_changed_password.send(current_app._get_current_object(), user=current_user)
@@ -71,13 +73,10 @@ def login_invite(invite):
 		flash("You are already logged in!", "warning")
 		return redirect(url_for("hello"))
 
-
-	if user.is_admin:
+	if user.is_admin or user.password != "":
 		abort(403)
 
 	loginUser(user)
-
-	user.invite = None
 	db.session.commit()
 
 	return redirect(url_for("set_password_page"))
