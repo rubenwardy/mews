@@ -3,10 +3,10 @@ from flask_user import login_required, current_user, user_manager, signals, curr
 from flask_wtf import FlaskForm
 from wtforms import StringField, StringField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, DataRequired, Length, Optional, Email
-from mews import app, lastfm
-from mews.utils import scanForMusic, getArtistsInfo, getAlbumsInfo, importAllMusic, admin_required, randomString
-from mews.models import *
-from mews.utils import loginUser
+from app import app, lastfm
+from app.utils import scanForMusic, getArtistsInfo, getAlbumsInfo, importAllMusic, admin_required, randomString
+from app.models import *
+from app.utils import loginUser
 
 
 class UserProfileForm(FlaskForm):

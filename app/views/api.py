@@ -1,7 +1,7 @@
 from flask import render_template, jsonify, request, abort
 from flask_user import login_required
-from mews import app
-from mews.models import *
+from app import app
+from app.models import *
 
 @app.route("/api/tracks/<int:id>/")
 def api_track(id):

@@ -1,4 +1,4 @@
-from mews.models import *
+from app.models import *
 from flask_user import *
 
 db.create_all()

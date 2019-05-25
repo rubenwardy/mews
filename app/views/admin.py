@@ -3,9 +3,9 @@ from flask_user import login_required
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, Length
-from mews import app, lastfm
-from mews.utils import scanForMusic, getArtistsInfo, getAlbumsInfo, importAllMusic, admin_required, randomString
-from mews.models import *
+from app import app, lastfm
+from app.utils import scanForMusic, getArtistsInfo, getAlbumsInfo, importAllMusic, admin_required, randomString
+from app.models import *
 
 
 @app.route("/admin/")

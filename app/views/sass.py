@@ -15,7 +15,7 @@ import codecs
 from flask import *
 from scss import Scss
 
-from mews import app
+from app import app
 
 def _convert(dir, src, dst):
 	original_wd = os.getcwd()

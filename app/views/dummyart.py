@@ -1,5 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
-from mews import app
+from app import app
 from io import BytesIO
 from flask import send_file, request
 import random, os
