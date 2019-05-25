@@ -12,7 +12,6 @@ class User(db.Model, UserMixin):
 	active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
 	username = db.Column(db.String(20, collation='NOCASE'), nullable=False, unique=True)
 	password = db.Column(db.String(255), nullable=False, default="")
-	email_confirmed_at = db.Column(db.DateTime())
 	is_admin = db.Column(db.Boolean, nullable=False, default=False)
 	invite = db.Column(db.String(32), nullable=True, default=None)
 
