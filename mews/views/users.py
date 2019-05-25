@@ -56,7 +56,7 @@ def set_password_page():
 			signals.user_changed_password.send(current_app._get_current_object(), user=current_user)
 
 			flash('Your password has been changed successfully.', 'success')
-			return redirect(url_for("user_profile_page", username=current_user.username))
+			return redirect(url_for("user.login"))
 		else:
 			flash("Passwords do not match", "error")
 
