@@ -1,3 +1,4 @@
+from flask import url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_user import UserManager, UserMixin, current_app
 from sqlalchemy.ext.orderinglist import ordering_list
@@ -54,11 +55,17 @@ class Album(db.Model):
 	artist = db.relationship("Artist",
 		backref=db.backref("albums", lazy=True))
 
+	def getPictureURL(self):
+		if self.picture and self.picture[0:46] == "https://lastfm-img2.akamaized.net/i/u/300x300/":
+			return url_for("thing_art", file=self.picture[46:])
+		else:
+			return self.picture
+
 	def asDict(self, add_id=True):
 		dict = {
 			"title": self.title,
 			"artist": self.artist.name,
-			"picture": self.picture
+			"picture": self.getPictureURL()
 		}
 
 		if add_id:
