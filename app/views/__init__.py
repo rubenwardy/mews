@@ -39,10 +39,13 @@ def track_file(id):
 def thing_art(file):
 	dir_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../static/uploads/")
 	filepath = os.path.join(dir_path, file)
-	print(filepath)
-	if not os.path.isfile(filepath):
-		urllib.request.urlretrieve("https://lastfm-img2.akamaized.net/i/u/300x300/" + file, filepath)
 
+	if not os.path.isfile(filepath):
+		url = "https://lastfm-img2.akamaized.net/i/u/300x300/" + file
+		if current_user.is_authenticated:
+			urllib.request.urlretrieve(url, filepath)
+		else:
+			return redirect(url)
 
 	return send_from_directory(dir_path, file)
 
