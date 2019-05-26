@@ -99,6 +99,8 @@ rjs.onLoad(() => {
 })
 
 export function appendAlbum(album) {
+	console.log("Appending album[" + album.id + "] " + album.title)
+
 	let element = document.createElement("div")
 	let picture = album.picture || "/dummy/?title=" + encodeURI(album.title)
 	element.innerHTML = `

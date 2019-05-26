@@ -70,10 +70,10 @@ export class ViewModel {
 let listeners = {}
 let on_loads = []
 
-
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", () => {
+	console.log(`#### Running ${on_loads.length} onload callbacks ####`)
 	on_loads.map(f => f())
-}
+})
 
 export let rjs = {
 	watch: function(evt, func) {
