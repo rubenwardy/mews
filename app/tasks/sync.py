@@ -224,32 +224,74 @@ def getArtistsInfo():
 
 
 def getAlbumsInfo():
-	data = {}
-	try:
-		with open('album_cache.json') as json_file:
-			data = json.load(json_file)
-	except FileNotFoundError:
-		pass
+	provider = CachedProvider()
 
 	for album in Album.query.all():
-		try:
-			# TODO: this doesn't make sense if albums are checked
-			if album.picture:
-				continue
+		# TODO: this doesn't make sense if albums are checked
+		if album.picture:
+			continue
 
-			key = (album.artist.name + "/" + album.title).lower()
-			if data.get(key):
-				print("Using cached " + album.title + " by " + album.artist.name)
-				album.picture = album.picture or data.get(key)["picture"]
-				album.is_known = album.picture is not None
-			else:
-				print("Fetching " + album.title + " by " + album.artist.name)
-				lfm_album = lastfm.get_album(album.artist.name, album.title)
-				album.title = lfm_album.get_title()
-				album.picture = album.picture or lfm_album.get_cover_image()
-				album.is_known = True
+		meta = provider.getAlbumMeta(album.artist.name, album.title)
+		if meta:
+			print("Using cached " + album.title + " by " + album.artist.name)
+			album.picture = album.picture or meta["picture"]
+			album.is_known = album.picture is not None
+			continue
+
+		print("Fetching " + album.title + " by " + album.artist.name)
+		try:
+			lfm_album = lastfm.get_album(album.artist.name, album.title)
+			album.title = lfm_album.get_title()
+			album.picture = album.picture or lfm_album.get_cover_image()
+			album.is_known = True
+
+			provider.putAlbumMeta(album.artist.name, album.title, {
+				"title": album.title,
+				"picture": album.picture
+			})
+
+		except pylast.WSError:
+			print("LastFM Error")
+
+	db.session.commit()
+
+
+def getTracksInfo():
+	for album in Album.query.all():
+		tracks = None
+		try:
+			lfm_album = lastfm.get_album(album.artist.name, album.title)
+			tracks = [ t.get_name().lower() for t in lfm_album.get_tracks()]
 		except pylast.WSError:
 			print("Error")
+
+		if tracks is None or len(tracks) == 0:
+			continue
+
+		for track in album.tracks:
+			key = track.title.lower()
+
+			if track.position is not None and track.position < 1:
+				track.position = None
+
+			if track.position is None:
+				try:
+					track.position = tracks.index(key) + 1
+					print("!!! Track {} has no position. Corrected to {}".format(str(track), track.position))
+				except ValueError:
+					print("!!! Can't find track in album " + str(track))
+			elif track.position <= len(tracks):
+				assert(track.position > 0)
+				actual_track = tracks[track.position - 1]
+				if actual_track != key:
+					try:
+						oldpos = track.position
+						track.position = tracks.index(key) + 1
+						print("!!! Wrong {} at position {} which should be {}. Corrected to {}".format(str(track), oldpos, actual_track, track.position))
+					except ValueError:
+						print("!!! Wrong {} at position {} which should be {}. Unable to find in album".format(str(track), oldpos, actual_track))
+			else:
+				print("!!! Track position {} out of bounds for {} ".format(track.position, str(track)))
 
 	db.session.commit()
 

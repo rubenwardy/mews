@@ -5,7 +5,7 @@ from wtforms import StringField
 from wtforms.validators import DataRequired, Length
 from app import app, lastfm
 from app.utils import admin_required, randomString
-from app.tasks.tasks import syncAlbums, syncArtists, syncMusic
+from app.tasks.tasks import syncTracks, syncAlbums, syncArtists, syncMusic
 from app.models import *
 from sqlalchemy import func
 
@@ -124,6 +124,14 @@ def invite():
 	return render_template("admin/invite.html", form=form)
 
 
+@app.route("/admin/sync/artists/", methods=["POST"])
+@admin_required
+def sync_artist():
+	ret = syncArtists.delay()
+	flash("Syncing artist meta data", "success")
+	return redirect(url_for("check_task", id=ret.id, r=url_for("admin")))
+
+
 @app.route("/admin/sync/albums/", methods=["POST"])
 @admin_required
 def sync_album():
@@ -132,11 +140,11 @@ def sync_album():
 	return redirect(url_for("check_task", id=ret.id, r=url_for("admin")))
 
 
-@app.route("/admin/sync/artists/", methods=["POST"])
+@app.route("/admin/sync/tracks/", methods=["POST"])
 @admin_required
-def sync_artist():
-	ret = syncArtists.delay()
-	flash("Syncing artist meta data", "success")
+def sync_track():
+	ret = syncTracks.delay()
+	flash("Syncing track meta data", "success")
 	return redirect(url_for("check_task", id=ret.id, r=url_for("admin")))
 
 

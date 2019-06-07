@@ -122,7 +122,8 @@ class Track(db.Model):
 		return dict
 
 	def __repr__(self):
-		return "<Track %r>" % self.title
+		return "<Track {} {} {}>".format(self.title, self.artist.name, self.position)
+
 
 
 class Playlist(db.Model):

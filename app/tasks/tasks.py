@@ -1,6 +1,6 @@
 from app import app
 from app.tasks import celery, TaskError
-from app.tasks.sync import importAllMusic, getArtistsInfo, getAlbumsInfo
+from app.tasks.sync import importAllMusic, getArtistsInfo, getAlbumsInfo, getTracksInfo
 from flask_caching import Cache
 from contextlib import contextmanager
 from celery.five import monotonic
@@ -58,3 +58,8 @@ def syncArtists(self):
 @requires_lock
 def syncAlbums(self):
 	getAlbumsInfo()
+
+@celery.task(bind=True)
+@requires_lock
+def syncTracks(self):
+	getTracksInfo()
