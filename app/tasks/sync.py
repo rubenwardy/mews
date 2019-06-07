@@ -302,13 +302,21 @@ def importAllMusic():
 			track = Track()
 			db.session.add(track)
 
-		track.album  = album
-		track.artist = artist
-		track.title  = meta.title
-		track.path   = path
+		track.album    = album
+		track.artist   = artist
+		track.title    = meta.title
+		track.position = int(meta.track) if meta.track else None
+		track.path     = path
 
 		if path in track_by_path:
 			del track_by_path[track.path]
+
+		if meta.track_total is not None:
+			track_total = int(meta.track_total)
+			if track.album.num_tracks is None:
+				track.album.num_tracks = track_total
+			elif track.album.num_tracks != track_total:
+				print("#### Warning! Tracks disagree about number of tracks in album!")
 
 		image = meta.get_image()
 		if image is not None:

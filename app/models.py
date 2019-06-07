@@ -49,6 +49,7 @@ class Album(db.Model):
 	title = db.Column(db.String(80), nullable=False)
 	picture = db.Column(db.String(200), unique=False, nullable=True)
 	is_known = db.Column(db.Boolean, nullable=False, default=False)
+	num_tracks = db.Column(db.Integer, nullable=True, default=None)
 
 	artist_id = db.Column(db.Integer, db.ForeignKey("artist.id"),
 		nullable=False)
@@ -95,6 +96,7 @@ class Track(db.Model):
 	picture = db.Column(db.String(200), unique=False, nullable=True)
 	path = db.Column(db.String(80), unique=True, nullable=False)
 	is_known = db.Column(db.Boolean, nullable=False, default=False)
+	position = db.Column(db.Integer, nullable=True, default=None)
 
 	artist_id = db.Column(db.Integer, db.ForeignKey("artist.id"),
 		nullable=False)
@@ -104,7 +106,7 @@ class Track(db.Model):
 	album_id = db.Column(db.Integer, db.ForeignKey("album.id"),
 		nullable=False)
 	album = db.relationship("Album",
-		backref=db.backref("tracks", lazy=True))
+		backref=db.backref("tracks", lazy=True, order_by=lambda: Track.position))
 
 	def asDict(self, pt_id=None, add_id=True):
 		dict = {
