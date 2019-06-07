@@ -178,5 +178,64 @@
 				</div>
 			</div>
 		</div>
+		<div class="column is-one-third">
+			<div class="panel">
+				<p class="panel-heading">
+					<span class="count tag is-rounded {% if incomplete_albums %}is-danger{% else %}is-black{% endif %}">{{ incomplete_albums | length }}</span>
+					<span class="title is-5">Incomplete Albums</span>
+				</p>
+				<div class="panel-scrolling">
+				{% for album in incomplete_albums %}
+					<div class="panel-block">
+						{{ album.title }} by {{ album.artist.name }}
+						{% set cur=album.tracks | length %}
+						{% set perc=cur / album.num_tracks %}
+						<span class="tag is-rounded {% if perc < 0.2 %}is-danger{% elif perc < 0.5 %}is-warning{% endif %}" style="margin-left: 10px;">
+							{{ cur }} / {{ album.num_tracks }}
+						</span>
+					</div>
+				{% else %}
+					<i class="panel-block">All ok!</i>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="column is-one-third">
+			<div class="panel">
+				<p class="panel-heading">
+					<span class="count tag is-rounded {% if incomplete_albums %}is-danger{% else %}is-black{% endif %}">{{ overflow_albums | length }}</span>
+					<span class="title is-5">Overflowing Albums</span>
+				</p>
+				<div class="panel-scrolling">
+				{% for album in overflow_albums %}
+					<div class="panel-block">
+						{{ album.title }} by {{ album.artist.name }}
+						<span class="tag is-rounded is-info" style="margin-left: 10px;">
+							{{ album.tracks | length  }} / {{ album.num_tracks }}
+						</span>
+					</div>
+				{% else %}
+					<i class="panel-block">All ok!</i>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="column is-one-third">
+				<div class="panel">
+					<p class="panel-heading">
+						<span class="count tag is-rounded {% if missing_album_art %}is-danger{% else %}is-black{% endif %}">{{ no_pos_tracks | length }}</span>
+						<span class="title is-5">Tracks Without Positions</span>
+					</p>
+					<div class="panel-scrolling">
+					{% for track in no_pos_tracks %}
+						<div class="panel-block">{{ track.title }} by {{ track.artist.name }}</div>
+					{% else %}
+						<i class="panel-block">All ok!</i>
+					{% endfor %}
+					</div>
+				</div>
+			</div>
 	</div>
+	<div style="padding: 30px"></div>
 {% endblock %}

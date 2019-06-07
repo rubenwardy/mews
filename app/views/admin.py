@@ -7,6 +7,7 @@ from app import app, lastfm
 from app.utils import admin_required, randomString
 from app.tasks.tasks import syncAlbums, syncArtists, syncMusic
 from app.models import *
+from sqlalchemy import func
 
 
 @app.route("/admin/")
@@ -16,10 +17,23 @@ def admin():
 	unknown_artists = Artist.query.filter_by(is_known=False).order_by(Artist.name).all()
 	unknown_tracks = Track.query.filter_by(is_known=False).order_by(Track.title).all()
 	missing_album_art = Album.query.filter_by(picture=None).order_by(Album.title).all()
+
+	# incomplete_albums = Album.query \
+	# 		.filter(Album.num_tracks!=None) \
+	# 		.join(Album.tracks) \
+	# 		.filter(func.count(Album.num_tracks) == Album.num_tracks) \
+	# 		.all()
+
+	albums = Album.query.filter(Album.num_tracks != None).join(Artist.albums).order_by(Artist.name).all()
+	incomplete_albums = [a for a in albums if a.num_tracks > len(a.tracks)]
+	overflow_albums = [a for a in albums if a.num_tracks < len(a.tracks)]
+	no_pos_tracks = Track.query.filter(Track.position==None).all()
+
 	users = User.query.order_by(User.is_admin.desc(), User.username).all()
 	return render_template("admin/index.html",
 			unknown_albums=unknown_albums, unknown_artists=unknown_artists, unknown_tracks=unknown_tracks,
 			num_artists=Artist.query.count(), num_albums=Album.query.count(), num_tracks=Track.query.count(),
+			incomplete_albums=incomplete_albums, overflow_albums=overflow_albums, no_pos_tracks=no_pos_tracks,
 			replacements=Replacement.query.all(), missing_album_art=missing_album_art, users=users)
 
 

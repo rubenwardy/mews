@@ -83,3 +83,8 @@ h1 {
 .clip {
 	cursor: pointer;
 }
+
+.tag.is-danger {
+	font-weight: bold;
+	background-color: #cc2c4c !important;
+}
