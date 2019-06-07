@@ -50,4 +50,4 @@ def thing_art(file):
 	return send_from_directory(dir_path, file)
 
 
-from . import sass, api, admin, dummyart, users
+from . import sass, api, admin, dummyart, users, tasks

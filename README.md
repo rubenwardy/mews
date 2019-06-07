@@ -13,3 +13,10 @@ License: AGPLv3.0
 * Planned:
   * Remote control support, via a web page.
   * Public sharing of playlists, to allow guests to request music.
+
+## Cheat Sheet
+
+```bash
+# Run celery worker
+FLASK_CONFIG=../config.cfg celery -A app.tasks.celery worker
+```

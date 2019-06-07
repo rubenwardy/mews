@@ -4,7 +4,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, Length
 from app import app, lastfm
-from app.utils import scanForMusic, getArtistsInfo, getAlbumsInfo, importAllMusic, admin_required, randomString
+from app.utils import admin_required, randomString
+from app.tasks.tasks import syncAlbums, syncArtists, syncMusic
 from app.models import *
 
 
@@ -112,19 +113,22 @@ def invite():
 @app.route("/admin/sync/albums/", methods=["POST"])
 @admin_required
 def sync_album():
-	getAlbumsInfo()
-	return redirect(url_for("admin"))
+	ret = syncAlbums.delay()
+	flash("Syncing album meta data", "success")
+	return redirect(url_for("check_task", id=ret.id, r=url_for("admin")))
 
 
 @app.route("/admin/sync/artists/", methods=["POST"])
 @admin_required
 def sync_artist():
-	getArtistsInfo()
-	return redirect(url_for("admin"))
+	ret = syncArtists.delay()
+	flash("Syncing artist meta data", "success")
+	return redirect(url_for("check_task", id=ret.id, r=url_for("admin")))
 
 
 @app.route("/admin/sync/music/", methods=["POST"])
 @admin_required
 def sync_music():
-	importAllMusic()
-	return redirect(url_for("admin"))
+	ret = syncMusic.delay()
+	flash("Importing music from file system", "success")
+	return redirect(url_for("check_task", id=ret.id, r=url_for("admin")))

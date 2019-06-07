@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, StringField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, DataRequired, Length, Optional, Email
 from app import app, lastfm
-from app.utils import scanForMusic, getArtistsInfo, getAlbumsInfo, importAllMusic, admin_required, randomString
+from app.utils import admin_required, randomString
 from app.models import *
 from app.utils import loginUser
 
