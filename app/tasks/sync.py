@@ -6,6 +6,13 @@ from app.models import *
 from sqlalchemy import or_
 import pylast, json
 from app.utils import randomString
+from hashlib import md5
+
+
+ALLOWED_IMAGES = { "jpeg": "jpg", "png": "png", "gif": "gif", "bmp": "bmp" }
+def getImageType(data):
+	ext = imghdr.what(None, data)
+	return ALLOWED_IMAGES.get(ext)
 
 
 class MetaProvider:
@@ -56,6 +63,18 @@ class MetaProvider:
 
 		return album
 
+	def getOrCreateImage(self, image, dir_path):
+		ext = getImageType(image)
+		if ext is not None:
+			filename = randomString(10) + "." + ext
+			path = os.path.join(dir_path, filename)
+			with open(path, "wb") as f:
+				f.write(image)
+
+			return "/static/uploads/" + filename
+
+		return None
+
 
 class CachedProvider(MetaProvider):
 	"""
@@ -68,6 +87,7 @@ class CachedProvider(MetaProvider):
 		self.album_by_key = {}
 		self.artist_meta = {}
 		self.album_meta = {}
+		self.image_by_hash = None
 		self.load()
 
 	def load(self):
@@ -115,32 +135,47 @@ class CachedProvider(MetaProvider):
 
 		return album
 
+	def calcImageHash(self, data):
+		return md5(data).hexdigest()
 
-ALLOWED_IMAGES = { "jpeg": "jpg", "png": "png", "gif": "gif", "bmp": "bmp" }
-def getImageType(data):
-	ext = imghdr.what(None, data)
-	return ALLOWED_IMAGES.get(ext)
+	def calcFileHash(self, path):
+		with open(path, "rb") as f:
+			return self.calcImageHash(f.read())
 
-
-ALLOWED_EXT = [".mp3", ".m4a", ".wav", ".ogg"]
-def getMusicInfo(path):
-	_, ext = os.path.splitext(path.lower())
-	if ext in ALLOWED_EXT:
-		return { "path": path, "meta": TinyTag.get(path, image=True) }
-	else:
 		return None
 
+	def populateImageCache(self, dir_path):
+		print("Populating image cache! " + dir_path)
+		self.image_by_hash = {}
+		for dir, _, files in os.walk(dir_path):
+			for filename in files:
+				_, ext = os.path.splitext(filename.lower())
+				if ext[1:] not in ALLOWED_IMAGES.values():
+					continue
 
-def scanForMusic(root):
-	ret = []
-	for dir, _, files in os.walk(root):
-		for file in files:
-			path = os.path.join(dir, file)
-			info = getMusicInfo(path)
-			if info is not None:
-				ret.append(info)
+				path = os.path.join(dir, filename)
+				hash = self.calcFileHash(path)
+				print(" - adding " + path + " with hash " + hash + " to image cache")
+				if hash is None:
+					continue
 
-	return ret
+				self.image_by_hash[hash] = "/static/uploads/" + filename
+
+	def getOrCreateImage(self, image, dir_path):
+		if self.image_by_hash is None:
+			self.populateImageCache(dir_path)
+
+		hash = self.calcImageHash(image)
+		if hash is None:
+			return None
+
+		if hash in self.image_by_hash:
+			return self.image_by_hash[hash]
+
+		url = super(CachedProvider, self).getOrCreateImage(image, dir_path)
+		self.image_by_hash[hash] = url
+		return url
+
 
 
 def getArtistsInfo():
@@ -219,6 +254,27 @@ def getAlbumsInfo():
 	db.session.commit()
 
 
+ALLOWED_EXT = [".mp3", ".m4a", ".wav", ".ogg"]
+def getMusicInfo(path):
+	_, ext = os.path.splitext(path.lower())
+	if ext in ALLOWED_EXT:
+		return { "path": path, "meta": TinyTag.get(path, image=True) }
+	else:
+		return None
+
+
+def scanForMusic(root):
+	ret = []
+	for dir, _, files in os.walk(root):
+		for file in files:
+			path = os.path.join(dir, file)
+			info = getMusicInfo(path)
+			if info is not None:
+				ret.append(info)
+
+	return ret
+
+
 def importAllMusic():
 	provider = CachedProvider()
 
@@ -226,7 +282,7 @@ def importAllMusic():
 	for track in Track.query.all():
 		track_by_path[track.path] = track
 
-	dir_path = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
+	dir_path = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir, "static/uploads/"))
 
 	ret = scanForMusic(app.config["MUSIC_DIR"])
 	for info in ret:
@@ -242,7 +298,7 @@ def importAllMusic():
 
 		track = track_by_path.get(path)
 		if track is None:
-			print("Adding track at " + path)
+			# print("Adding track at " + path)
 			track = Track()
 			db.session.add(track)
 
@@ -256,17 +312,10 @@ def importAllMusic():
 
 		image = meta.get_image()
 		if image is not None:
-			ext = getImageType(image)
-			# print("Image is", ext, image[0:20])
-			if ext is not None:
-				filename = randomString(10) + "." + ext
-				path = os.path.join(dir_path, "static/uploads/" + filename)
-				with open(path, "wb") as f:
-					f.write(image)
-
-				track.picture = "/static/uploads/" + filename
-				if album.picture is None:
-					album.picture = track.picture
+			url = provider.getOrCreateImage(image, dir_path)
+			track.picture = url
+			if album.picture is None:
+				album.picture = url
 
 	for track in track_by_path.values():
 		print("Removing missing track: " + track.path)

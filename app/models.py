@@ -47,7 +47,7 @@ class Artist(db.Model):
 class Album(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(80), nullable=False)
-	picture = db.Column(db.String(200), unique=True, nullable=True)
+	picture = db.Column(db.String(200), unique=False, nullable=True)
 	is_known = db.Column(db.Boolean, nullable=False, default=False)
 
 	artist_id = db.Column(db.Integer, db.ForeignKey("artist.id"),
@@ -92,7 +92,7 @@ class Track(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(80), nullable=False)
 	number = db.Column(db.Integer, nullable=True)
-	picture = db.Column(db.String(200), unique=True, nullable=True)
+	picture = db.Column(db.String(200), unique=False, nullable=True)
 	path = db.Column(db.String(80), unique=True, nullable=False)
 	is_known = db.Column(db.Boolean, nullable=False, default=False)
 
