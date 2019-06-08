@@ -17,9 +17,6 @@ def getImageType(data):
 
 class MetaProvider:
 	def getOrCreateArtist(self, name):
-		if name in self.artist_by_name:
-			return self.artist_by_name[name]
-
 		actual_name = name
 		rep = Replacement.query.filter(Replacement.artist_name==name, Replacement.album_title==None).first()
 		if rep:
@@ -32,15 +29,9 @@ class MetaProvider:
 			art.name = actual_name
 			db.session.add(art)
 
-		self.artist_by_name[actual_name] = art
-		self.artist_by_name[name] = art
 		return art
 
 	def getOrCreateAlbum(self, artist, title):
-		key = artist + ":" + title
-		if key in self.album_by_key:
-			return self.album_by_key[key]
-
 		rep = Replacement.query.filter(or_(Replacement.artist_name==artist, Replacement.artist_name==None)) \
 			.filter(or_(Replacement.album_title==title, Replacement.album_title==None)).first()
 		if rep:
@@ -58,9 +49,6 @@ class MetaProvider:
 			album.artist = art
 			db.session.add(album)
 
-		self.album_by_key[key] = album
-		self.album_by_key[artist + ":" + title] = album
-
 		return album
 
 	def getOrCreateImage(self, image, dir_path):
@@ -76,6 +64,11 @@ class MetaProvider:
 		return None
 
 
+def saveJSON(path, data):
+	with open(path, "w") as f:
+		f.write(json.dumps(data))
+
+
 class CachedProvider(MetaProvider):
 	"""
 	Caching layer over MetaProvider
@@ -87,21 +80,41 @@ class CachedProvider(MetaProvider):
 		self.album_by_key = {}
 		self.artist_meta = {}
 		self.album_meta = {}
+		self.track_meta = {}
 		self.image_by_hash = None
 		self.load()
+		self.counter = 0
 
 	def load(self):
 		try:
-			with open('artist_cache.json') as json_file:
+			with open('cache/artist_cache.json') as json_file:
 				self.artist_meta = json.load(json_file)
 		except FileNotFoundError:
 			pass
 
 		try:
-			with open('album_cache.json') as json_file:
+			with open('cache/album_cache.json') as json_file:
 				self.album_meta = json.load(json_file)
 		except FileNotFoundError:
 			pass
+
+		try:
+			with open('cache/track_cache.json') as json_file:
+				self.track_meta = json.load(json_file)
+		except FileNotFoundError:
+			pass
+
+	def saveArtistMeta(self):
+		self.counter = 0
+		saveJSON("cache/artist_cache.json", self.artist_meta)
+
+	def saveAlbumMeta(self):
+		self.counter = 0
+		saveJSON("cache/album_cache.json", self.album_meta)
+
+	def saveTrackMeta(self):
+		self.counter = 0
+		saveJSON("cache/track_cache.json", self.track_meta)
 
 	def getArtistMeta(self, name):
 		return self.artist_meta.get(name.lower())
@@ -109,11 +122,29 @@ class CachedProvider(MetaProvider):
 	def getAlbumMeta(self, artist, title):
 		return self.album_meta.get(artist.lower() + "/" + title.lower())
 
+	def getTrackMeta(self, artist, title):
+		return self.track_meta.get(artist.lower() + ":" + title.lower())
+
 	def putArtistMeta(self, name, meta):
 		self.artist_meta[name.lower()] = meta
 
+		self.counter += 1
+		if self.counter > 10:
+			self.saveArtistMeta()
+
 	def putAlbumMeta(self, artist, title, meta):
 		self.album_meta[artist.lower() + "/" + title.lower()] = meta
+
+		self.counter += 1
+		if self.counter > 10:
+			self.saveAlbumMeta()
+
+	def putTrackMeta(self, artist, title, meta):
+		self.track_meta[artist.lower() + ":" + title.lower()] = meta
+
+		self.counter += 1
+		if self.counter > 10:
+			self.saveTrackMeta()
 
 	def getOrCreateArtist(self, name):
 		if name in self.artist_by_name:
@@ -190,6 +221,7 @@ def getArtistsInfo():
 
 		try:
 			print("Fetching " + artist.name)
+			origname = artist.name
 			lfm_artist = lastfm.get_artist(artist.name)
 			cname = lfm_artist.get_correction()
 			if cname != artist.name:
@@ -215,12 +247,15 @@ def getArtistsInfo():
 			else:
 				print(" - Artist not found: " + artist.name)
 
-			provider.putArtistMeta(artist.name, { "name": artist.name, "picture": None })
+			meta = { "name": artist.name, "picture": None }
+			provider.putArtistMeta(origname, meta)
+			provider.putArtistMeta(artist.name, meta)
 
 		except pylast.WSError:
 			print(" - Error: " + artist.name)
 
 	db.session.commit()
+	provider.saveArtistMeta()
 
 
 def getAlbumsInfo():
@@ -254,46 +289,80 @@ def getAlbumsInfo():
 			print("LastFM Error")
 
 	db.session.commit()
+	provider.saveAlbumMeta()
 
 
 def getTracksInfo():
-	for album in Album.query.all():
-		tracks = None
-		try:
-			lfm_album = lastfm.get_album(album.artist.name, album.title)
-			tracks = [ t.get_name().lower() for t in lfm_album.get_tracks()]
-		except pylast.WSError:
-			print("Error")
+	provider = CachedProvider()
 
-		if tracks is None or len(tracks) == 0:
+	for track in Track.query.filter_by(is_known=False).all():
+		meta = provider.getTrackMeta(track.artist.name, track.title)
+		if meta:
+			track.title = meta["title"]
+			track.is_known = True
 			continue
 
-		for track in album.tracks:
-			key = track.title.lower()
+		try:
+			origtitle = track.title
+			print("Fetching {} by {}".format(track.title, track.artist.name))
+			lfm_track = lastfm.get_track(track.artist.name, track.title)
 
-			if track.position is not None and track.position < 1:
-				track.position = None
+			lfm_track.get_correction()
+			title = lfm_track.get_title(properly_capitalized=True)
+			if title != track.title:
+				print(" - corrected title to {}".format(title))
+				track.title = title
+				lfm_track = lastfm.get_track(track.artist.name, track.title)
 
-			if track.position is None:
-				try:
-					track.position = tracks.index(key) + 1
-					print("!!! Track {} has no position. Corrected to {}".format(str(track), track.position))
-				except ValueError:
-					print("!!! Can't find track in album " + str(track))
-			elif track.position <= len(tracks):
-				assert(track.position > 0)
-				actual_track = tracks[track.position - 1]
-				if actual_track != key:
-					try:
-						oldpos = track.position
-						track.position = tracks.index(key) + 1
-						print("!!! Wrong {} at position {} which should be {}. Corrected to {}".format(str(track), oldpos, actual_track, track.position))
-					except ValueError:
-						print("!!! Wrong {} at position {} which should be {}. Unable to find in album".format(str(track), oldpos, actual_track))
-			else:
-				print("!!! Track position {} out of bounds for {} ".format(track.position, str(track)))
+			track.is_known = True
+			meta = { "title": track.title }
+			provider.putTrackMeta(track.artist.name, origtitle, meta)
+			provider.putTrackMeta(track.artist.name, track.title, meta)
+
+		except pylast.WSError:
+			print("LastFM Error")
 
 	db.session.commit()
+	provider.saveTrackMeta()
+
+	# for album in Album.query.all():
+	# 	tracks = None
+	# 	try:
+	# 		lfm_album = lastfm.get_album(album.artist.name, album.title)
+	# 		tracks = [ t.get_name().lower() for t in lfm_album.get_tracks()]
+	# 	except pylast.WSError:
+	# 		print("Error")
+
+	# 	if tracks is None or len(tracks) == 0:
+	# 		continue
+
+	# 	for track in album.tracks:
+	# 		key = track.title.lower()
+
+	# 		if track.position is not None and track.position < 1:
+	# 			track.position = None
+
+	# 		if track.position is None:
+	# 			try:
+	# 				track.position = tracks.index(key) + 1
+	# 				print("!!! Track {} has no position. Corrected to {}".format(str(track), track.position))
+	# 			except ValueError:
+	# 				print("!!! Can't find track in album " + str(track))
+	# 		elif track.position <= len(tracks):
+	# 			assert(track.position > 0)
+	# 			actual_track = tracks[track.position - 1]
+	# 			if actual_track != key:
+	# 				try:
+	# 					oldpos = track.position
+	# 					track.position = tracks.index(key) + 1
+	# 					print("!!! Wrong {} at position {} which should be {}. Corrected to {}".format(str(track), oldpos, actual_track, track.position))
+	# 				except ValueError:
+	# 					print("!!! Wrong {} at position {} which should be {}. Unable to find in album".format(str(track), oldpos, actual_track))
+	# 		else:
+	# 			print("!!! Track position {} out of bounds for {} ".format(track.position, str(track)))
+	#
+	# db.session.commit()
+	# provider.saveTrackMeta()
 
 
 ALLOWED_EXT = [".mp3", ".m4a", ".wav", ".ogg"]

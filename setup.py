@@ -44,5 +44,10 @@ rep.set_album = "Crossroad"
 assert(rep.isValid())
 db.session.add(rep)
 
+rep = Replacement()
+rep.album_title = "The Very Best Of T.Rex"
+rep.set_album = "The Very Best of T-Rex"
+assert(rep.isValid())
+db.session.add(rep)
 
 db.session.commit()
