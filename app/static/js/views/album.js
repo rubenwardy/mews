@@ -96,6 +96,29 @@ rjs.onLoad(() => {
 			event.stopPropagation()
 		}
 	})
+
+	const view_grid = document.getElementById("view-grid")
+	const view_list = document.getElementById("view-list")
+
+	view_grid.addEventListener("click", () => {
+		const album = document.getElementById("albums")
+		album.classList.add("albumgrid")
+		album.classList.remove("albumlist")
+		view_grid.classList.add("is-selected")
+		view_grid.classList.add("is-info")
+		view_list.classList.remove("is-selected")
+		view_list.classList.remove("is-info")
+	})
+
+	view_list.addEventListener("click", () => {
+		const album = document.getElementById("albums")
+		album.classList.remove("albumgrid")
+		album.classList.add("albumlist")
+		view_grid.classList.remove("is-selected")
+		view_grid.classList.remove("is-info")
+		view_list.classList.add("is-selected")
+		view_list.classList.add("is-info")
+	})
 })
 
 export function appendAlbum(album) {

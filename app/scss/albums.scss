@@ -26,7 +26,42 @@
 	}
 }
 
-#albums:hover {
+.albumlist {
+	display: block !important;
+
+	.album {
+		display: block;
+		width: auto;
+		padding: 0.1rem;
+	}
+
+	.image {
+		padding-top: 0 !important;
+	}
+
+	.image img {
+		max-width: 30px;
+		max-height: 30px;
+	}
+
+	h3, a {
+		display: inline-block;
+	}
+
+	a {
+		margin-left: 10px;
+	}
+
+	.album:hover .actions {
+		display: inline-block;
+
+		a {
+			font-size: 100%;
+		}
+	}
+}
+
+.albumgrid:hover {
 	.album:hover {
 		opacity: 1;
 
