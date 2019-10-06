@@ -1,6 +1,7 @@
 import { rjs, ViewModel } from "../rjs.js"
 import { TracksView } from "./tracks.js"
-import { player } from "../main.js"
+import { player, playing } from "../main.js"
+import { api } from "../api.js";
 
 export class PlayingView extends ViewModel {
 	constructor(element) {
@@ -38,11 +39,19 @@ export class PlaylistView extends ViewModel {
 		this.tracks_view = new TracksView(this.element.querySelector(".panel-scrolling"), "panel-block",
 				true, { type: "playlist", album: null })
 
-		this.element.querySelector(".panel-heading").addEventListener("click", () => {
-			if (this.element.classList.contains("panel-collapsed")) {
-				this.element.classList.remove("panel-collapsed")
-			} else {
-				this.element.classList.add("panel-collapsed")
+		this.element.querySelector(".panel-heading").addEventListener("click", e => {
+			if (!rjs.getParentElementByClass(e.target, "actions", this.element)) {
+				this.element.classList.toggle("panel-collapsed")
+			}
+		})
+
+		this.element.querySelector(".clear-upcoming").addEventListener("click", () => {
+			var playlist = this.getTarget()
+
+			const playingID = player && player.getPlayingID()
+			var playingPlaylist = player.getPlaylist()
+			if (playingPlaylist == playlist && playingID) {
+				playlist.clearTracksAfter(playingID)
 			}
 		})
 	}

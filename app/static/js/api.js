@@ -40,6 +40,7 @@ async function createPlaylist(title) {
 }
 
 async function updatePlaylistTracks(id, data) {
+	console.log(id, data)
 	return await getJSON("/api/playlists/" + id + "/tracks/", "post", JSON.stringify(data))
 }
 

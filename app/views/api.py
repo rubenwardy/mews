@@ -14,7 +14,7 @@ def api_track(id):
 
 @app.route("/api/albums/")
 def api_albums():
-	albums = db.session.query(Album).join(Artist.albums).order_by(Artist.name).all()
+	albums = db.session.query(Album).join(Artist.albums).order_by(Artist.name, Album.title).all()
 	return jsonify([ a.asDict() for a in albums ])
 
 
@@ -90,6 +90,20 @@ def api_playlist_tracks(id):
 		if "clear" in to_add:
 			playlist.tracks = []
 
+		if "clear_after" in to_add:
+			delete = False
+			search_ptid = int(to_add["clear_after"])
+			print("Searching for " + str(search_ptid))
+			for pt in playlist.tracks:
+				if pt.id == search_ptid:
+					print("-- After: " + str(pt.id))
+					delete = True
+				elif delete:
+					print("-- Delete!")
+					pt.delete()
+				else:
+					print("-- before: " + str(pt.id))
+
 		if "albums" in to_add:
 			for album_id in to_add["albums"]:
 				album = Album.query.get(album_id)
@@ -109,7 +123,6 @@ def api_playlist_tracks(id):
 				playlist.tracks.insert(insert_at, track)
 				insert_at += 1
 
-
-	db.session.commit()
+		db.session.commit()
 
 	return jsonify([ t.track.asDict(t.id) for t in playlist._tracks ])
